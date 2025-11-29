@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>newsPro - Professional Content Platform</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
     <script src="icons.js"></script>
     <style>
@@ -61,6 +62,23 @@
             margin-bottom: 1rem;
             color: #000000;
             font-family: 'Arial Black', Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .feature-card h3 .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            vertical-align: middle;
+        }
+        .feature-card h3 .icon svg {
+            width: 1.75rem;
+            height: 1.75rem;
+            stroke-width: 2.5;
         }
         .feature-card p {
             color: #4b5563;
@@ -79,6 +97,113 @@
             margin-bottom: 1.5rem;
             color: #000000;
             font-family: 'Arial Black', Arial, sans-serif;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .landing-hero {
+                padding: 3rem 1.5rem;
+            }
+            .landing-hero h1 {
+                font-size: 2.5rem;
+                letter-spacing: 2px;
+            }
+            .landing-hero p {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+            }
+            .landing-features {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 2rem 1.5rem;
+            }
+            .feature-card {
+                padding: 1.5rem;
+            }
+            .feature-card h3 {
+                font-size: 1.25rem;
+                gap: 0.5rem;
+            }
+            .feature-card h3 .icon svg {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+            .landing-cta {
+                padding: 3rem 1.5rem;
+            }
+            .landing-cta h2 {
+                font-size: 1.75rem;
+            }
+            .landing-cta p {
+                font-size: 1rem;
+            }
+            .landing-page header nav {
+                flex-wrap: wrap;
+                padding: 1rem;
+                gap: 1rem;
+            }
+            .landing-page .nav-left {
+                position: static;
+                order: 1;
+            }
+            .landing-page .nav-links {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                margin-top: 0.5rem;
+                position: static;
+            }
+            .landing-page .user-actions {
+                position: static;
+                order: 2;
+                margin-left: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .landing-hero {
+                padding: 2rem 1rem;
+            }
+            .landing-hero h1 {
+                font-size: 2rem;
+                letter-spacing: 1px;
+            }
+            .landing-hero p {
+                font-size: 1rem;
+            }
+            .landing-features {
+                padding: 1.5rem 1rem;
+            }
+            .feature-card {
+                padding: 1.25rem;
+            }
+            .feature-card h3 {
+                font-size: 1.1rem;
+            }
+            .landing-cta {
+                padding: 2rem 1rem;
+            }
+            .landing-cta h2 {
+                font-size: 1.5rem;
+            }
+            .landing-page header nav {
+                padding: 0.75rem;
+            }
+            .landing-page .nav-links {
+                flex-direction: column;
+                gap: 0.5rem;
+                margin-top: 0.75rem;
+            }
+            .landing-page .user-actions {
+                width: 100%;
+                justify-content: center;
+                margin-top: 0.5rem;
+            }
+            .landing-page .user-actions .btn {
+                flex: 1;
+                text-align: center;
+                min-width: 120px;
+            }
         }
     </style>
 </head>
@@ -111,19 +236,19 @@
 
         <section id="features" class="landing-features" style="scroll-margin-top: 100px;">
             <div class="feature-card">
-                <h3>🎯 Personalized Feed</h3>
+                <h3><span class="icon" data-icon="target"></span> Personalized Feed</h3>
                 <p>AI-powered content curation that learns your interests and delivers the most relevant articles first.</p>
             </div>
             <div class="feature-card">
-                <h3>📊 Market Intelligence</h3>
+                <h3><span class="icon" data-icon="chart"></span>Market Intelligence</h3>
                 <p>Real-time financial news and market analysis from trusted sources, sorted by relevance.</p>
             </div>
             <div class="feature-card">
-                <h3>⚡ Fast & Reliable</h3>
+                <h3><span class="icon" data-icon="zap"></span> Fast & Reliable</h3>
                 <p>Lightning-fast loading times and a clean, professional interface designed for efficiency.</p>
             </div>
             <div class="feature-card">
-                <h3>🔒 Privacy First</h3>
+                <h3><span class="icon" data-icon="lock"></span> Privacy First</h3>
                 <p>Your data is secure. We respect your privacy and give you full control over your information.</p>
             </div>
         </section>
@@ -141,12 +266,49 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Replace icons
+            // Check auth state
+            const token = localStorage.getItem('authToken');
+            if (token) {
+                // User is logged in
+                const userActions = document.querySelector('.user-actions');
+                const heroActions = document.querySelector('.landing-hero div');
+                const ctaActions = document.querySelector('.landing-cta');
+
+                if (userActions) {
+                    userActions.innerHTML = '<a href="feed.html" class="btn btn-primary">Go to Feed</a>';
+                }
+                if (heroActions) {
+                    heroActions.innerHTML = '<a href="feed.html" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;">Go to Feed</a>';
+                }
+
+                // Update bottom CTA
+                const ctaLink = ctaActions.querySelector('a');
+                if (ctaLink) {
+                    ctaLink.href = 'feed.html';
+                    ctaLink.textContent = 'Go to Feed';
+                }
+            } else {
+                // Clear any residual auth token if navigating back to landing from sign out (safety check)
+                // localStorage.removeItem('authToken');
+                // Wait, if I am on landing page and token exists, I show "Go to Feed".
+                // If I clicked "Sign Out", I expect token to be gone.
+            }
+
+            // Replace icons in logo
             if (typeof Icons !== 'undefined') {
-                document.querySelectorAll('[data-icon]').forEach(el => {
+                document.querySelectorAll('.logo[data-icon]').forEach(el => {
                     const iconName = el.getAttribute('data-icon');
                     if (Icons[iconName]) {
-                        el.innerHTML = `<span class="icon">${Icons[iconName]}</span>${el.textContent.trim()}`;
+                        const text = el.textContent.trim();
+                        el.innerHTML = `<span class="icon">${Icons[iconName]}</span> ${text}`;
+                    }
+                });
+
+                // Replace icons in feature cards
+                document.querySelectorAll('.feature-card h3 .icon[data-icon]').forEach(el => {
+                    const iconName = el.getAttribute('data-icon');
+                    if (Icons[iconName]) {
+                        el.innerHTML = Icons[iconName];
                     }
                 });
             }
