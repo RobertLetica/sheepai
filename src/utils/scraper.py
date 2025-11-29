@@ -2,14 +2,16 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import time
-import threading
 import os
+import logging
 from datetime import datetime
-from utils import ai
+from utils import ai  # Importing the AI module here
 
 # Configuration
 BASE_URL = "https://thehackernews.com/"
-OUTPUT_FILE = "hacker_news_articles.json"
+# Adjust path to save in src/ parent directory or local utils depending on preference. 
+# Using relative path to match structure: src/hacker_news_articles.json
+OUTPUT_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "hacker_news_articles.json")
 CHECK_INTERVAL_MINUTES = 5
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
@@ -21,14 +23,14 @@ def get_soup(url):
         response.raise_for_status()
         return BeautifulSoup(response.content, 'html.parser')
     except requests.RequestException as e:
-        print(f"[!] Error fetching {url}: {e}")
+        logging.error(f"Error fetching {url}: {e}")
         return None
 
 def scrape_article_content(article_url):
     """Visits an individual article page to scrape the full content."""
     soup = get_soup(article_url)
     if not soup:
-        return "Failed to retrieve content."
+        return ""
 
     # Try specific THN content selectors
     content_div = soup.find('div', id='articlebody') or soup.find('div', class_='articlebody')
@@ -40,7 +42,7 @@ def scrape_article_content(article_url):
             return '\n\n'.join([p.get_text(strip=True) for p in paragraphs])
         return content_div.get_text(strip=True)
     
-    return "Content not found."
+    return ""
 
 def load_existing_data():
     """Loads existing JSON to prevent duplicates."""
@@ -58,43 +60,38 @@ def save_data(data):
         with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=4, ensure_ascii=False)
     except IOError as e:
-        print(f"[!] Error saving data: {e}")
+        logging.error(f"Error saving data: {e}")
 
 def monitor_feed():
     """
-    Worker function to run in a thread. 
-    Checks for new articles periodically.
+    Worker function. Checks for new articles periodically.
     """
-    print(f"[*] Worker started. Checking every {CHECK_INTERVAL_MINUTES} minutes.")
+    logging.info(f"Scraper worker started. Checking every {CHECK_INTERVAL_MINUTES} minutes.")
     
     while True:
         try:
-            print(f"\n[*] Checking feed at {datetime.now().strftime('%H:%M:%S')}...")
+            logging.info("Checking feed...")
             
-            # 1. Load current database (in case other processes modified it)
             existing_articles = load_existing_data()
             seen_urls = {art['url'] for art in existing_articles}
             
-            # 2. Fetch Homepage
             soup = get_soup(BASE_URL)
             if not soup:
-                print("[!] Could not fetch homepage. Retrying next cycle.")
+                logging.warning("Could not fetch homepage. Retrying next cycle.")
                 time.sleep(CHECK_INTERVAL_MINUTES * 60)
                 continue
 
-            # 3. Find Article Links
             story_links = soup.find_all('a', class_='story-link')
             new_articles_found = 0
 
-            # Iterate through found links (latest first usually)
+            # Iterate through found links
             for story in story_links:
                 article_url = story.get('href')
 
                 if article_url in seen_urls:
-                    continue # Skip if we already have it
+                    continue 
 
-                # 4. Scrape New Article
-                print(f"[+] New article found! Scraping: {article_url}")
+                logging.info(f"New article found! Scraping: {article_url}")
                 
                 # Extract Metadata
                 title_tag = story.find(class_='home-title')
@@ -110,49 +107,38 @@ def monitor_feed():
 
                 # Extract Full Content
                 full_content = scrape_article_content(article_url)
+                
+                # --- AI INTEGRATION HERE ---
+                # Call ai.py to generate tags immediately
+                tags = []
+                if full_content:
+                    logging.info("Generating tags with AI...")
+                    tags = ai.generate_tags(title, full_content)
+                # ---------------------------
 
-                # Construct Object
                 new_article = {
                     "title": title,
                     "url": article_url,
                     "thumbnail": thumbnail,
                     "description": description,
                     "content": full_content,
-                    "tags": [],
+                    "tags": tags,
                     "scraped_at": datetime.now().isoformat()
                 }
 
-                # 5. Update Data
-                # Add to memory and save immediately so we don't lose it if crash
-                existing_articles.insert(0, new_article) # Add to top
+                existing_articles.insert(0, new_article)
                 save_data(existing_articles)
                 seen_urls.add(article_url)
                 new_articles_found += 1
                 
-                # Politeness delay between individual article scrapes
                 time.sleep(2)
 
             if new_articles_found == 0:
-                print("[-] No new articles found.")
+                logging.info("No new articles found.")
             else:
-                print(f"[*] Successfully scraped {new_articles_found} new articles.")
+                logging.info(f"Successfully scraped {new_articles_found} new articles.")
 
         except Exception as e:
-            print(f"[!] Critical error in worker thread: {e}")
+            logging.error(f"Critical error in scraper thread: {e}")
 
-        # Wait for the next cycle
         time.sleep(CHECK_INTERVAL_MINUTES * 60)
-
-if __name__ == "__main__":
-    # Create the worker thread
-    # daemon=True means the thread will die when the main program exits
-    worker_thread = threading.Thread(target=monitor_feed, daemon=True)
-    worker_thread.start()
-
-    try:
-        # Keep the main program alive to let the daemon thread work
-        print("Main program running. Press Ctrl+C to stop.")
-        while True:
-            time.sleep(1)
-    except KeyboardInterrupt:
-        print("\nStopping worker and exiting...")
