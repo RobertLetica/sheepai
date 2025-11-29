@@ -114,6 +114,81 @@ def generate_tags(title: str, content_text: str) -> list:
     logging.error("All available models failed to generate tags.")
     return []
 
+def analyze_user_interest(article: dict, user: dict) -> str:
+    """
+    Determines if an article is interesting to a user and generates a summary.
+    Returns the summary string if interesting, or None if not.
+    """
+    article_title = article.get('title', '')
+
+    # Safely extract article tags (handling both dicts and strings)
+    raw_article_tags = article.get('tags', [])
+    article_tags = []
+    for t in raw_article_tags:
+        if isinstance(t, dict):
+            name = t.get('name')
+            if name: article_tags.append(str(name))
+        elif isinstance(t, str):
+            article_tags.append(t)
+
+    # Safely extract user tags
+    raw_user_tags = user.get('tags', [])
+    user_tags = []
+    for t in raw_user_tags:
+        if isinstance(t, dict):
+            name = t.get('name')
+            if name: user_tags.append(str(name))
+        elif isinstance(t, str):
+            user_tags.append(t)
+
+    # Check if we have enough info
+    if not user_tags and not user.get('interests_prompt'):
+        # If user has no preferences, maybe skip? Or assume interested in everything?
+        # Let's skip to avoid spam.
+        return None
+
+    prompt = f"""
+    You are a personalized news curator.
+
+    Article Title: {article_title}
+    Article Tags: {', '.join(article_tags)}
+    Article Content Snippet: {article.get('content', '')[:1000]}...
+
+    User Interests: {', '.join(user_tags)}
+    User Description: {user.get('interests_prompt', '')}
+
+    Task:
+    1. Determine if this article is highly relevant to the user's interests.
+    2. If YES, provide a short, engaging summary (max 3 sentences) explaining why it matters to them.
+    3. If NO, return exactly "NOT_INTERESTING".
+
+    Output Format:
+    Just the summary text or "NOT_INTERESTING".
+    """
+
+    for model_name in MODELS_TO_TRY:
+        try:
+            model = genai.GenerativeModel(
+                model_name=model_name,
+                generation_config={
+                    "temperature": 0.2,
+                }
+            )
+
+            response = model.generate_content(prompt)
+            result = response.text.strip()
+
+            if "NOT_INTERESTING" in result:
+                return None
+
+            return result
+
+        except Exception as e:
+            logging.warning(f"Model {model_name} failed during interest analysis: {e}")
+            continue
+
+    return None
+
 def analyze_article_by_title(target_title: str):
     if not os.path.exists(OUTPUT_FILE):
         logging.error(f"File {OUTPUT_FILE} not found.")
