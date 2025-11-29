@@ -87,6 +87,26 @@ def api_verify_link():
     else:
         return "<h3>Verification Failed</h3><p>Invalid or expired link.</p>", 401
 
+@app.route('/api/extract_tags', methods=['POST'])
+def api_extract_tags():
+    """
+    Endpoint to extract tags from text without auth (for landing page).
+    Expects JSON: { "text": "..." }
+    """
+    data = request.json
+    text = data.get('text')
+
+    if not text:
+        return jsonify({"success": False, "error": "Text is required"}), 400
+
+    from utils import ai
+    try:
+        tags = ai.extract_tags_from_user_description(text)
+        return jsonify({"success": True, "tags": tags}), 200
+    except Exception as e:
+        logging.error(f"Extraction failed: {e}")
+        return jsonify({"success": False, "error": str(e)}), 500
+
 @app.route('/api/articles', methods=['GET'])
 def api_articles():
     """
@@ -172,21 +192,24 @@ def api_user_profile():
     if request.method == 'POST':
         data = request.json
         explicit_tags = data.get('tags', [])
+        # We still accept interests_prompt to save it, but we don't necessarily extract from it
+        # unless specifically requested or if it's a new prompt.
+        # However, per user request to "remove the tag extractor from the settings page"
+        # and "only list user entered tags", we should probably rely on the frontend
+        # sending the final list of tags (which might include previously extracted ones).
+
+        # If the frontend sends tags, we should trust them as the current state.
+        # The user said "do the extraction in the first prompt... and then fix the settings page... removing the tag extractor from the settings page".
+        # This implies the settings page will just send the list of tags.
+
         interests_prompt = data.get('interests_prompt', "")
 
-        # AI Extraction
-        from utils import ai
-        ai_tags = []
-        if interests_prompt:
-            try:
-                ai_tags = ai.extract_tags_from_user_description(interests_prompt)
-            except Exception as e:
-                logging.error(f"AI tag extraction failed: {e}")
+        # We will NOT do AI extraction here anymore, assuming the frontend handles it
+        # (e.g. on landing page) or the user manually manages tags.
+        # If we need to support extraction, we should use the dedicated /api/extract_tags endpoint
+        # or a specific flag, but for now, we follow the "remove tag extractor" instruction.
 
-        # Combine tags
-        all_tags = list(set(explicit_tags + ai_tags))
-
-        updated_user = users.update_user_profile(token, all_tags, interests_prompt)
+        updated_user = users.update_user_profile(token, explicit_tags, interests_prompt)
 
         if updated_user:
             return jsonify({"success": True, "user": updated_user}), 200
