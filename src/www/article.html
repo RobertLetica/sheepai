@@ -37,7 +37,7 @@
             gap: 1.5rem;
             margin-bottom: 1rem;
             font-size: 0.9rem;
-            color: #b0b0b0;
+            color: #f0f0f0; /* Improved contrast */
         }
 
         .article-meta span {
@@ -54,11 +54,12 @@
             font-family: 'Arial Black', Arial, sans-serif;
             text-transform: uppercase;
             letter-spacing: 2px;
+            color: #ffffff; /* Ensure high contrast against dark background */
         }
 
         .article-subtitle {
             font-size: 1.25rem;
-            color: #e0e0e0;
+            color: #ffffff; /* Improved contrast */
             line-height: 1.6;
             font-weight: 400;
         }
@@ -176,11 +177,26 @@
             display: flex;
             flex-direction: column;
             z-index: 999;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease; /* Removed width transition to allow smooth resizing */
         }
 
         .ai-chatbot.collapsed {
             transform: translateX(calc(100% - 60px));
+        }
+
+        .chatbot-resizer {
+            position: absolute;
+            left: -5px;
+            top: 0;
+            bottom: 0;
+            width: 10px;
+            cursor: w-resize;
+            z-index: 1000;
+            background: transparent;
+        }
+
+        .chatbot-resizer:hover {
+            background: rgba(178, 34, 34, 0.2);
         }
 
         .chatbot-header {
@@ -191,6 +207,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-direction: row-reverse; /* Keep toggle button visible on left when collapsed */
         }
 
         .chatbot-header h3 {
@@ -442,6 +459,7 @@
 
     <!-- AI Chatbot (Preserved structure) -->
     <div class="ai-chatbot" id="aiChatbot">
+        <div class="chatbot-resizer" id="chatbotResizer"></div>
         <div class="chatbot-header">
             <h3>🤖 AI Assistant</h3>
             <button class="chatbot-toggle" id="chatbotToggle" aria-label="Toggle chatbot">−</button>
@@ -573,12 +591,63 @@
             const chatbotMessages = document.getElementById('chatbotMessages');
             const chatbotInput = document.getElementById('chatbotInput');
             const chatbotSend = document.getElementById('chatbotSend');
+            const resizer = document.getElementById('chatbotResizer');
+            const articleContainer = document.querySelector('.article-container');
 
             if(!chatbotToggle) return;
 
+            // Load saved width
+            const savedWidth = localStorage.getItem('chatbotWidth');
+            if (savedWidth) {
+                chatbot.style.width = savedWidth;
+                if (!chatbot.classList.contains('collapsed')) {
+                    articleContainer.style.paddingRight = (parseInt(savedWidth) + 20) + 'px';
+                }
+            }
+
             chatbotToggle.addEventListener('click', function() {
                 chatbot.classList.toggle('collapsed');
-                this.textContent = chatbot.classList.contains('collapsed') ? '+' : '−';
+                const isCollapsed = chatbot.classList.contains('collapsed');
+                this.textContent = isCollapsed ? '+' : '−';
+
+                // Update padding
+                if (isCollapsed) {
+                    articleContainer.style.paddingRight = '80px'; // 60px visible + 20px padding
+                    resizer.style.pointerEvents = 'none'; // Disable resizing when collapsed
+                } else {
+                    const currentWidth = parseInt(getComputedStyle(chatbot).width);
+                    articleContainer.style.paddingRight = (currentWidth + 20) + 'px';
+                    resizer.style.pointerEvents = 'auto';
+                }
+            });
+
+            // Resize Logic
+            let isResizing = false;
+
+            resizer.addEventListener('mousedown', function(e) {
+                isResizing = true;
+                document.body.style.cursor = 'w-resize';
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', function(e) {
+                if (!isResizing) return;
+
+                // Chatbot is on right, width = window width - mouse X
+                const newWidth = window.innerWidth - e.clientX;
+
+                if (newWidth >= 300 && newWidth <= 800) {
+                    chatbot.style.width = newWidth + 'px';
+                    articleContainer.style.paddingRight = (newWidth + 20) + 'px';
+                }
+            });
+
+            document.addEventListener('mouseup', function(e) {
+                if (isResizing) {
+                    isResizing = false;
+                    document.body.style.cursor = 'default';
+                    localStorage.setItem('chatbotWidth', chatbot.style.width);
+                }
             });
 
             // Send message logic
