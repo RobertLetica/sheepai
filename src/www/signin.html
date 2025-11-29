@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In - newsPro</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
     <script src="icons.js"></script>
     <style>
@@ -206,16 +207,45 @@
     </div>
 
     <script>
-        function handleSignIn(event) {
+        async function handleSignIn(event) {
             event.preventDefault();
             const email = document.getElementById('email').value;
+            const submitBtn = event.target.querySelector('button[type="submit"]');
             
-            // Store email for verification page
-            localStorage.setItem('signinEmail', email);
-            
-            // In a real app, this would send a magic link email with verification code
-            // Redirect to verification page
-            window.location.href = `verify.html?email=${encodeURIComponent(email)}`;
+            // Disable button and show loading state
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+
+            try {
+                // Call backend API to initiate login
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    // Store email for verification page
+                    localStorage.setItem('signinEmail', email);
+
+                    // Redirect to verification page
+                    window.location.href = `verify.html?email=${encodeURIComponent(email)}`;
+                } else {
+                    alert('Error: ' + (data.error || 'Failed to send login link'));
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                alert('An unexpected error occurred. Please try again.');
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
         }
 
         function handleSocialSignIn(provider) {
@@ -241,4 +271,3 @@
     </script>
 </body>
 </html>
-

@@ -214,3 +214,127 @@ document.addEventListener('DOMContentLoaded', function() {
     sortArticlesByMatch();
 });
 
+// Authentication and Data Fetching
+document.addEventListener('DOMContentLoaded', async function() {
+    // Only run on feed page
+    if (!window.location.pathname.endsWith('feed.html')) {
+        return;
+    }
+
+    const token = localStorage.getItem('authToken');
+    if (!token) {
+        window.location.href = 'signin.html';
+        return;
+    }
+
+    try {
+        const response = await fetch('/api/articles', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if (response.status === 401) {
+            // Token expired or invalid
+            localStorage.removeItem('authToken');
+            window.location.href = 'signin.html';
+            return;
+        }
+
+        const articles = await response.json();
+        renderArticles(articles);
+    } catch (error) {
+        console.error('Failed to fetch articles:', error);
+    }
+});
+
+function renderArticles(articles) {
+    if (!articles || articles.length === 0) return;
+
+    const forYouList = document.getElementById('forYouList');
+    if (!forYouList) return;
+
+    // Keep existing items or clear them? The HTML has hardcoded mock data.
+    // Let's clear the hardcoded data to show real data.
+    forYouList.innerHTML = '';
+
+    articles.forEach(article => {
+        // Map fields from backend JSON to UI
+        const card = document.createElement('div');
+        card.className = 'card personalized-card';
+        // Mock match score for now as backend doesn't provide it per user yet
+        const matchScore = Math.floor(Math.random() * (99 - 60) + 60);
+        card.setAttribute('data-match', matchScore);
+
+        // Setup click navigation
+        const encodedUrl = encodeURIComponent(article.url);
+        card.onclick = function() {
+            window.location.href = `article.html?url=${encodedUrl}`;
+        };
+
+        // Determine icon based on tags or title
+        let iconHtml = '📰';
+        let useImage = false;
+
+        if (article.thumbnail && article.thumbnail !== "No Image") {
+            iconHtml = `<img src="${article.thumbnail}" alt="Article Image" style="width:100%; height:100%; object-fit:cover;">`;
+            useImage = true;
+        } else {
+            // Fallback icon logic
+            if (article.tags.some(t => (t.name || t).includes('AI')) || article.title.includes('AI')) iconHtml = '🤖';
+            else if (article.tags.some(t => (t.name || t).includes('Finance')) || article.title.includes('Market')) iconHtml = '📊';
+            else if (article.tags.some(t => (t.name || t).includes('Crypto'))) iconHtml = '💰';
+            else if (article.tags.some(t => (t.name || t).includes('Tech'))) iconHtml = '💻';
+        }
+
+        const tagsHtml = article.tags.slice(0, 2).map(tag => {
+            const name = typeof tag === 'string' ? tag : tag.name;
+            return `<span class="match-reason">${name}</span>`;
+        }).join('');
+
+        card.innerHTML = `
+            <div class="personalized-badge">🎯 ${matchScore}% Match</div>
+            <div class="card-image">${iconHtml}</div>
+            <div class="card-content">
+                <div class="match-reasons">
+                    <span class="match-reason">Source: ${article.source || 'News'}</span>
+                    ${tagsHtml}
+                </div>
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">${article.title}</h3>
+                        <div class="card-meta">
+                            <span>📅 ${new Date(article.scraped_at || article.published_at).toLocaleDateString()}</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="card-description">${article.description || article.summary || 'No summary available.'}</p>
+                <div class="card-actions">
+                    <button class="action-btn like" onclick="event.stopPropagation()">👍 Like</button>
+                    <button class="action-btn save" onclick="event.stopPropagation()">⭐ Save</button>
+                    <button class="action-btn share" onclick="event.stopPropagation()">📤 Share</button>
+                </div>
+            </div>
+        `;
+        forYouList.appendChild(card);
+    });
+
+    // Sort them again
+    const event = new Event('DOMContentLoaded'); // Trigger existing sort logic if it was bound to DOMContentLoaded?
+    // Actually, the existing script runs on DOMContentLoaded.
+    // We can call the sort function if it was accessible, but it's defined inside another scope.
+    // So let's just implement a simple sort here or copy the logic.
+
+    const cards = Array.from(forYouList.children);
+    cards.sort((a, b) => {
+        const matchA = parseInt(a.getAttribute('data-match')) || 0;
+        const matchB = parseInt(b.getAttribute('data-match')) || 0;
+        return matchB - matchA;
+    });
+    cards.forEach(c => forYouList.appendChild(c));
+
+    // Re-run icon replacement if available
+    if (typeof Icons !== 'undefined') {
+        // ... (Icon replacement logic would go here, but it might be handled by the main script if we trigger it correctly)
+    }
+}

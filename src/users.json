@@ -1,1 +1,20 @@
-[]
+[
+    {
+        "email": "test_user@example.com",
+        "otp": null,
+        "token": "f17a15cd-2b06-48a2-92f1-5b3b7f73e7d1",
+        "tags": [
+            "Quality Assurance",
+            "Automated Testing",
+            "Test Automation",
+            "Software Testing",
+            "AI",
+            "Intelligent Agents",
+            "AI Agents",
+            "Artificial Intelligence",
+            "Playwright Testing"
+        ],
+        "interests_prompt": "I am interested in automated testing and AI agents.",
+        "last_online": "2025-11-29T15:15:30.704499"
+    }
+]

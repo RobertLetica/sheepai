@@ -90,3 +90,42 @@ def verify_otp(email: str, code: str):
                 
     logging.warning(f"User {email} not found.")
     return None
+
+def validate_token(token: str):
+    """
+    Checks if the token is valid and returns the user object if found.
+    """
+    if not token:
+        return None
+
+    users = load_users()
+    for user in users:
+        if user.get('token') == token:
+            return user
+
+    return None
+
+def update_user_profile(token: str, tags: list, interests_prompt: str):
+    """
+    Updates the user's tags and interests prompt.
+    """
+    users = load_users()
+    user_updated = False
+    updated_user = None
+
+    for user in users:
+        if user.get('token') == token:
+            # Merge tags, ensuring uniqueness
+            existing_tags = set(user.get('tags', []))
+            existing_tags.update(tags)
+            user['tags'] = list(existing_tags)
+
+            user['interests_prompt'] = interests_prompt
+            updated_user = user
+            user_updated = True
+            break
+
+    if user_updated:
+        save_users(users)
+        return updated_user
+    return None

@@ -91,7 +91,18 @@ def api_verify_link():
 def api_articles():
     """
     Returns the scraped articles from the JSON file.
+    Requires Authorization header with Bearer token.
     """
+    auth_header = request.headers.get('Authorization')
+    if not auth_header or not auth_header.startswith('Bearer '):
+        return jsonify({"error": "Unauthorized: Missing or invalid token"}), 401
+
+    token = auth_header.split(' ')[1]
+    user = users.validate_token(token)
+
+    if not user:
+        return jsonify({"error": "Unauthorized: Invalid token"}), 401
+
     file_path = "hacker_news_articles.json"
     if not os.path.exists(file_path):
         return jsonify([]), 200
@@ -104,24 +115,91 @@ def api_articles():
         logging.error(f"Error reading articles: {e}")
         return jsonify({"error": "Failed to fetch articles"}), 500
 
+@app.route('/api/chat', methods=['POST'])
+def api_chat():
+    """
+    Endpoint for article chatbot.
+    Expects JSON: { "query": "...", "article_title": "...", "article_content": "..." }
+    Requires Authentication.
+    """
+    auth_header = request.headers.get('Authorization')
+    if not auth_header or not auth_header.startswith('Bearer '):
+        return jsonify({"error": "Unauthorized"}), 401
+
+    token = auth_header.split(' ')[1]
+    user = users.validate_token(token)
+
+    if not user:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    data = request.json
+    query = data.get('query')
+    article_title = data.get('article_title')
+    article_content = data.get('article_content')
+
+    if not query or not article_content:
+        return jsonify({"error": "Query and content are required"}), 400
+
+    from utils import ai
+    response = ai.chat_with_article(query, article_title, article_content)
+
+    return jsonify({"response": response}), 200
+
+@app.route('/api/user/profile', methods=['GET', 'POST'])
+def api_user_profile():
+    """
+    GET: Retrieve user profile.
+    POST: Update user profile (tags, interests_prompt).
+    Requires Authentication.
+    """
+    auth_header = request.headers.get('Authorization')
+    if not auth_header or not auth_header.startswith('Bearer '):
+        return jsonify({"error": "Unauthorized"}), 401
+
+    token = auth_header.split(' ')[1]
+    user = users.validate_token(token)
+
+    if not user:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    if request.method == 'GET':
+        return jsonify({
+            "email": user.get('email'),
+            "tags": user.get('tags', []),
+            "interests_prompt": user.get('interests_prompt', "")
+        }), 200
+
+    if request.method == 'POST':
+        data = request.json
+        explicit_tags = data.get('tags', [])
+        interests_prompt = data.get('interests_prompt', "")
+
+        # AI Extraction
+        from utils import ai
+        ai_tags = []
+        if interests_prompt:
+            try:
+                ai_tags = ai.extract_tags_from_user_description(interests_prompt)
+            except Exception as e:
+                logging.error(f"AI tag extraction failed: {e}")
+
+        # Combine tags
+        all_tags = list(set(explicit_tags + ai_tags))
+
+        updated_user = users.update_user_profile(token, all_tags, interests_prompt)
+
+        if updated_user:
+            return jsonify({"success": True, "user": updated_user}), 200
+        else:
+            return jsonify({"error": "Failed to update profile"}), 500
+
 # --- Static File Serving ---
 
 @app.route('/verify.html')
 def serve_verify_page():
     """
     Special handler for verify.html.
-    If accessed with ?email=..., it triggers the OTP login email.
     """
-    email = request.args.get('email')
-    
-    if email:
-        base_url = request.url_root.rstrip('/')
-        # Trigger the login (send OTP)
-        if users.login(email, base_url):
-            logging.info(f"Triggered OTP send for {email} via verify.html")
-        else:
-            logging.error(f"Failed to trigger OTP send for {email} via verify.html")
-
     return send_from_directory(app.static_folder, 'verify.html')
 
 @app.route('/')
