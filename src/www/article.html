@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Trading Algorithms: The Future of Finance - newsPro</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
     <style>
         /* Article-specific styles */
@@ -765,6 +766,20 @@
                 return 'That\'s an interesting question about AI trading algorithms. Based on this article, AI systems are transforming finance through machine learning that can analyze vast amounts of data, identify patterns, and execute trades faster than humans. Would you like me to elaborate on any specific aspect?';
             }
         }
+
+        // Clear all user data on sign out
+        document.querySelectorAll('a[href="landing.html"]').forEach(link => {
+            if (link.textContent.trim() === 'Sign Out') {
+                link.addEventListener('click', function(e) {
+                    // Clear all localStorage data
+                    localStorage.removeItem('userInterests');
+                    localStorage.removeItem('allUserTags');
+                    localStorage.removeItem('interestsSelected');
+                    localStorage.removeItem('signinEmail');
+                    localStorage.removeItem('chatbotWidth');
+                });
+            }
+        });
     </script>
 </body>
 </html>
