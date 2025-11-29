@@ -126,33 +126,6 @@ if (sidebarToggle) {
             if (sidebarToggle) sidebarToggle.classList.remove('active');
             if (navLinks) navLinks.classList.remove('active');
         }
-        updateSidebarPosition();
     });
 }
-
-// Update sidebar position based on header height
-function updateSidebarPosition() {
-    const header = document.querySelector('header');
-    if (header) {
-        const headerHeight = header.offsetHeight;
-        document.documentElement.style.setProperty('--header-height', headerHeight + 'px');
-    }
-}
-
-// Initialize sidebar position on load
-document.addEventListener('DOMContentLoaded', function() {
-    updateSidebarPosition();
-    
-    // Update on scroll to handle any header changes
-    let ticking = false;
-    window.addEventListener('scroll', function() {
-        if (!ticking) {
-            window.requestAnimationFrame(function() {
-                updateSidebarPosition();
-                ticking = false;
-            });
-            ticking = true;
-        }
-    });
-});
 

@@ -24,7 +24,6 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    --header-height: 90px;
 }
 
 nav {
@@ -169,10 +168,9 @@ nav {
     padding: 1.5rem;
     height: fit-content;
     position: sticky;
-    top: calc(var(--header-height, 90px) + 1rem);
+    top: 80px;
     box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
-    z-index: 999;
-    margin-top: 0;
+    z-index: 1000;
 }
 
 .sidebar-close {
@@ -227,23 +225,6 @@ nav {
 
 .sidebar-icon {
     font-size: 1.2rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    vertical-align: middle;
-}
-
-.icon svg {
-    width: 1em;
-    height: 1em;
-    fill: currentColor;
-    stroke: currentColor;
 }
 
 /* Content Grid */

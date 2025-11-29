@@ -3,28 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>newsPro - Professional Content Platform</title>
+    <title>SheepAI - Professional Content Platform</title>
     <link rel="stylesheet" href="style.css">
-    <script src="icons.js"></script>
-    <style>
-        .icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            vertical-align: middle;
-        }
-        .icon svg {
-            width: 1em;
-            height: 1em;
-        }
-    </style>
 </head>
 <body>
     <header>
         <nav>
             <div class="nav-left">
-                <button class="sidebar-toggle" aria-label="Toggle menu" data-icon="menu">☰</button>
-                <div class="logo" data-icon="news">newsPro</div>
+                <button class="sidebar-toggle" aria-label="Toggle menu">☰</button>
+                <div class="logo">🐑 SheepAI</div>
             </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
@@ -42,37 +29,37 @@
     <div class="container">
         <div class="sidebar-overlay"></div>
         <aside class="sidebar">
-            <button class="sidebar-close" aria-label="Close sidebar" data-icon="close">✕</button>
+            <button class="sidebar-close" aria-label="Close sidebar">✕</button>
             <div class="sidebar-item active">
-                <span class="sidebar-icon" data-icon="home">🏠</span>
+                <span class="sidebar-icon">🏠</span>
                 <span>Home</span>
             </div>
             <div class="sidebar-item">
-                <span class="sidebar-icon" data-icon="trending">🔥</span>
+                <span class="sidebar-icon">🔥</span>
                 <span>Trending</span>
             </div>
             <div class="sidebar-item">
-                <span class="sidebar-icon" data-icon="forYou">✨</span>
+                <span class="sidebar-icon">✨</span>
                 <span>For You</span>
             </div>
             <div class="sidebar-item">
-                <span class="sidebar-icon" data-icon="business">💼</span>
+                <span class="sidebar-icon">💼</span>
                 <span>Business</span>
             </div>
             <div class="sidebar-item">
-                <span class="sidebar-icon" data-icon="technology">💻</span>
+                <span class="sidebar-icon">💻</span>
                 <span>Technology</span>
             </div>
             <div class="sidebar-item">
-                <span class="sidebar-icon" data-icon="finance">📈</span>
+                <span class="sidebar-icon">📈</span>
                 <span>Finance</span>
             </div>
             <div class="sidebar-item">
-                <span class="sidebar-icon" data-icon="saved">⭐</span>
+                <span class="sidebar-icon">⭐</span>
                 <span>Saved</span>
             </div>
             <div class="sidebar-item">
-                <span class="sidebar-icon" data-icon="settings">⚙️</span>
+                <span class="sidebar-icon">⚙️</span>
                 <span>Settings</span>
             </div>
         </aside>
@@ -761,78 +748,5 @@
     </div>
 
     <script src="script.js"></script>
-    <script>
-        // Replace emojis with SVG icons
-        document.addEventListener('DOMContentLoaded', function() {
-            // Replace icons with data-icon attribute (but preserve text for logo)
-            document.querySelectorAll('[data-icon]').forEach(el => {
-                const iconName = el.getAttribute('data-icon');
-                if (Icons && Icons[iconName]) {
-                    // If it's the logo, keep the text
-                    if (el.classList.contains('logo')) {
-                        const text = el.textContent.trim();
-                        el.innerHTML = `<span class="icon">${Icons[iconName]}</span> ${text}`;
-                    } else {
-                        el.innerHTML = `<span class="icon">${Icons[iconName]}</span>`;
-                    }
-                }
-            });
-
-            // Replace emojis in card images and other places
-            const emojiMap = {
-                '📰': 'news',
-                '📊': 'chart',
-                '💡': 'lightbulb',
-                '🌐': 'globe',
-                '🚀': 'rocket',
-                '💼': 'briefcase',
-                '📱': 'mobile',
-                '🤖': 'robot',
-                '☁️': 'cloud',
-                '🔐': 'lock',
-                '🏢': 'building',
-                '🎯': 'target',
-                '📅': 'calendar',
-                '👁️': 'eye',
-                '👍': 'like',
-                '⭐': 'save',
-                '📤': 'share'
-            };
-
-            // Replace in card images
-            document.querySelectorAll('.card-image, .featured-image').forEach(el => {
-                const emoji = el.textContent.trim();
-                if (emojiMap[emoji] && Icons[emojiMap[emoji]]) {
-                    el.innerHTML = `<span class="icon" style="font-size: inherit;">${Icons[emojiMap[emoji]]}</span>`;
-                }
-            });
-
-            // Replace in meta spans
-            document.querySelectorAll('.card-meta span').forEach(el => {
-                const text = el.textContent;
-                Object.keys(emojiMap).forEach(emoji => {
-                    if (text.includes(emoji)) {
-                        const iconName = emojiMap[emoji];
-                        if (Icons[iconName]) {
-                            el.innerHTML = text.replace(emoji, `<span class="icon" style="font-size: 0.9em; margin-right: 0.25rem;">${Icons[iconName]}</span>`);
-                        }
-                    }
-                });
-            });
-
-            // Replace in action buttons
-            document.querySelectorAll('.action-btn').forEach(btn => {
-                const text = btn.textContent;
-                Object.keys(emojiMap).forEach(emoji => {
-                    if (text.includes(emoji)) {
-                        const iconName = emojiMap[emoji];
-                        if (Icons[iconName]) {
-                            btn.innerHTML = text.replace(emoji, `<span class="icon" style="font-size: 0.9em; margin-right: 0.25rem;">${Icons[iconName]}</span>`);
-                        }
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 </html>
