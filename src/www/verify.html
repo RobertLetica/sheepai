@@ -273,7 +273,7 @@
             });
         });
 
-        function verifyCode() {
+        async function verifyCode() {
             const inputs = document.querySelectorAll('.code-input');
             const code = Array.from(inputs).map(input => input.value).join('');
             
@@ -282,19 +282,49 @@
                 return;
             }
 
-            // In a real app, this would verify the code with the backend
-            // For demo purposes, accept any 6-digit code
-            showMessage('Code verified successfully!', 'success');
+            const email = getEmail();
+            const verifyBtn = document.querySelector('button[onclick="verifyCode()"]');
+            const originalText = verifyBtn.textContent;
             
-            setTimeout(() => {
-                // Check if user has selected interests before
-                const interestsSelected = localStorage.getItem('interestsSelected');
-                if (interestsSelected === 'true') {
-                    window.location.href = 'feed.html';
+            verifyBtn.textContent = 'Verifying...';
+            verifyBtn.disabled = true;
+
+            try {
+                const response = await fetch('/api/verify', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, otp: code })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success && data.token) {
+                    // Store token
+                    localStorage.setItem('authToken', data.token);
+                    showMessage('Code verified successfully!', 'success');
+
+                    setTimeout(() => {
+                        // Check if user has selected interests before
+                        const interestsSelected = localStorage.getItem('interestsSelected');
+                        if (interestsSelected === 'true') {
+                            window.location.href = 'feed.html';
+                        } else {
+                            window.location.href = 'interests.html';
+                        }
+                    }, 1000);
                 } else {
-                    window.location.href = 'interests.html';
+                    showMessage(data.error || 'Invalid code. Please try again.', 'error');
+                    verifyBtn.textContent = originalText;
+                    verifyBtn.disabled = false;
                 }
-            }, 1000);
+            } catch (error) {
+                console.error('Verify error:', error);
+                showMessage('An unexpected error occurred.', 'error');
+                verifyBtn.textContent = originalText;
+                verifyBtn.disabled = false;
+            }
         }
 
         function authorize() {
