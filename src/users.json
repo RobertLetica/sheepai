@@ -2,24 +2,18 @@
     {
         "email": "getgood.ff@gmail.com",
         "otp": null,
-        "token": "0bfc00ae-d057-4b11-8af8-ac440278f1ed",
+        "token": "74fd59ae-2988-4a0a-b192-fd08dab85b48",
         "tags": [
-            "Quality Assurance",
-            "Playwright Testing",
-            "Network Security",
-            "Machine Learning",
-            "AI Agents",
-            "Software Testing",
-            "Intelligent Agents",
-            "Automated Testing",
-            "Artificial Intelligence",
-            "ai volns",
+            "Finance",
+            "Technology",
             "AI",
+            "Artificial Intelligence",
+            "npm",
             "Cybersecurity",
-            "Test Automation",
-            "Information Security"
+            "Trading",
+            "Cryptocurrency"
         ],
-        "interests_prompt": "i love ai and i work in cyber sec",
-        "last_online": "2025-11-29T16:22:52.922686"
+        "interests_prompt": "i love ai and work in cyber security and sometimes i trade crypto",
+        "last_online": "2025-11-29T18:27:11.385890"
     }
 ]
