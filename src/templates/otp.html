@@ -188,12 +188,10 @@
 </head>
 <body>
     <div class="email-wrapper">
-        <!-- Header -->
         <div class="email-header">
             <h1>🐑 SheepAI</h1>
         </div>
 
-        <!-- Content -->
         <div class="email-content">
             <h2>Verification Code</h2>
             
@@ -201,10 +199,9 @@
             
             <p>You've requested a verification code to access your SheepAI account. Use the code below to complete your verification:</p>
 
-            <!-- Verification Code Box -->
             <div class="verification-code-box">
                 <div class="code-label">Your Verification Code</div>
-                <div class="verification-code">123456</div>
+                <div class="verification-code">{{ code }}</div>
             </div>
 
             <p><strong>This code will expire in 10 minutes.</strong></p>
@@ -215,7 +212,6 @@
 
             <div class="divider"></div>
 
-            <!-- Security Notice -->
             <div class="security-notice">
                 <h3>🔒 Security Notice</h3>
                 <ul>
@@ -232,7 +228,6 @@
             <strong>The SheepAI Team</strong></p>
         </div>
 
-        <!-- Footer -->
         <div class="email-footer">
             <p><strong>SheepAI</strong> - Professional Content Platform</p>
             <p>This is an automated message. Please do not reply to this email.</p>
