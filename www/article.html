@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Trading Algorithms: The Future of Finance - SheepAI</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Article-specific styles */
+        .article-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            padding-right: 420px; /* Space for chatbot - will be updated dynamically */
+            transition: padding-right 0.1s ease;
+        }
+
+        .article-main {
+            background: #ffffff;
+            border: 3px solid #000000;
+            padding: 0;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+        }
+
+        .article-header {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: #ffffff;
+            padding: 3rem 2rem;
+            border-bottom: 4px solid #b22222;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #b0b0b0;
+        }
+
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            font-family: 'Arial Black', Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .article-subtitle {
+            font-size: 1.25rem;
+            color: #e0e0e0;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .article-tag {
+            padding: 0.4rem 0.8rem;
+            background: #b22222;
+            color: #ffffff;
+            border: 2px solid #000000;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Arial Black', Arial, sans-serif;
+        }
+
+        .article-image-container {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 4rem;
+            border-bottom: 3px solid #000000;
+            position: relative;
+        }
+
+        .article-image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #999;
+        }
+
+        .article-content {
+            padding: 3rem 2rem;
+        }
+
+        .article-content p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+        }
+
+        .article-content h2 {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #000000;
+            margin: 2.5rem 0 1.5rem 0;
+            font-family: 'Arial Black', Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 3px solid #b22222;
+            padding-bottom: 0.5rem;
+        }
+
+        .article-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #000000;
+            margin: 2rem 0 1rem 0;
+            font-family: 'Arial Black', Arial, sans-serif;
+        }
+
+        .article-content ul,
+        .article-content ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        .article-content li {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 0.75rem;
+            color: #2c3e50;
+        }
+
+        .article-content blockquote {
+            border-left: 4px solid #b22222;
+            padding-left: 2rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: #4b5563;
+            font-size: 1.2rem;
+        }
+
+        .article-footer {
+            background: #f5f3e7;
+            border-top: 3px solid #000000;
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .article-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .article-share-buttons {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .share-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #000000;
+            background: #ffffff;
+            color: #000000;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            font-family: 'Arial Black', Arial, sans-serif;
+        }
+
+        .share-btn:hover {
+            background: #000000;
+            color: #ffffff;
+        }
+
+        /* AI Chatbot - Right Side */
+        .ai-chatbot {
+            position: fixed;
+            right: 0;
+            top: 80px;
+            width: 400px;
+            min-width: 300px;
+            max-width: 800px;
+            height: calc(100vh - 80px);
+            background: #ffffff;
+            border-left: 3px solid #000000;
+            border-top: 3px solid #000000;
+            box-shadow: -4px 0 12px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            z-index: 999;
+            transition: transform 0.3s ease;
+        }
+
+        .ai-chatbot.collapsed {
+            transform: translateX(calc(100% - 60px));
+        }
+
+
+        .chatbot-header {
+            background: #000000;
+            color: #ffffff;
+            padding: 1rem 1.5rem;
+            border-bottom: 3px solid #b22222;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-header h3 {
+            font-size: 1.25rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Arial Black', Arial, sans-serif;
+            margin: 0;
+        }
+
+        .chatbot-toggle {
+            background: transparent;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .chatbot-toggle:hover {
+            background: #b22222;
+            border-color: #b22222;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            background: #f5f3e7;
+        }
+
+        .chatbot-message {
+            padding: 1rem;
+            border-radius: 0;
+            max-width: 85%;
+            word-wrap: break-word;
+        }
+
+        .chatbot-message.user {
+            background: #000000;
+            color: #ffffff;
+            border: 2px solid #000000;
+            align-self: flex-end;
+            font-weight: 500;
+        }
+
+        .chatbot-message.ai {
+            background: #ffffff;
+            color: #000000;
+            border: 2px solid #000000;
+            align-self: flex-start;
+        }
+
+        .chatbot-prompts {
+            padding: 1rem 1.5rem;
+            background: #f5f3e7;
+            border-top: 2px solid #000000;
+            border-bottom: 2px solid #000000;
+        }
+
+        .chatbot-prompts-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #000000;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+            font-family: 'Arial Black', Arial, sans-serif;
+        }
+
+        .chatbot-prompts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .chatbot-prompt {
+            padding: 0.6rem 1rem;
+            background: #ffffff;
+            border: 2px solid #000000;
+            color: #000000;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-align: left;
+            font-family: 'Arial Black', Arial, sans-serif;
+        }
+
+        .chatbot-prompt:hover {
+            background: #000000;
+            color: #ffffff;
+            transform: translateX(4px);
+            box-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+        }
+
+        .chatbot-input-container {
+            padding: 1.5rem;
+            background: #ffffff;
+        }
+
+        .chatbot-input-wrapper {
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-end;
+        }
+
+        .chatbot-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 2px solid #000000;
+            background: #ffffff;
+            color: #000000;
+            font-size: 0.95rem;
+            font-family: inherit;
+            resize: none;
+            min-height: 50px;
+            max-height: 150px;
+            line-height: 1.5;
+        }
+
+        .chatbot-input:focus {
+            outline: none;
+            border-color: #b22222;
+        }
+
+        .chatbot-send-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #000000;
+            background: #000000;
+            color: #ffffff;
+            cursor: pointer;
+            font-weight: 900;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            font-family: 'Arial Black', Arial, sans-serif;
+            white-space: nowrap;
+        }
+
+        .chatbot-send-btn:hover {
+            background: #b22222;
+            border-color: #b22222;
+        }
+
+        .chatbot-send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .chatbot-minimized {
+            width: 60px;
+            cursor: pointer;
+        }
+
+        .chatbot-minimized .chatbot-header {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            padding: 1.5rem 0.5rem;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .chatbot-minimized .chatbot-messages,
+        .chatbot-minimized .chatbot-prompts,
+        .chatbot-minimized .chatbot-input-container {
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .article-container {
+                padding: 1.5rem;
+                padding-right: 370px; /* Space for smaller chatbot - will be updated dynamically */
+            }
+            
+        }
+
+        @media (max-width: 768px) {
+            .article-container {
+                padding: 1rem;
+                padding-right: 1rem; /* No space needed on mobile, chatbot is at bottom */
+            }
+
+            .article-header {
+                padding: 2rem 1.5rem;
+            }
+
+            .article-title {
+                font-size: 1.75rem;
+            }
+
+            .article-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .article-image-container {
+                height: 250px;
+            }
+
+            .article-footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .article-actions {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .share-btn {
+                width: 100%;
+            }
+
+        }
+
+        @media (max-width: 1024px) {
+            .ai-chatbot {
+                width: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .ai-chatbot {
+                width: 100%;
+                right: 0;
+                left: 0;
+                top: auto;
+                bottom: 0;
+                height: 60vh;
+                border-left: none;
+                border-top: 3px solid #000000;
+                transform: translateY(calc(100% - 60px));
+            }
+
+            .ai-chatbot.expanded {
+                transform: translateY(0);
+            }
+
+            .chatbot-minimized {
+                width: 100%;
+                height: 60px;
+            }
+
+            .chatbot-minimized .chatbot-header {
+                writing-mode: horizontal-tb;
+                text-orientation: mixed;
+                padding: 1rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-left">
+                <button class="sidebar-toggle" aria-label="Toggle menu">☰</button>
+                <div class="logo">🐑 SheepAI</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#trending">Trending</a></li>
+                <li><a href="index.html#business">Business</a></li>
+                <li><a href="index.html#tech">Technology</a></li>
+                <li><a href="index.html#finance">Finance</a></li>
+            </ul>
+            <div class="user-actions">
+                <button class="btn btn-primary">Sign In</button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="article-container">
+        <main class="article-main">
+            <article>
+                <div class="article-header">
+                    <div class="article-meta">
+                        <span>📅 3 hours ago</span>
+                        <span>👁️ 6.8K views</span>
+                        <span>⭐ 92% match</span>
+                        <span>👤 John Smith</span>
+                    </div>
+                    <h1 class="article-title">AI Trading Algorithms: The Future of Finance</h1>
+                    <p class="article-subtitle">Advanced AI systems are revolutionizing trading strategies. Learn how machine learning algorithms are outperforming traditional methods in market prediction and reshaping the financial industry.</p>
+                    <div class="article-tags">
+                        <span class="article-tag">AI Trading</span>
+                        <span class="article-tag">Machine Learning</span>
+                        <span class="article-tag">Algorithmic Trading</span>
+                        <span class="article-tag">Finance</span>
+                    </div>
+                </div>
+
+                <div class="article-image-container">
+                    <div class="article-image-placeholder">Image of article here</div>
+                </div>
+
+                <div class="article-content">
+                    <p>In the rapidly evolving landscape of financial markets, artificial intelligence has emerged as a transformative force. Trading algorithms powered by machine learning are not just supplementing traditional strategies—they're fundamentally redefining how markets operate, how trades are executed, and how investment decisions are made.</p>
+
+                    <h2>The Evolution of Algorithmic Trading</h2>
+
+                    <p>Traditional algorithmic trading relied on predefined rules and mathematical models. While effective, these systems lacked the adaptability to respond to rapidly changing market conditions. Enter machine learning algorithms, which can analyze vast amounts of data, identify patterns invisible to human traders, and continuously improve their performance through experience.</p>
+
+                    <p>Modern AI trading systems leverage deep learning neural networks that process millions of data points in real-time. These systems can detect subtle correlations between market indicators, news sentiment, social media trends, and historical patterns that would be impossible for human analysts to process simultaneously.</p>
+
+                    <h3>Key Advantages of AI Trading Systems</h3>
+
+                    <ul>
+                        <li><strong>Speed and Efficiency:</strong> AI algorithms can execute trades in microseconds, far faster than any human trader. This speed advantage is crucial in high-frequency trading environments where milliseconds can mean the difference between profit and loss.</li>
+                        <li><strong>Pattern Recognition:</strong> Machine learning models excel at identifying complex patterns across multiple data sources, including price movements, volume changes, and market sentiment.</li>
+                        <li><strong>Risk Management:</strong> AI systems can continuously monitor portfolio risk and automatically adjust positions to maintain optimal risk-return profiles.</li>
+                        <li><strong>Emotion-Free Trading:</strong> Unlike human traders, AI systems make decisions based purely on data and logic, eliminating emotional biases that often lead to poor investment decisions.</li>
+                    </ul>
+
+                    <h2>Real-World Applications</h2>
+
+                    <p>Major financial institutions are increasingly deploying AI trading systems. Hedge funds like Renaissance Technologies and Two Sigma have built their entire strategies around machine learning algorithms, achieving consistently high returns that outperform traditional investment approaches.</p>
+
+                    <blockquote>
+                        "The integration of AI in trading isn't just about automation—it's about creating systems that can learn, adapt, and evolve with the market. This represents a fundamental shift in how we approach financial markets." - Dr. Sarah Chen, Chief AI Officer at Quantum Capital
+                    </blockquote>
+
+                    <h3>Market Impact and Future Outlook</h3>
+
+                    <p>As AI trading systems become more sophisticated, they're creating new market dynamics. Algorithmic trading now accounts for over 70% of all trading volume in major markets. This shift has led to increased market efficiency, tighter spreads, and improved liquidity.</p>
+
+                    <p>However, the rise of AI trading also raises important questions about market stability, regulatory oversight, and the role of human judgment in financial decision-making. Regulators worldwide are grappling with how to ensure these systems operate fairly and don't create systemic risks.</p>
+
+                    <h2>Challenges and Considerations</h2>
+
+                    <p>While AI trading offers significant advantages, it's not without challenges. Model overfitting, where algorithms perform well on historical data but fail in live trading, remains a concern. Additionally, the "black box" nature of some AI systems makes it difficult to understand why certain trades are executed.</p>
+
+                    <p>Market participants must also consider the potential for AI systems to create feedback loops that amplify market movements, potentially leading to increased volatility during stress periods.</p>
+
+                    <h2>Conclusion</h2>
+
+                    <p>The future of finance is undeniably intertwined with artificial intelligence. As AI trading algorithms become more sophisticated and accessible, they're democratizing access to advanced trading strategies while simultaneously raising the bar for what constitutes effective market participation. Financial professionals who embrace these technologies will be better positioned to navigate the complexities of modern markets.</p>
+
+                    <p>The question isn't whether AI will transform trading—it already has. The question is how quickly market participants can adapt to this new reality and leverage these powerful tools to their advantage.</p>
+                </div>
+
+                <div class="article-footer">
+                    <div class="article-actions">
+                        <button class="action-btn like">👍 Like (234)</button>
+                        <button class="action-btn save">⭐ Save</button>
+                    </div>
+                    <div class="article-share-buttons">
+                        <button class="share-btn">📤 Share</button>
+                        <button class="share-btn">🐦 Twitter</button>
+                        <button class="share-btn">💼 LinkedIn</button>
+                    </div>
+                </div>
+            </article>
+
+        </main>
+    </div>
+
+    <div class="sidebar-overlay"></div>
+
+    <!-- AI Chatbot -->
+    <div class="ai-chatbot" id="aiChatbot">
+        <div class="chatbot-header">
+            <h3>🤖 AI Assistant</h3>
+            <button class="chatbot-toggle" id="chatbotToggle" aria-label="Toggle chatbot">−</button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="chatbot-message ai">
+                <strong>AI Assistant:</strong> Hello! I can help you understand this article about AI Trading Algorithms. Ask me anything!
+            </div>
+        </div>
+        <div class="chatbot-prompts">
+            <div class="chatbot-prompts-title">💡 Suggested Questions</div>
+            <div class="chatbot-prompts-list">
+                <button class="chatbot-prompt" data-prompt="What are the main advantages of AI trading systems?">What are the main advantages of AI trading systems?</button>
+                <button class="chatbot-prompt" data-prompt="How do machine learning algorithms differ from traditional trading methods?">How do ML algorithms differ from traditional methods?</button>
+                <button class="chatbot-prompt" data-prompt="What are the key challenges and risks of AI trading?">What are the key challenges and risks?</button>
+                <button class="chatbot-prompt" data-prompt="Can you summarize the main points of this article?">Summarize the main points</button>
+            </div>
+        </div>
+        <div class="chatbot-input-container">
+            <div class="chatbot-input-wrapper">
+                <textarea 
+                    class="chatbot-input" 
+                    id="chatbotInput"
+                    placeholder="Ask a question about this article..."
+                    rows="1"
+                ></textarea>
+                <button class="chatbot-send-btn" id="chatbotSend">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Chatbot functionality
+        const chatbot = document.getElementById('aiChatbot');
+        const chatbotToggle = document.getElementById('chatbotToggle');
+        const chatbotMessages = document.getElementById('chatbotMessages');
+        const chatbotInput = document.getElementById('chatbotInput');
+        const chatbotSend = document.getElementById('chatbotSend');
+
+        // Toggle chatbot
+        chatbotToggle.addEventListener('click', function() {
+            chatbot.classList.toggle('collapsed');
+            chatbot.classList.toggle('chatbot-minimized');
+            this.textContent = chatbot.classList.contains('collapsed') ? '+' : '−';
+        });
+
+        // Auto-resize textarea
+        chatbotInput.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = Math.min(this.scrollHeight, 150) + 'px';
+        });
+
+        // Send message
+        function sendMessage() {
+            const message = chatbotInput.value.trim();
+            if (!message) return;
+
+            // Add user message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'chatbot-message user';
+            userMsg.textContent = message;
+            chatbotMessages.appendChild(userMsg);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+
+            // Clear input
+            chatbotInput.value = '';
+            chatbotInput.style.height = 'auto';
+            chatbotSend.disabled = true;
+
+            // Simulate AI response (replace with actual API call)
+            setTimeout(() => {
+                const aiMsg = document.createElement('div');
+                aiMsg.className = 'chatbot-message ai';
+                aiMsg.innerHTML = '<strong>AI Assistant:</strong> ' + generateResponse(message);
+                chatbotMessages.appendChild(aiMsg);
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+                chatbotSend.disabled = false;
+            }, 1000);
+        }
+
+        chatbotSend.addEventListener('click', sendMessage);
+        chatbotInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        // Prompt buttons
+        document.querySelectorAll('.chatbot-prompt').forEach(prompt => {
+            prompt.addEventListener('click', function() {
+                const promptText = this.getAttribute('data-prompt');
+                chatbotInput.value = promptText;
+                chatbotInput.focus();
+                chatbotInput.style.height = 'auto';
+                chatbotInput.style.height = Math.min(chatbotInput.scrollHeight, 150) + 'px';
+                sendMessage();
+            });
+        });
+
+        // Resize functionality (using the left border)
+        const articleContainer = document.querySelector('.article-container');
+        let isResizing = false;
+        let startX = 0;
+        let startWidth = 0;
+
+        chatbot.addEventListener('mousedown', function(e) {
+            // Only start resizing if clicking near the left edge (within 10px)
+            if (e.offsetX <= 10 && !chatbot.classList.contains('collapsed')) {
+                isResizing = true;
+                startX = e.clientX;
+                startWidth = chatbot.offsetWidth;
+                document.body.style.cursor = 'ew-resize';
+                document.body.style.userSelect = 'none';
+                e.preventDefault();
+            }
+        });
+
+        document.addEventListener('mousemove', function(e) {
+            if (!isResizing) return;
+            
+            const diff = startX - e.clientX; // Inverted because we're resizing from the left
+            const newWidth = Math.min(Math.max(300, startWidth + diff), 800);
+            chatbot.style.width = newWidth + 'px';
+            
+            // Update article container padding
+            if (articleContainer) {
+                articleContainer.style.paddingRight = (newWidth + 20) + 'px';
+            }
+        });
+
+        document.addEventListener('mouseup', function() {
+            if (isResizing) {
+                isResizing = false;
+                document.body.style.cursor = '';
+                document.body.style.userSelect = '';
+                
+                // Save width to localStorage
+                localStorage.setItem('chatbotWidth', chatbot.style.width);
+            }
+        });
+
+        // Load saved width
+        const savedWidth = localStorage.getItem('chatbotWidth');
+        if (savedWidth) {
+            chatbot.style.width = savedWidth;
+            const widthNum = parseInt(savedWidth);
+            if (articleContainer) {
+                articleContainer.style.paddingRight = (widthNum + 20) + 'px';
+            }
+        }
+
+        // Simple response generator (replace with actual AI API)
+        function generateResponse(message) {
+            const lowerMessage = message.toLowerCase();
+            if (lowerMessage.includes('advantage') || lowerMessage.includes('benefit')) {
+                return 'The main advantages of AI trading systems include speed and efficiency (microsecond execution), superior pattern recognition across multiple data sources, continuous risk management, and emotion-free trading decisions. These systems can process millions of data points simultaneously, something impossible for human traders.';
+            } else if (lowerMessage.includes('difference') || lowerMessage.includes('differ')) {
+                return 'Traditional trading algorithms use predefined rules and mathematical models, while AI/ML algorithms can learn from data, adapt to changing market conditions, and continuously improve their performance. ML systems can identify complex patterns and correlations that traditional systems cannot detect.';
+            } else if (lowerMessage.includes('risk') || lowerMessage.includes('challenge')) {
+                return 'Key challenges include model overfitting (performing well on historical data but failing in live trading), the "black box" nature making it difficult to understand trade decisions, and potential feedback loops that could amplify market volatility during stress periods.';
+            } else if (lowerMessage.includes('summary') || lowerMessage.includes('overview')) {
+                return 'This article discusses how AI trading algorithms are revolutionizing finance. It covers the evolution from traditional to ML-based trading, key advantages (speed, pattern recognition, risk management), real-world applications by major institutions, market impact, and challenges. The conclusion emphasizes that AI has already transformed trading and professionals must adapt.';
+            } else {
+                return 'That\'s an interesting question about AI trading algorithms. Based on this article, AI systems are transforming finance through machine learning that can analyze vast amounts of data, identify patterns, and execute trades faster than humans. Would you like me to elaborate on any specific aspect?';
+            }
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SheepAI - Professional Content Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-left">
+                <button class="sidebar-toggle" aria-label="Toggle menu">☰</button>
+                <div class="logo">🐑 SheepAI</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#trending">Trending</a></li>
+                <li><a href="#business">Business</a></li>
+                <li><a href="#tech">Technology</a></li>
+                <li><a href="#finance">Finance</a></li>
+            </ul>
+            <div class="user-actions">
+                <button class="btn btn-primary">Sign In</button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="sidebar-overlay"></div>
+        <aside class="sidebar">
+            <button class="sidebar-close" aria-label="Close sidebar">✕</button>
+            <div class="sidebar-item active">
+                <span class="sidebar-icon">🏠</span>
+                <span>Home</span>
+            </div>
+            <div class="sidebar-item">
+                <span class="sidebar-icon">🔥</span>
+                <span>Trending</span>
+            </div>
+            <div class="sidebar-item">
+                <span class="sidebar-icon">✨</span>
+                <span>For You</span>
+            </div>
+            <div class="sidebar-item">
+                <span class="sidebar-icon">💼</span>
+                <span>Business</span>
+            </div>
+            <div class="sidebar-item">
+                <span class="sidebar-icon">💻</span>
+                <span>Technology</span>
+            </div>
+            <div class="sidebar-item">
+                <span class="sidebar-icon">📈</span>
+                <span>Finance</span>
+            </div>
+            <div class="sidebar-item">
+                <span class="sidebar-icon">⭐</span>
+                <span>Saved</span>
+            </div>
+            <div class="sidebar-item">
+                <span class="sidebar-icon">⚙️</span>
+                <span>Settings</span>
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <!-- Featured Section -->
+            <section class="featured-section">
+                <div class="section-header">
+                    <h2 class="section-title">Featured Story</h2>
+                </div>
+                <div class="featured-card">
+                    <div class="featured-image">📰</div>
+                    <div class="featured-content">
+                        <span class="badge">BREAKING NEWS</span>
+                        <h3>The Future of AI in Business: Transformative Trends for 2025</h3>
+                        <p>Discover how artificial intelligence is reshaping industries, from automated decision-making to personalized customer experiences. Industry leaders share insights on the next wave of AI innovation.</p>
+                        <button class="btn btn-primary">Read More</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Trending Section -->
+            <section>
+                <div class="section-header">
+                    <h2 class="section-title">Trending Now</h2>
+                    <div class="filter-tabs">
+                        <span class="filter-tab active">All</span>
+                        <span class="filter-tab">Today</span>
+                        <span class="filter-tab">This Week</span>
+                        <span class="filter-tab">This Month</span>
+                    </div>
+                </div>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-image">📊</div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Market Analysis: Tech Stocks Surge</h3>
+                                    <div class="card-meta">
+                                        <span>📅 2 hours ago</span>
+                                        <span>👁️ 12.5K views</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-description">Comprehensive analysis of the latest tech stock movements and what it means for investors in Q4 2025.</p>
+                            <div class="card-actions">
+                                <button class="action-btn like">👍 Like</button>
+                                <button class="action-btn save">⭐ Save</button>
+                                <button class="action-btn share">📤 Share</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-image">💡</div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Startup Funding Rounds: Q4 Highlights</h3>
+                                    <div class="card-meta">
+                                        <span>📅 5 hours ago</span>
+                                        <span>👁️ 8.2K views</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-description">A deep dive into the most significant funding rounds this quarter and emerging startup trends.</p>
+                            <div class="card-actions">
+                                <button class="action-btn like">👍 Like</button>
+                                <button class="action-btn save">⭐ Save</button>
+                                <button class="action-btn share">📤 Share</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-image">🌐</div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Global Economy: Regional Outlook</h3>
+                                    <div class="card-meta">
+                                        <span>📅 1 day ago</span>
+                                        <span>👁️ 15.3K views</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-description">Expert perspectives on economic trends across different regions and their impact on global markets.</p>
+                            <div class="card-actions">
+                                <button class="action-btn like">👍 Like</button>
+                                <button class="action-btn save">⭐ Save</button>
+                                <button class="action-btn share">📤 Share</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-image">🚀</div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Innovation Spotlight: Next-Gen Tech</h3>
+                                    <div class="card-meta">
+                                        <span>📅 2 days ago</span>
+                                        <span>👁️ 9.7K views</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-description">Exploring breakthrough technologies that are set to revolutionize industries in the coming years.</p>
+                            <div class="card-actions">
+                                <button class="action-btn like">👍 Like</button>
+                                <button class="action-btn save">⭐ Save</button>
+                                <button class="action-btn share">📤 Share</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-image">💼</div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Leadership Insights: CEO Roundtable</h3>
+                                    <div class="card-meta">
+                                        <span>📅 3 days ago</span>
+                                        <span>👁️ 11.1K views</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-description">Top executives discuss strategy, culture, and navigating challenges in today's business landscape.</p>
+                            <div class="card-actions">
+                                <button class="action-btn like">👍 Like</button>
+                                <button class="action-btn save">⭐ Save</button>
+                                <button class="action-btn share">📤 Share</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-image">📱</div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Digital Transformation Strategies</h3>
+                                    <div class="card-meta">
+                                        <span>📅 4 days ago</span>
+                                        <span>👁️ 7.8K views</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-description">How companies are successfully implementing digital transformation initiatives and measuring ROI.</p>
+                            <div class="card-actions">
+                                <button class="action-btn like">👍 Like</button>
+                                <button class="action-btn save">⭐ Save</button>
+                                <button class="action-btn share">📤 Share</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- For You Section -->
+            <section class="for-you-section">
+                <div class="interest-profile">
+                    <div class="interest-profile-header">
+                        <h3>Your Interest Profile</h3>
+                        <button class="btn-edit-interests">Edit Interests</button>
+                    </div>
+                    <div class="interest-tags-container">
+                        <span class="interest-tag active">AI & Machine Learning</span>
+                        <span class="interest-tag active">Trading & Algorithms</span>
+                        <span class="interest-tag active">Cryptocurrency</span>
+                        <span class="interest-tag active">Quantitative Finance</span>
+                        <span class="interest-tag active">Market Analysis</span>
+                        <span class="interest-tag active">High-Frequency Trading</span>
+                        <span class="interest-tag">+ Add More</span>
+                    </div>
+                </div>
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">For You</h2>
+                        <p class="section-subtitle">Curated for your interests: AI Trading, Cryptocurrency, Quantitative Finance</p>
+                    </div>
+                    <div class="filter-tabs">
+                        <span class="filter-tab active">Top Matches</span>
+                        <span class="filter-tab">Based on Likes</span>
+                        <span class="filter-tab">Reading History</span>
+                        <span class="filter-tab">New Interests</span>
+                    </div>
+                </div>
+                <div class="card-grid">
+                    <div class="card personalized-card">
+                        <div class="personalized-badge">🎯 92% Match</div>
+                        <div class="card-image">🤖</div>
+                        <div class="card-content">
+                            <div class="match-reasons">
+                                <span class="match-reason">Matches: AI & Machine Learning</span>
+                                <span class="match-reason">Matches: Trading & Algorithms</span>
+                                <span class="match-reason">You liked: "Machine Learning in Finance"</span>
+                            </div>
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">AI Trading Algorithms: The Future of Finance</h3>
+                                    <div class="card-meta">
+                                        <span>📅 3 hours ago</span>
+                                        <span>👁️ 6.8K views</span>
+                                        <span class="match-score">⭐ 92% match</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-topics">
+                                <span class="topic-tag">AI Trading</span>
+                                <span class="topic-tag">Machine Learning</span>
+                                <span class="topic-tag">Algorithmic Trading</span>
+                            </div>
+                            <p class="card-description">Advanced AI systems are revolutionizing trading strategies. Learn how machine learning algorithms are outperforming traditional methods in market prediction.</p>
+                            <div class="card-actions">
+                                <button class="action-btn like">👍 Like</button>
+                                <button class="action-btn save">⭐ Save</button>
+                                <button class="action-btn share">📤 Share</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card personalized-card">
+                        <div class="personalized-badge">💡 88% Match</div>
+                        <div class="card-image">📈</div>
+                        <div class="card-content">
+                            <div class="match-reasons">
+                                <span class="match-reason">Matches: Cryptocurrency</span>
+                                <span class="match-reason">Matches: Market Analysis</span>
+                                <span class="match-reason">You read: "Crypto Market Report"</span>
+                            </div>
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Cryptocurrency Market Trends: Q4 Analysis</h3>
+                                    <div class="card-meta">
+                                        <span>📅 6 hours ago</span>
+                                        <span>👁️ 9.2K views</span>
+                                        <span class="match-score">⭐ 88% match</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-topics">
+                                <span class="topic-tag">Cryptocurrency</span>
+                                <span class="topic-tag">Market Analysis</span>
+                                <span class="topic-tag">Blockchain</span>
+                            </div>
+                            <p class="card-description">Deep analysis of cryptocurrency movements and what institutional investors are watching in the final quarter of 2025.</p>
+                            <div class="card-actions">
+                                <button class="action-btn like">👍 Like</button>
+                                <button class="action-btn save">⭐ Save</button>
+                                <button class="action-btn share">📤 Share</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card personalized-card">
+                        <div class="personalized-badge">📚 85% Match</div>
+                        <div class="card-image">🏦</div>
+                        <div class="card-content">
+                            <div class="match-reasons">
+                                <span class="match-reason">Similar to: "Fed Policy Analysis"</span>
+                                <span class="match-reason">Matches: Market Analysis</span>
+                                <span class="match-reason">You saved: 3 similar articles</span>
+                            </div>
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Central Bank Policies: Global Impact Analysis</h3>
+                                    <div class="card-meta">
+                                        <span>📅 1 day ago</span>
+                                        <span>👁️ 11.4K views</span>
+                                        <span class="match-score">⭐ 85% match</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-topics">
+                                <span class="topic-tag">Central Banking</span>
+                                <span class="topic-tag">Monetary Policy</span>
+                                <span class="topic-tag">Global Markets</span>
+                            </div>
+                            <p class="card-description">How central bank decisions across major economies are shaping global financial markets and investment strategies.</p>
+                            <div class="card-actions">
+                                <button class="action-btn like">👍 Like</button>
+                                <button class="action-btn save">⭐ Save</button>
+                                <button class="action-btn share">📤 Share</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card personalized-card">
+                        <div class="personalized-badge">🎯 90% Match</div>
+                        <div class="card-image">⚡</div>
+                        <div class="card-content">
+                            <div class="match-reasons">
+                                <span class="match-reason">Matches: High-Frequency Trading</span>
+                                <span class="match-reason">Matches: Trading & Algorithms</span>
+                                <span class="match-reason">You liked: "Algorithm Trading Strategies"</span>
+                            </div>
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">High-Frequency Trading: Market Dynamics</h3>
+                                    <div class="card-meta">
+                                        <span>📅 2 days ago</span>
+                                        <span>👁️ 7.5K views</span>
+                                        <span class="match-score">⭐ 90% match</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-topics">
+                                <span class="topic-tag">HFT</span>
+                                <span class="topic-tag">Algorithmic Trading</span>
+                                <span class="topic-tag">Market Liquidity</span>
+                            </div>
+                            <p class="card-description">Understanding how high-frequency trading algorithms are reshaping market liquidity and price discovery mechanisms.</p>
+                            <div class="card-actions">
+                                <button class="action-btn like">👍 Like</button>
+                                <button class="action-btn save">⭐ Save</button>
+                                <button class="action-btn share">📤 Share</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card personalized-card">
+                        <div class="personalized-badge">💡 87% Match</div>
+                        <div class="card-image">🌍</div>
+                        <div class="card-content">
+                            <div class="match-reasons">
+                                <span class="match-reason">Matches: Market Analysis</span>
+                                <span class="match-reason">Expanding your interests</span>
+                                <span class="match-reason">Trending in your network</span>
+                            </div>
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Emerging Markets: Investment Opportunities</h3>
+                                    <div class="card-meta">
+                                        <span>📅 3 days ago</span>
+                                        <span>👁️ 8.9K views</span>
+                                        <span class="match-score">⭐ 87% match</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-topics">
+                                <span class="topic-tag">Emerging Markets</span>
+                                <span class="topic-tag">Investment Strategy</span>
+                                <span class="topic-tag">Global Finance</span>
+                            </div>
+                            <p class="card-description">Exploring high-growth opportunities in emerging markets and how to navigate the associated risks and rewards.</p>
+                            <div class="card-actions">
+                                <button class="action-btn like">👍 Like</button>
+                                <button class="action-btn save">⭐ Save</button>
+                                <button class="action-btn share">📤 Share</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card personalized-card">
+                        <div class="personalized-badge">📚 83% Match</div>
+                        <div class="card-image">🔬</div>
+                        <div class="card-content">
+                            <div class="match-reasons">
+                                <span class="match-reason">Matches: Quantitative Finance</span>
+                                <span class="match-reason">You read: "Math Models in Trading"</span>
+                                <span class="match-reason">Similar authors you follow</span>
+                            </div>
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Quantitative Finance: Mathematical Models</h3>
+                                    <div class="card-meta">
+                                        <span>📅 4 days ago</span>
+                                        <span>👁️ 5.3K views</span>
+                                        <span class="match-score">⭐ 83% match</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content-topics">
+                                <span class="topic-tag">Quantitative Finance</span>
+                                <span class="topic-tag">Mathematical Models</span>
+                                <span class="topic-tag">Risk Management</span>
+                            </div>
+                            <p class="card-description">The mathematical foundations of modern finance and how quantitative models are used in risk management and trading.</p>
+                            <div class="card-actions">
+                                <button class="action-btn like">👍 Like</button>
+                                <button class="action-btn save">⭐ Save</button>
+                                <button class="action-btn share">📤 Share</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Business Section -->
+            <section>
+                <div class="section-header">
+                    <h2 class="section-title">Business</h2>
+                    <div class="filter-tabs">
+                        <span class="filter-tab active">All</span>
+                        <span class="filter-tab">Strategy</span>
+                        <span class="filter-tab">Leadership</span>
+                        <span class="filter-tab">Startups</span>
+                    </div>
+                </div>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-image">💼</div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Corporate Strategy: Post-Pandemic Shifts</h3>
+                                    <div class="card-meta">
+                                        <span>📅 1 hour ago</span>
+                                        <span>👁️ 14.2K views</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-description">How major corporations are restructuring their strategies in response to changing market dynamics and consumer behavior.</p>
+                            <div class="card-actions">
+                                <button class="action-btn like">👍 Like</button>
+                                <button class="action-btn save">⭐ Save</button>
+                                <button class="action-btn share">📤 Share</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-image">🏢</div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">M&A Activity: Record-Breaking Deals</h3>
+                                    <div class="card-meta">
+                                        <span>📅 4 hours ago</span>
+                                        <span>👁️ 10.8K views</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-description">Analysis of the most significant mergers and acquisitions this year and their impact on industry landscapes.</p>
+                            <div class="card-actions">
+                                <button class="action-btn like">👍 Like</button>
+                                <button class="action-btn save">⭐ Save</button>
+                                <button class="action-btn share">📤 Share</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-image">🎯</div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Supply Chain Innovation: New Models</h3>
+                                    <div class="card-meta">
+                                        <span>📅 8 hours ago</span>
+                                        <span>👁️ 9.5K views</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-description">Revolutionary approaches to supply chain management that are reducing costs and improving efficiency.</p>
+                            <div class="card-actions">
+                                <button class="action-btn like">👍 Like</button>
+                                <button class="action-btn save">⭐ Save</button>
+                                <button class="action-btn share">📤 Share</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-image">🌐</div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Global Expansion Strategies</h3>
+                                    <div class="card-meta">
+                                        <span>📅 12 hours ago</span>
+                                        <span>👁️ 7.3K views</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-description">How successful companies are navigating international markets and cultural differences in their expansion efforts.</p>
+                            <div class="card-actions">
+                                <button class="action-btn like">👍 Like</button>
+                                <button class="action-btn save">⭐ Save</button>
+                                <button class="action-btn share">📤 Share</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Technology Section -->
+            <section>
+                <div class="section-header">
+                    <h2 class="section-title">Technology</h2>
+                    <div class="filter-tabs">
+                        <span class="filter-tab active">All</span>
+                        <span class="filter-tab">AI/ML</span>
+                        <span class="filter-tab">Cloud</span>
+                        <span class="filter-tab">Security</span>
+                    </div>
+                </div>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-image">💻</div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Quantum Computing: Breakthrough Advances</h3>
+                                    <div class="card-meta">
+                                        <span>📅 2 hours ago</span>
+                                        <span>👁️ 16.7K views</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-description">Latest developments in quantum computing and how they're set to transform industries from finance to pharmaceuticals.</p>
+                            <div class="card-actions">
+                                <button class="action-btn like">👍 Like</button>
+                                <button class="action-btn save">⭐ Save</button>
+                                <button class="action-btn share">📤 Share</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-image">🔐</div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Cybersecurity: Next-Gen Threats</h3>
+                                    <div class="card-meta">
+                                        <span>📅 5 hours ago</span>
+                                        <span>👁️ 12.1K views</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-description">Emerging cybersecurity threats and the innovative defense strategies companies are implementing to protect their assets.</p>
+                            <div class="card-actions">
+                                <button class="action-btn like">👍 Like</button>
+                                <button class="action-btn save">⭐ Save</button>
+                                <button class="action-btn share">📤 Share</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-image">☁️</div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Cloud Infrastructure: Enterprise Migration</h3>
+                                    <div class="card-meta">
+                                        <span>📅 1 day ago</span>
+                                        <span>👁️ 8.4K views</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-description">Best practices for enterprise cloud migration and how organizations are optimizing their cloud strategies.</p>
+                            <div class="card-actions">
+                                <button class="action-btn like">👍 Like</button>
+                                <button class="action-btn save">⭐ Save</button>
+                                <button class="action-btn share">📤 Share</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-image">🤖</div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Machine Learning: Real-World Applications</h3>
+                                    <div class="card-meta">
+                                        <span>📅 2 days ago</span>
+                                        <span>👁️ 13.9K views</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-description">Practical applications of machine learning across various industries and the ROI they're delivering.</p>
+                            <div class="card-actions">
+                                <button class="action-btn like">👍 Like</button>
+                                <button class="action-btn save">⭐ Save</button>
+                                <button class="action-btn share">📤 Share</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Finance Section -->
+            <section>
+                <div class="section-header">
+                    <h2 class="section-title">Finance</h2>
+                    <div class="filter-tabs">
+                        <span class="filter-tab active">All</span>
+                        <span class="filter-tab">Markets</span>
+                        <span class="filter-tab">Banking</span>
+                        <span class="filter-tab">Investing</span>
+                    </div>
+                </div>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-image">📊</div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Stock Market Outlook: Q4 Forecast</h3>
+                                    <div class="card-meta">
+                                        <span>📅 1 hour ago</span>
+                                        <span>👁️ 18.3K views</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-description">Expert predictions for the stock market's performance in Q4 and key factors that will drive market movements.</p>
+                            <div class="card-actions">
+                                <button class="action-btn like">👍 Like</button>
+                                <button class="action-btn save">⭐ Save</button>
+                                <button class="action-btn share">📤 Share</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-image">💰</div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Federal Reserve Policy: Impact Analysis</h3>
+                                    <div class="card-meta">
+                                        <span>📅 3 hours ago</span>
+                                        <span>👁️ 15.6K views</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-description">How recent Federal Reserve decisions are affecting interest rates, inflation, and investment strategies.</p>
+                            <div class="card-actions">
+                                <button class="action-btn like">👍 Like</button>
+                                <button class="action-btn save">⭐ Save</button>
+                                <button class="action-btn share">📤 Share</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-image">🏛️</div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Investment Banking: Deal Flow Trends</h3>
+                                    <div class="card-meta">
+                                        <span>📅 6 hours ago</span>
+                                        <span>👁️ 11.2K views</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-description">Current trends in investment banking and how deal structures are evolving in response to market conditions.</p>
+                            <div class="card-actions">
+                                <button class="action-btn like">👍 Like</button>
+                                <button class="action-btn save">⭐ Save</button>
+                                <button class="action-btn share">📤 Share</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-image">📈</div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Portfolio Management: Modern Strategies</h3>
+                                    <div class="card-meta">
+                                        <span>📅 1 day ago</span>
+                                        <span>👁️ 9.8K views</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="card-description">Advanced portfolio management techniques and how professional investors are optimizing asset allocation.</p>
+                            <div class="card-actions">
+                                <button class="action-btn like">👍 Like</button>
+                                <button class="action-btn save">⭐ Save</button>
+                                <button class="action-btn share">📤 Share</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

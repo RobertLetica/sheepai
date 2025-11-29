@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification Code - SheepAI</title>
+    <style>
+        /* Email-safe CSS */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f5f3e7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .email-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+
+        .email-header {
+            background: #000000;
+            color: #ffffff;
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 4px solid #b22222;
+        }
+
+        .email-header h1 {
+            margin: 0;
+            font-size: 1.75rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Arial Black', Arial, sans-serif;
+        }
+
+        .email-content {
+            padding: 2.5rem;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        .email-content h2 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #000000;
+            margin: 0 0 1.5rem 0;
+            font-family: 'Arial Black', Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .email-content p {
+            font-size: 1rem;
+            margin: 0 0 1.5rem 0;
+            color: #2c3e50;
+        }
+
+        .verification-code-box {
+            background: #000000;
+            border: 3px solid #b22222;
+            padding: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+            box-shadow: 4px 4px 0px rgba(178, 34, 34, 0.2);
+        }
+
+        .verification-code {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .code-label {
+            font-size: 0.85rem;
+            color: #b0b0b0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .button-container {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .email-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: #000000;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: 3px solid #b22222;
+            font-family: 'Arial Black', Arial, sans-serif;
+        }
+
+        .email-button:hover {
+            background: #b22222;
+            border-color: #000000;
+        }
+
+        .security-notice {
+            background: #f5f3e7;
+            border: 2px solid #000000;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .security-notice h3 {
+            font-size: 1rem;
+            font-weight: 900;
+            color: #000000;
+            margin: 0 0 0.75rem 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Arial Black', Arial, sans-serif;
+        }
+
+        .security-notice ul {
+            margin: 0.75rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .security-notice li {
+            font-size: 0.9rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .email-footer {
+            background: #000000;
+            color: #ffffff;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            border-top: 3px solid #b22222;
+        }
+
+        .email-footer p {
+            margin: 0.5rem 0;
+            font-size: 0.85rem;
+            color: #b0b0b0;
+        }
+
+        .email-footer a {
+            color: #b22222;
+            text-decoration: none;
+        }
+
+        .email-footer a:hover {
+            color: #ffffff;
+        }
+
+        .divider {
+            height: 2px;
+            background: #000000;
+            margin: 2rem 0;
+        }
+
+        /* Responsive */
+        @media only screen and (max-width: 600px) {
+            .email-content {
+                padding: 1.5rem;
+            }
+
+            .verification-code {
+                font-size: 2rem;
+                letter-spacing: 4px;
+            }
+
+            .email-header h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-wrapper">
+        <!-- Header -->
+        <div class="email-header">
+            <h1>🐑 SheepAI</h1>
+        </div>
+
+        <!-- Content -->
+        <div class="email-content">
+            <h2>Verification Code</h2>
+            
+            <p>Hello,</p>
+            
+            <p>You've requested a verification code to access your SheepAI account. Use the code below to complete your verification:</p>
+
+            <!-- Verification Code Box -->
+            <div class="verification-code-box">
+                <div class="code-label">Your Verification Code</div>
+                <div class="verification-code">123456</div>
+            </div>
+
+            <p><strong>This code will expire in 10 minutes.</strong></p>
+
+            <div class="button-container">
+                <a href="#" class="email-button">Verify Account</a>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Security Notice -->
+            <div class="security-notice">
+                <h3>🔒 Security Notice</h3>
+                <ul>
+                    <li>Never share this code with anyone</li>
+                    <li>SheepAI staff will never ask for your verification code</li>
+                    <li>If you didn't request this code, please ignore this email</li>
+                    <li>For security, this code expires in 10 minutes</li>
+                </ul>
+            </div>
+
+            <p>If you have any questions or concerns, please contact our support team.</p>
+
+            <p>Best regards,<br>
+            <strong>The SheepAI Team</strong></p>
+        </div>
+
+        <!-- Footer -->
+        <div class="email-footer">
+            <p><strong>SheepAI</strong> - Professional Content Platform</p>
+            <p>This is an automated message. Please do not reply to this email.</p>
+            <p>
+                <a href="#">Privacy Policy</a> | 
+                <a href="#">Terms of Service</a> | 
+                <a href="#">Contact Support</a>
+            </p>
+            <p style="margin-top: 1rem; font-size: 0.75rem;">
+                © 2025 SheepAI. All rights reserved.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
