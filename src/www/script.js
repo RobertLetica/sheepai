@@ -251,6 +251,31 @@ document.addEventListener('DOMContentLoaded', async function() {
 function renderArticles(articles) {
     if (!articles || articles.length === 0) return;
 
+    // Update Featured Story with the first article
+    const featuredArticle = articles[0];
+    const featuredTitle = document.querySelector('.featured-content h3');
+    const featuredDesc = document.querySelector('.featured-content p');
+    const featuredImage = document.querySelector('.featured-image');
+    const featuredBtn = document.querySelector('.featured-content .btn-primary');
+
+    if (featuredTitle) featuredTitle.textContent = featuredArticle.title;
+    if (featuredDesc) featuredDesc.textContent = featuredArticle.description || featuredArticle.summary || '';
+
+    if (featuredImage) {
+        if (featuredArticle.thumbnail && featuredArticle.thumbnail !== "No Image") {
+            featuredImage.innerHTML = `<img src="${featuredArticle.thumbnail}" style="width:100%; height:100%; object-fit:cover;">`;
+        } else {
+            featuredImage.textContent = '📰';
+        }
+    }
+
+    if (featuredBtn) {
+        featuredBtn.onclick = function() {
+            const encodedUrl = encodeURIComponent(featuredArticle.url);
+            window.location.href = `article.html?url=${encodedUrl}`;
+        };
+    }
+
     const forYouList = document.getElementById('forYouList');
     if (!forYouList) return;
 
@@ -258,7 +283,8 @@ function renderArticles(articles) {
     // Let's clear the hardcoded data to show real data.
     forYouList.innerHTML = '';
 
-    articles.forEach(article => {
+    // Render remaining articles (skip the first one)
+    articles.slice(1).forEach(article => {
         // Map fields from backend JSON to UI
         const card = document.createElement('div');
         card.className = 'card personalized-card';

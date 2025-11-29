@@ -174,24 +174,44 @@ def api_user_profile():
         explicit_tags = data.get('tags', [])
         interests_prompt = data.get('interests_prompt', "")
 
-        # AI Extraction
-        from utils import ai
-        ai_tags = []
-        if interests_prompt:
-            try:
-                ai_tags = ai.extract_tags_from_user_description(interests_prompt)
-            except Exception as e:
-                logging.error(f"AI tag extraction failed: {e}")
-
-        # Combine tags
-        all_tags = list(set(explicit_tags + ai_tags))
-
-        updated_user = users.update_user_profile(token, all_tags, interests_prompt)
+        # Only use explicit tags provided by frontend
+        updated_user = users.update_user_profile(token, explicit_tags, interests_prompt)
 
         if updated_user:
             return jsonify({"success": True, "user": updated_user}), 200
         else:
             return jsonify({"error": "Failed to update profile"}), 500
+
+@app.route('/api/extract_tags', methods=['POST'])
+def api_extract_tags():
+    """
+    Endpoint to extract tags from text.
+    Expects JSON: { "text": "..." }
+    Requires Authentication.
+    """
+    auth_header = request.headers.get('Authorization')
+    if not auth_header or not auth_header.startswith('Bearer '):
+        return jsonify({"error": "Unauthorized"}), 401
+
+    token = auth_header.split(' ')[1]
+    user = users.validate_token(token)
+
+    if not user:
+        return jsonify({"error": "Unauthorized"}), 401
+
+    data = request.json
+    text = data.get('text')
+
+    if not text:
+        return jsonify({"tags": []}), 200
+
+    from utils import ai
+    try:
+        tags = ai.extract_tags_from_user_description(text)
+        return jsonify({"tags": tags}), 200
+    except Exception as e:
+        logging.error(f"AI tag extraction failed: {e}")
+        return jsonify({"error": "Extraction failed"}), 500
 
 # --- Static File Serving ---
 

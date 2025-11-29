@@ -287,6 +287,7 @@
 
                     <div style="margin-bottom: 1.5rem;">
                         <textarea id="interestsPrompt" style="width: 100%; padding: 1rem; border: 2px solid #000000; font-family: inherit; font-size: 1rem; resize: vertical; min-height: 100px;" placeholder="e.g. I am interested in how AI is changing the financial landscape..."></textarea>
+                        <button id="extractTagsBtn" class="btn" style="margin-top: 0.5rem; background: #ffffff; color: #000000; border: 2px solid #000000; font-size: 0.8rem;">✨ Extract Tags with AI</button>
                     </div>
 
                     <div class="interest-tags" id="interestTags">
@@ -400,6 +401,13 @@
                 return;
             }
 
+            // Tag System Elements
+            const addBtn = document.getElementById('addInterestBtn');
+            const inputContainer = document.getElementById('addTagInputContainer');
+            const input = document.getElementById('addTagInput');
+            const confirmBtn = document.getElementById('confirmAddTag');
+            const cancelBtn = document.getElementById('cancelAddTag');
+
             // Load Profile
             try {
                 const response = await fetch('/api/user/profile', {
@@ -448,24 +456,60 @@
                         const data = await response.json();
                         currentTags = data.user.tags;
                         renderTags();
-                        alert('Profile saved successfully!');
+                        // Removed alert as per request
                     } else {
-                        alert('Failed to save profile.');
+                        console.error('Failed to save profile.');
                     }
                 } catch (e) {
                     console.error(e);
-                    alert('Error saving profile.');
                 }
                 btn.textContent = 'Save Changes';
                 btn.disabled = false;
             });
 
-            // Tag System Handling (Manual implementation to sync with our array)
-            const addBtn = document.getElementById('addInterestBtn');
-            const inputContainer = document.getElementById('addTagInputContainer');
-            const input = document.getElementById('addTagInput');
-            const confirmBtn = document.getElementById('confirmAddTag');
-            const cancelBtn = document.getElementById('cancelAddTag');
+            // Extract Tags with AI
+            document.getElementById('extractTagsBtn').addEventListener('click', async function() {
+                const btn = this;
+                const prompt = document.getElementById('interestsPrompt').value;
+                if (!prompt.trim()) return;
+
+                const originalText = btn.textContent;
+                btn.textContent = 'Extracting...';
+                btn.disabled = true;
+
+                try {
+                    const response = await fetch('/api/extract_tags', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        },
+                        body: JSON.stringify({
+                            text: prompt
+                        })
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        if (data.tags && data.tags.length > 0) {
+                            // Merge tags avoiding duplicates
+                            data.tags.forEach(tag => {
+                                if (!currentTags.includes(tag)) {
+                                    currentTags.push(tag);
+                                }
+                            });
+                            renderTags();
+                        }
+                    } else {
+                        console.error('Failed to extract tags.');
+                    }
+                } catch (e) {
+                    console.error('Error extracting tags:', e);
+                }
+
+                btn.textContent = originalText;
+                btn.disabled = false;
+            });
 
             addBtn.addEventListener('click', () => {
                 inputContainer.classList.add('active');
