@@ -5,6 +5,7 @@ import time
 import threading
 import os
 from datetime import datetime
+from utils import ai
 
 # Configuration
 BASE_URL = "https://thehackernews.com/"

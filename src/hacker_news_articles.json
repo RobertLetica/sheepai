@@ -32,7 +32,216 @@
         "thumbnail": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhLmTJUwBQylR2JxQKyRPwiaWc6Ia-71wvno8Z5H4N6-8KX7WBGjZLU2ONRBc4Qd7vpIOcWXWkcrekIsNcFhS75LB7IwPMOvGMQPY3xe2yl0qPlgoly_1tEdy99a_glYDj599U0nR2KHQoBkgx49tGys8tsIT_hosQpkSZsiLSXCUFJkCCDWn26eg_jxMpd/s790-rw-e365/sales.jpg",
         "description": "Gainsight has disclosed that the recent suspicious activity targeting its applications has affected more customers than previously thought.  The company said  Salesforce initially provided a list of 3 impacted customers and that it has \"expanded to a larger list\" as of November 21, 2025. It did not reveal the exact number of customers who were impacted, but its CEO, Chuck Ganapathi, said  \"we presently know of only a handful of customers who had their data affected.\"  The development comes as Salesforce warned of detected \"unusual activity\" related to Gainsight-published applications connected to the platform, prompting the company to revoke all access and refresh tokens associated with them. The breach has been claimed by a notorious cybercrime group known as ShinyHunters (aka Bling Libra).  A number of other precautionary steps have been enacted to contain the incident. This includes Zendesk, Gong.io, and HubSpot temporarily suspending their Gainsight...",
         "content": "Gainsight has disclosed that the recent suspicious activity targeting its applications has affected more customers than previously thought.\n\nThe companysaidSalesforce initially provided a list of 3 impacted customers and that it has \"expanded to a larger list\" as of November 21, 2025. It did not reveal the exact number of customers who were impacted, but its CEO, Chuck Ganapathi,said\"we presently know of only a handful of customers who had their data affected.\"\n\nThe development comes as Salesforce warned of detected \"unusual activity\" related to Gainsight-published applications connected to the platform, prompting the company to revoke all access and refresh tokens associated with them. The breach has been claimed by a notorious cybercrime group known as ShinyHunters (aka Bling Libra).\n\nA number of other precautionary steps have been enacted to contain the incident. This includes Zendesk, Gong.io, and HubSpot temporarily suspending their Gainsight integrations, and Google disabling OAuth clients with callback URIs like gainsightcloud[.]com. HubSpot, in its own advisory,saidit found no evidence to suggest any compromise of its own infrastructure or customers.\n\nIn an FAQ, Gainsight has also listed the products for which the ability to read and write from Salesforce has been temporarily unavailable -\n\nThe company, however, emphasized that Staircase is not affected by the incident and that Salesforce removed the Staircase connection out of caution in response to an ongoing investigation.\n\nBoth Salesforce and Gainsight have published indicators of compromise (IoCs) associated with the breach, with one user agent string, \"Salesforce-Multi-Org-Fetcher/1.0\", used for unauthorized access, also flagged as previously employed in the Salesloft Drift activity.\n\nAccording toinformationfrom Salesforce, reconnaissance efforts against customers with compromised Gainsight access tokens were first recorded from the IP address \"3.239.45[.]43\" on October 23, 2025, followed by subsequent waves of reconnaissance and unauthorized access starting November 8.\n\nTo further secure their environments, customers are asked to follow the steps below -\n\n\"These steps are preventative in nature and are designed to ensure your environment remains secure while the investigation continues,\" Gainsight said.\n\nThe development comes against the backdrop of a new ransomware-as-a-service (RaaS) platform calledShinySp1d3r(also spelled Sh1nySp1d3r) that's being developed by Scattered Spider, LAPSUS$, and ShinyHunters (SLSH). Data from ZeroFox has revealed that the cybercriminal alliance has been responsible for at least 51 cyberattacks over the past year.\n\n\"While the ShinySp1d3r encryptor has some features common to other encryptors, it also boasts features that have never been seen before in the RaaS space,\" the company said.\n\n\"These include: Hooking the EtwEventWrite function to prevent Windows Event Viewer logging, terminating processes that keep files open \u2013 which would normally prevent encryption \u2013 by iterating over processes before killing them, [and] filling free space in a drive by writing random data contained in a .tmp file, likely to overwrite any deleted files.\"\n\nShinySp1d3r also comes with the ability tosearchfor open network shares and encrypt them, as well as propagate to other devices on the local network through deployViaSCM, deployViaWMI, and attemptGPODeployment.\n\nIn a report published Wednesday, independent cybersecurity journalist Brian Krebssaidthe individual responsible for releasing the ransomware is a core SLSH member named \"Rey\" (aka@ReyXBF), who is also one of the three administrators of the group's Telegram channel. Rey was previously an administrator ofBreachForumsand the data leak website forHellCat ransomware.\n\nRey, whose identity has been unmasked as Saif Al-Din Khader, told Krebs that ShinySp1d3r is a rehash of HellCat that has been modified with artificial intelligence (AI) tools and that he has been cooperating with law enforcement since at least June 2025.\n\n\"The emergence of a RaaS program, in conjunction with an EaaS [extortion-as-a-service] offering, makes SLSH a formidable adversary in terms of the wide net they can cast against organizations using multiple methods to monetize their intrusion operations,\" Palo Alto Networks Unit 42 researcher Matt Bradysaid. \"Additionally, theinsider recruitmentelement adds yet another layer for organizations to defend against.\"",
-        "tags": [],
+        "tags": [
+            {
+                "name": "Gainsight",
+                "confidence": 0.95
+            },
+            {
+                "name": "Salesforce",
+                "confidence": 0.95
+            },
+            {
+                "name": "Security Alert",
+                "confidence": 0.9
+            },
+            {
+                "name": "Customer data",
+                "confidence": 0.85
+            },
+            {
+                "name": "Suspicious activity",
+                "confidence": 0.8
+            },
+            {
+                "name": "Access tokens",
+                "confidence": 0.8
+            },
+            {
+                "name": "Refresh tokens",
+                "confidence": 0.8
+            },
+            {
+                "name": "ShinyHunters",
+                "confidence": 0.9
+            },
+            {
+                "name": "Cybercrime group",
+                "confidence": 0.8
+            },
+            {
+                "name": "Indicators of compromise (IoCs)",
+                "confidence": 0.85
+            },
+            {
+                "name": "Unauthorized access",
+                "confidence": 0.9
+            },
+            {
+                "name": "Reconnaissance",
+                "confidence": 0.8
+            },
+            {
+                "name": "Ransomware-as-a-service (RaaS)",
+                "confidence": 0.9
+            },
+            {
+                "name": "ShinySp1d3r",
+                "confidence": 0.95
+            },
+            {
+                "name": "Scattered Spider",
+                "confidence": 0.85
+            },
+            {
+                "name": "LAPSUS$",
+                "confidence": 0.85
+            },
+            {
+                "name": "SLSH",
+                "confidence": 0.9
+            },
+            {
+                "name": "Cyberattacks",
+                "confidence": 0.8
+            },
+            {
+                "name": "File encryption",
+                "confidence": 0.8
+            },
+            {
+                "name": "Extortion-as-a-service (EaaS)",
+                "confidence": 0.8
+            },
+            {
+                "name": "Insider recruitment",
+                "confidence": 0.8
+            },
+            {
+                "name": "Zendesk",
+                "confidence": 0.5
+            },
+            {
+                "name": "Gong.io",
+                "confidence": 0.5
+            },
+            {
+                "name": "HubSpot",
+                "confidence": 0.6
+            },
+            {
+                "name": "Google",
+                "confidence": 0.5
+            },
+            {
+                "name": "OAuth clients",
+                "confidence": 0.6
+            },
+            {
+                "name": "Infrastructure compromise",
+                "confidence": 0.5
+            },
+            {
+                "name": "Investigation",
+                "confidence": 0.6
+            },
+            {
+                "name": "User agent string",
+                "confidence": 0.5
+            },
+            {
+                "name": "Preventative steps",
+                "confidence": 0.5
+            },
+            {
+                "name": "EtwEventWrite function",
+                "confidence": 0.4
+            },
+            {
+                "name": "Windows Event Viewer logging",
+                "confidence": 0.4
+            },
+            {
+                "name": "Network shares",
+                "confidence": 0.5
+            },
+            {
+                "name": "Rey",
+                "confidence": 0.5
+            },
+            {
+                "name": "HellCat ransomware",
+                "confidence": 0.5
+            },
+            {
+                "name": "Artificial intelligence (AI) tools",
+                "confidence": 0.4
+            },
+            {
+                "name": "Staircase",
+                "confidence": 0.1
+            },
+            {
+                "name": "gainsightcloud[.]com",
+                "confidence": 0.1
+            },
+            {
+                "name": "Salesforce-Multi-Org-Fetcher/1.0",
+                "confidence": 0.2
+            },
+            {
+                "name": "Salesloft Drift activity",
+                "confidence": 0.2
+            },
+            {
+                "name": "IP address",
+                "confidence": 0.1
+            },
+            {
+                "name": "ZeroFox",
+                "confidence": 0.1
+            },
+            {
+                "name": "deployViaSCM",
+                "confidence": 0.1
+            },
+            {
+                "name": "deployViaWMI",
+                "confidence": 0.1
+            },
+            {
+                "name": "attemptGPODeployment",
+                "confidence": 0.1
+            },
+            {
+                "name": "Brian Krebs",
+                "confidence": 0.1
+            },
+            {
+                "name": "@ReyXBF",
+                "confidence": 0.1
+            },
+            {
+                "name": "Telegram channel",
+                "confidence": 0.1
+            },
+            {
+                "name": "BreachForums",
+                "confidence": 0.1
+            },
+            {
+                "name": "Saif Al-Din Khader",
+                "confidence": 0.1
+            },
+            {
+                "name": "Law enforcement",
+                "confidence": 0.1
+            },
+            {
+                "name": "Palo Alto Networks Unit 42",
+                "confidence": 0.1
+            }
+        ],
         "scraped_at": "2025-11-29T11:06:07.409607"
     },
     {
