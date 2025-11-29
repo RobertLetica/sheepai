@@ -2,6 +2,7 @@ import threading
 import time
 import logging
 import sys
+import os
 from dotenv import load_dotenv
 from utils import scraper
 from utils import users
@@ -9,7 +10,7 @@ from utils import users
 # Load environment variables
 load_dotenv()
 
-# Configure Logging (Global configuration)
+# Configure Logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
@@ -17,8 +18,7 @@ logging.basicConfig(
 )
 
 def input_loop():
-    """Simple CLI for interacting with the system"""
-    print("\n--- SheepAI Command Line Interface ---")
+    print("\n--- SheepAI CLI ---")
     print("Commands: login, exit")
     
     while True:
@@ -26,44 +26,33 @@ def input_loop():
             cmd = input("\n> ").strip().lower()
             
             if cmd == "exit":
-                print("Exiting CLI...")
-                # We exit the whole program
+                print("Stopping...")
                 os._exit(0)
                 
             elif cmd == "login":
-                email = input("Enter your email: ").strip()
-                if not email:
-                    print("Email is required.")
-                    continue
-                    
-                print(f"Sending OTP to {email}...")
+                email = input("Enter email: ").strip()
                 if users.login(email):
-                    print("OTP sent! Check your inbox.")
-                    
-                    otp_code = input("Enter OTP Code: ").strip()
-                    token = users.verify_otp(email, otp_code)
-                    
+                    print("Check your email for the code!")
+                    code = input("Enter OTP: ").strip()
+                    token = users.verify_otp(email, code)
                     if token:
-                        print(f"Login Successful! Your Access Token: {token}")
+                        print(f"SUCCESS! Token: {token}")
                     else:
-                        print("Login Failed: Invalid OTP.")
+                        print("FAILED: Invalid code.")
                 else:
-                    print("Error sending OTP.")
-            
+                    print("Could not send email. Check logs.")
+                    
         except KeyboardInterrupt:
-            print("\nStopping...")
             os._exit(0)
         except Exception as e:
-            logging.error(f"Error in CLI: {e}")
+            logging.error(f"Error: {e}")
 
 if __name__ == "__main__":
-    import os
-    logging.info("Starting SheepAI Feed Monitor...")
+    logging.info("Starting SheepAI...")
 
-    # Start the scraper in a background thread
-    # daemon=True ensures the thread closes when the main program exits
+    # Start scraper in background
     scraper_thread = threading.Thread(target=scraper.monitor_feed, daemon=True)
     scraper_thread.start()
-    
-    # Run the input loop in the main thread
+
+    # Run CLI in foreground
     input_loop()
