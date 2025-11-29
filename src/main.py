@@ -2,7 +2,7 @@ import threading
 import logging
 import os
 import json
-from flask import Flask, send_from_directory, request, jsonify
+from flask import Flask, send_from_directory, request, jsonify, redirect
 from dotenv import load_dotenv
 from utils import scraper
 from utils import users
@@ -35,7 +35,11 @@ def api_login():
     if not email:
         return jsonify({"success": False, "error": "Email is required"}), 400
 
-    if users.login(email):
+    # Get the server's root URL (e.g., http://localhost:8080) to create the link
+    base_url = request.url_root.rstrip('/')
+
+    # Pass base_url to users.login so it can generate the correct link
+    if users.login(email, base_url):
         return jsonify({"success": True, "message": "OTP sent successfully"}), 200
     else:
         return jsonify({"success": False, "error": "Failed to send OTP"}), 500
@@ -43,8 +47,8 @@ def api_login():
 @app.route('/api/verify', methods=['POST'])
 def api_verify():
     """
-    Endpoint to verify OTP.
-    Expects JSON: { "email": "user@example.com", "otp": "123456" }
+    Endpoint to verify OTP (Manual Entry via API).
+    Expects JSON: { "email": "...", "otp": "..." }
     """
     data = request.json
     email = data.get('email')
@@ -59,6 +63,29 @@ def api_verify():
         return jsonify({"success": True, "token": token}), 200
     else:
         return jsonify({"success": False, "error": "Invalid OTP"}), 401
+
+@app.route('/api/verify_link', methods=['GET'])
+def api_verify_link():
+    """
+    Endpoint for Email Click Verification.
+    URL: /api/verify_link?email=...&code=...
+    Redirects to home page with token on success.
+    """
+    email = request.args.get('email')
+    otp = request.args.get('code')
+
+    if not email or not otp:
+        return "Invalid Verification Link", 400
+
+    # Verify the OTP using the same logic as the manual endpoint
+    token = users.verify_otp(email, otp)
+    
+    if token:
+        # Redirect to the main page with the token in the URL parameters
+        # Your frontend JS should look for these params to log the user in
+        return redirect(f'/?token={token}&email={email}')
+    else:
+        return "<h3>Verification Failed</h3><p>Invalid or expired link.</p>", 401
 
 @app.route('/api/articles', methods=['GET'])
 def api_articles():
@@ -78,6 +105,24 @@ def api_articles():
         return jsonify({"error": "Failed to fetch articles"}), 500
 
 # --- Static File Serving ---
+
+@app.route('/verify.html')
+def serve_verify_page():
+    """
+    Special handler for verify.html.
+    If accessed with ?email=..., it triggers the OTP login email.
+    """
+    email = request.args.get('email')
+    
+    if email:
+        base_url = request.url_root.rstrip('/')
+        # Trigger the login (send OTP)
+        if users.login(email, base_url):
+            logging.info(f"Triggered OTP send for {email} via verify.html")
+        else:
+            logging.error(f"Failed to trigger OTP send for {email} via verify.html")
+
+    return send_from_directory(app.static_folder, 'verify.html')
 
 @app.route('/')
 def serve_index():

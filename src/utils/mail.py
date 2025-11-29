@@ -19,7 +19,7 @@ SENDER_PASSWORD = os.getenv("SMTP_PASSWORD")
 
 def render_template(template_path: str, context: dict) -> str:
     """Render an HTML template with Jinja2 variables."""
-    # Adjust path to be relative to src/ if needed, or absolute
+    # Adjust path to find templates folder
     base_dir = Path(__file__).parent.parent
     full_path = base_dir / template_path
 
@@ -68,13 +68,13 @@ def send_email(to_email: str, subject: str, html_path: str, context: dict):
         logging.error(f"Failed to send email via SMTP: {e}")
         return False
 
-def send_otp_email(to_email: str, code: str):
+def send_otp_email(to_email: str, code: str, link: str):
     """
-    Specific function to send an OTP email.
+    Specific function to send an OTP email with a verification link.
     """
     return send_email(
         to_email=to_email,
-        subject="Your OTP Code - SheepAI",
+        subject="Login Verification - SheepAI",
         html_path="templates/otp_email.html",
-        context={"code": code},
+        context={"code": code, "link": link},
     )

@@ -22,11 +22,11 @@ def save_users(users):
     with open(USERS_FILE, 'w', encoding='utf-8') as f:
         json.dump(users, f, indent=4)
 
-def login(email: str):
+def login(email: str, base_url: str):
     """
-    1. Generates 6-digit OTP.
-    2. Creates/Updates user.
-    3. Sends OTP via Email.
+    1. Generates OTP.
+    2. Constructs Verification Link.
+    3. Sends Email.
     """
     users = load_users()
     otp = str(random.randint(100000, 999999))
@@ -51,11 +51,15 @@ def login(email: str):
     
     save_users(users)
     
+    # Construct the link logic here
+    # We append the params so the API can handle it
+    verify_link = f"{base_url}/api/verify_link?email={email}&code={otp}"
+    
     logging.info(f"Sending OTP to {email}...")
-    success = mail.send_otp_email(to_email=email, code=otp)
+    success = mail.send_otp_email(to_email=email, code=otp, link=verify_link)
     
     if success:
-        logging.info(f"OTP successfully sent to {email}")
+        logging.info(f"OTP sent to {email}")
         return True
     else:
         logging.error(f"Failed to send OTP to {email}")
