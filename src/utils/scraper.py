@@ -5,7 +5,8 @@ import time
 import threading
 import os
 from datetime import datetime
-from utils import ai  # Ensure you run this from src/ as: python -m utils.scraper
+import urllib.parse
+from utils import ai, users, mail  # Ensure you run this from src/ as: python -m utils.scraper
 
 # Configuration
 BASE_URL = "https://thehackernews.com/"
@@ -85,6 +86,42 @@ def process_new_article(article, existing_articles):
     # Save immediately
     save_data(existing_articles)
     print("    -> Article saved to database.")
+
+    # Notify users in background
+    threading.Thread(target=notify_users, args=(article,)).start()
+
+def notify_users(article):
+    """
+    Checks user interests and sends notifications.
+    Runs in a separate thread.
+    """
+    print("    -> Checking user interests for notification...")
+    try:
+        all_users = users.load_users()
+        for user in all_users:
+            email = user.get('email')
+            if not email:
+                continue
+
+            summary = ai.analyze_user_interest(article, user)
+            if summary:
+                print(f"       [+] Match found for {email}. Sending email...")
+                # Construct internal link
+                encoded_url = urllib.parse.quote(article['url'])
+                internal_link = f"http://localhost:8080/article.html?url={encoded_url}"
+
+                mail.send_email(
+                    to_email=email,
+                    subject=f"NewsPro: {article['title']}",
+                    html_path="templates/article_notification.html",
+                    context={
+                        "article_title": article['title'],
+                        "article_summary": summary,
+                        "article_url": internal_link
+                    }
+                )
+    except Exception as e:
+        print(f"    [!] Notification logic failed: {e}")
 
 def monitor_feed():
     """

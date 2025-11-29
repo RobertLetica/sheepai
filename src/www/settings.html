@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings - newsPro</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
     <script src="icons.js"></script>
+    <script src="tags.js"></script>
     <style>
         .icon {
             display: inline-flex;
@@ -17,8 +19,16 @@
             width: 1em;
             height: 1em;
         }
+        body.settings-page .container {
+            grid-template-columns: 1fr;
+            max-width: 100%;
+        }
+        body.settings-page .content-area {
+            max-width: 100%;
+        }
         .settings-container {
-            max-width: 900px;
+            max-width: 1200px;
+            width: 100%;
             margin: 2rem auto;
             padding: 0 2rem;
         }
@@ -109,13 +119,11 @@
             padding: 0.5rem 1rem;
             background: #f5f3e7;
             border: 2px solid #000000;
+            color: #000000;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s;
-        }
-        .interest-tag:hover {
-            background: #000000;
-            color: #ffffff;
+            -webkit-tap-highlight-color: transparent;
         }
         .interest-tag.active {
             background: #b22222;
@@ -129,23 +137,139 @@
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s;
+            color: #000000;
         }
         .btn-add-interest:hover {
             background: #f5f3e7;
         }
+        .add-tag-input-container {
+            display: none;
+            gap: 0.5rem;
+            align-items: center;
+            margin-top: 0.75rem;
+        }
+        .add-tag-input-container.active {
+            display: flex;
+        }
+        .add-tag-input {
+            flex: 1;
+            padding: 0.5rem 1rem;
+            border: 2px solid #000000;
+            font-weight: 700;
+            font-size: 0.9rem;
+            font-family: inherit;
+            background: #ffffff;
+            color: #000000;
+        }
+        .add-tag-input:focus {
+            outline: none;
+            border-color: #b22222;
+        }
+        .btn-add-tag-confirm {
+            padding: 0.5rem 1rem;
+            background: #b22222;
+            color: #ffffff;
+            border: 2px solid #b22222;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-add-tag-confirm:hover {
+            background: #8b1a1a;
+            border-color: #8b1a1a;
+        }
+        .btn-add-tag-cancel {
+            padding: 0.5rem 1rem;
+            background: #ffffff;
+            color: #000000;
+            border: 2px solid #000000;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-add-tag-cancel:hover {
+            background: #f5f3e7;
+        }
+        .empty-tags-message {
+            color: #999999;
+            font-style: italic;
+            padding: 1rem;
+            width: 100%;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 1024px) {
+            .settings-container {
+                max-width: 1200px;
+                padding: 0 3rem;
+            }
+            .settings-section {
+                padding: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .settings-container {
+                padding: 0 1rem;
+                margin: 1rem auto;
+            }
+            .settings-section {
+                padding: 1.5rem;
+                margin-bottom: 1rem;
+            }
+            .settings-section h2 {
+                font-size: 1.5rem;
+            }
+            .settings-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+                padding: 1.25rem 0;
+            }
+            .settings-item-label {
+                width: 100%;
+            }
+            .toggle-switch,
+            .settings-item select,
+            .settings-item button {
+                align-self: flex-end;
+            }
+            .interest-tags {
+                gap: 0.5rem;
+            }
+            .interest-tag {
+                font-size: 0.85rem;
+                padding: 0.4rem 0.75rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .settings-container {
+                padding: 0 0.75rem;
+            }
+            .settings-section {
+                padding: 1rem;
+            }
+            .settings-section h2 {
+                font-size: 1.25rem;
+            }
+            .settings-item-label h3 {
+                font-size: 1rem;
+            }
+            .settings-item-label p {
+                font-size: 0.85rem;
+            }
+        }
     </style>
 </head>
-<body>
+<body class="settings-page">
     <header>
         <nav>
             <div class="nav-left">
-                <a href="feed.html" style="text-decoration: none; color: inherit;">
-                    <div class="logo" data-icon="news">newsPro</div>
-                </a>
+                <a href="feed.html" class="logo" data-icon="news">newsPro</a>
             </div>
             <ul class="nav-links">
-                <li><a href="feed.html">Feed</a></li>
-                <li><a href="settings.html">Settings</a></li>
             </ul>
             <div class="user-actions">
                 <a href="feed.html" class="btn btn-secondary" style="margin-right: 0.75rem;">Back to Feed</a>
@@ -159,24 +283,20 @@
             <div class="settings-container">
                 <div class="settings-section">
                     <h2>Your Interests</h2>
-                    <p style="margin-bottom: 1rem; color: #666666;">Select topics you're interested in to personalize your feed</p>
-                    <div class="interest-tags">
-                        <span class="interest-tag active">AI & Machine Learning</span>
-                        <span class="interest-tag active">Trading & Algorithms</span>
-                        <span class="interest-tag active">Cryptocurrency</span>
-                        <span class="interest-tag active">Quantitative Finance</span>
-                        <span class="interest-tag active">Market Analysis</span>
-                        <span class="interest-tag active">High-Frequency Trading</span>
-                        <span class="interest-tag">Blockchain</span>
-                        <span class="interest-tag">FinTech</span>
-                        <span class="interest-tag">Investment Banking</span>
-                        <span class="interest-tag">Risk Management</span>
-                        <span class="interest-tag">Portfolio Management</span>
-                        <span class="interest-tag">Startups</span>
-                        <span class="interest-tag">Venture Capital</span>
-                        <span class="interest-tag">Cloud Computing</span>
-                        <span class="interest-tag">Cybersecurity</span>
-                        <button class="btn-add-interest">+ Add More</button>
+                    <p style="margin-bottom: 1rem; color: #666666;">Manage your interest tags to personalize your feed.</p>
+
+                    <div class="interest-tags" id="interestTags">
+                        <!-- Tags will be loaded here -->
+                        <button class="btn-add-interest" id="addInterestBtn">+ Add More</button>
+                    </div>
+                    <div class="add-tag-input-container" id="addTagInputContainer">
+                        <input type="text" class="add-tag-input" id="addTagInput" placeholder="Enter tag name..." maxlength="50">
+                        <button class="btn-add-tag-confirm" id="confirmAddTag">Add</button>
+                        <button class="btn-add-tag-cancel" id="cancelAddTag">Cancel</button>
+                    </div>
+
+                    <div style="margin-top: 1.5rem; text-align: right;">
+                        <button id="saveProfileBtn" class="btn btn-primary">Save Changes</button>
                     </div>
                 </div>
 
@@ -267,24 +387,148 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Replace icons
+        let currentTags = [];
+
+        document.addEventListener('DOMContentLoaded', async function() {
+            const token = localStorage.getItem('authToken');
+            if (!token) {
+                window.location.href = 'signin.html';
+                return;
+            }
+
+            // Load Profile
+            try {
+                const response = await fetch('/api/user/profile', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    // document.getElementById('interestsPrompt').value = data.interests_prompt || ''; // Removed from UI
+
+                    // Populate tags
+                    // Backend returns list of dicts {'name':..., 'confidence':...} or strings
+                    // We need just names for UI
+                    currentTags = (data.tags || []).map(t => typeof t === 'string' ? t : t.name);
+                    renderTags();
+
+                    // Update email display
+                    const emailDisplay = document.querySelector('.settings-item-label p');
+                    if (emailDisplay && data.email) {
+                        emailDisplay.textContent = data.email;
+                    }
+                }
+            } catch (e) {
+                console.error("Failed to load profile", e);
+            }
+
+            // Save Profile
+            document.getElementById('saveProfileBtn').addEventListener('click', async function() {
+                const btn = this;
+                btn.textContent = 'Saving...';
+                btn.disabled = true;
+
+                // const prompt = document.getElementById('interestsPrompt').value; // Removed
+
+                try {
+                    const response = await fetch('/api/user/profile', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        },
+                        body: JSON.stringify({
+                            tags: currentTags,
+                            interests_prompt: "" // Clear prompt or send empty since removed
+                        })
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        // Update with backend response which might be normalized
+                        currentTags = (data.user.tags || []).map(t => typeof t === 'string' ? t : t.name);
+                        renderTags();
+                        alert('Profile saved successfully!');
+                    } else {
+                        alert('Failed to save profile.');
+                    }
+                } catch (e) {
+                    console.error(e);
+                    alert('Error saving profile.');
+                }
+                btn.textContent = 'Save Changes';
+                btn.disabled = false;
+            });
+
+            // Tag System Handling (Manual implementation to sync with our array)
+            const addBtn = document.getElementById('addInterestBtn');
+            const inputContainer = document.getElementById('addTagInputContainer');
+            const input = document.getElementById('addTagInput');
+            const confirmBtn = document.getElementById('confirmAddTag');
+            const cancelBtn = document.getElementById('cancelAddTag');
+
+            addBtn.addEventListener('click', () => {
+                inputContainer.classList.add('active');
+                input.focus();
+            });
+
+            cancelBtn.addEventListener('click', () => {
+                inputContainer.classList.remove('active');
+                input.value = '';
+            });
+
+            confirmBtn.addEventListener('click', () => {
+                const tag = input.value.trim();
+                if (tag && !currentTags.includes(tag)) {
+                    currentTags.push(tag);
+                    renderTags();
+                }
+                input.value = '';
+                inputContainer.classList.remove('active');
+            });
+
+            function renderTags() {
+                const container = document.getElementById('interestTags');
+                // Clear existing tags but keep the "Add" button
+                Array.from(container.children).forEach(child => {
+                    if (child.id !== 'addInterestBtn') container.removeChild(child);
+                });
+
+                currentTags.forEach(tag => {
+                    const tagEl = document.createElement('div');
+                    tagEl.className = 'interest-tag active';
+                    tagEl.textContent = tag;
+                    tagEl.onclick = () => {
+                        // Remove tag
+                        currentTags = currentTags.filter(t => t !== tag);
+                        renderTags();
+                    };
+                    container.insertBefore(tagEl, addBtn);
+                });
+            }
+
+            // Replace icons in logo (preserve text)
             if (typeof Icons !== 'undefined') {
-                document.querySelectorAll('[data-icon]').forEach(el => {
+                document.querySelectorAll('.logo[data-icon]').forEach(el => {
                     const iconName = el.getAttribute('data-icon');
                     if (Icons[iconName]) {
-                        el.innerHTML = `<span class="icon">${Icons[iconName]}</span>${el.textContent.trim()}`;
+                        const text = el.textContent.trim();
+                        el.innerHTML = `<span class="icon">${Icons[iconName]}</span> ${text}`;
                     }
                 });
             }
 
-            // Interest tag toggle
-            document.querySelectorAll('.interest-tag').forEach(tag => {
-                tag.addEventListener('click', function() {
-                    if (!this.classList.contains('btn-add-interest')) {
-                        this.classList.toggle('active');
-                    }
-                });
+            // Clear all user data on sign out
+            document.querySelectorAll('a[href="landing.html"]').forEach(link => {
+                if (link.textContent.trim() === 'Sign Out') {
+                    link.addEventListener('click', function(e) {
+                        // Clear all localStorage data
+                        localStorage.removeItem('userInterests');
+                        localStorage.removeItem('allUserTags');
+                        localStorage.removeItem('interestsSelected');
+                        localStorage.removeItem('signinEmail');
+                        localStorage.removeItem('chatbotWidth');
+                    });
+                }
             });
         });
     </script>

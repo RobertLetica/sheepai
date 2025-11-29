@@ -1,0 +1,92 @@
+[
+    {
+        "title": "Legacy Python Bootstrap Scripts Create Domain-Takeover Risk in Multiple PyPI Packages",
+        "url": "https://thehackernews.com/2025/11/legacy-python-bootstrap-scripts-create.html",
+        "thumbnail": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMdVHqK8sA27WWR3ySGxson4kuqmBaXHQlFm3PSmRaHV6IGdnk_zK0tUvgrFyKepL2COnnm_yiIBdTy-ho7pFKSPQP7cCxkOugoV0s_2k3dUBYC0FI5BkY2tmR3Tsbxktsq7TnQRqzDhiOHe9SjVrRq2XHt5BYU01ctj8yUA8BTv6cDT8zREtEYAdrViUn/s790-rw-e365/setuptools.jpg",
+        "description": "Cybersecurity researchers have discovered vulnerable code in legacy Python packages that could potentially pave the way for a supply chain compromise on the Python Package Index (PyPI) via a domain takeover attack.  Software supply chain security company ReversingLabs said it found the \"vulnerability\" in bootstrap files provided by a build and deployment automation tool named \"zc.buildout.\"  \"The scripts automate the process of downloading, building, and installing the required libraries and tools,\" security researcher Vladimir Pezo said . \"Specifically, when the bootstrap script is executed, it fetches and executes an installation script for the package Distribute from python-distribute[.]org – a legacy domain that is now available for sale in the premium price range while being managed to drive ad revenue.\"  The PyPI packages that include a bootstrap script that accesses the domain in question include tornado, pypiserver, slapos.core, roman, x...",
+        "content": "Cybersecurity researchers have discovered vulnerable code in legacy Python packages that could potentially pave the way for a supply chain compromise on the Python Package Index (PyPI) via a domain takeover attack.\n\nSoftware supply chain security company ReversingLabs said it found the \"vulnerability\" in bootstrap files provided by a build and deployment automation tool named \"zc.buildout.\"\n\n\"The scripts automate the process of downloading, building, and installing the required libraries and tools,\" security researcher Vladimir Pezosaid. \"Specifically, when the bootstrap script is executed, it fetches and executes an installation script for the package Distribute from python-distribute[.]org – a legacy domain that is now available for sale in the premium price range while being managed to drive ad revenue.\"\n\nThe PyPI packages that include a bootstrap script that accesses the domain in question include tornado, pypiserver, slapos.core, roman, xlutils, and testfixtures.\n\nThe crux of the problem concerns anold bootstrap script(\"bootstrap.py\") that was used along with the zc.buildout tool to initialize the Buildout environment. The Python script also supported the ability to install a packaging utility called \"Distribute,\" a short-lived fork of the Setuptools project, into the local environment.\n\nTo achieve this, the Distribute installation script (\"distribute_setup.py\") is fetched from the python-distribute[.]org, a domain that has been up for sale since 2014. In adding the option, the idea was to instruct the bootstrap script to download and install the Distribute package instead of the older Setuptools package to manage eggs and dependencies for the buildout.\n\nIt's important to note that the Distribute fork came into being due to the lack of active development of Setuptools, the main package management tool used at that time. However, the features from Distribute were integrated back into Setuptools in 2013, rendering Distribute obsolete.\n\nThe issue identified by ReversingLabs concerns the fact that many packages have continued to ship the bootstrap script that either attempts to install Distribute by default or when the command-line option (\"-d\" or \"--distribute\") is specified. This, coupled with the fact that the domain in question is up for grabs, puts users at latent risk as an attacker could weaponize this setup to serve malicious code when the bootstrap script is inadvertently run and potentially steal sensitive data.\n\nWhile some of the affected packages have taken steps to remove the bootstrap script, the slapos.core package still continues to ship the vulnerable code. It's also included in the development and maintenance version of Tornado.\n\nAnother important aspect to consider here is that the bootstrap script is not executed automatically during the package installation and is written in Python 2. This means the script cannot be executed with Python 3 without modifications. But the mere presence of the file leaves an \"unnecessary attack surface\" that attackers can exploit if developers are tricked into running code that triggers the execution of the bootstrap script.\n\nThe threat of a domain takeover is not theoretical. In 2023, it came to light that the npm package fsevents was compromised by a bad actor who seized control of an unclaimed cloud resource hosted at fsevents-binaries.s3-us-west-2.amazonaws[.]com to push malicious executables to users installing certain versions of the package (CVE-2023-45311, CVSS score: 9.8).\n\n\"The issue lies in the programming pattern that includes fetching and executing a payload from a hard-coded domain, which is a pattern commonly observed in malware exhibiting downloader behavior,\" Pezo said. \"The failure to formally decommission the Distribute module allowed vulnerable bootstrap scripts to linger and left unknown numbers of projects exposed to a potential attack.\"\n\nThe disclosure comes as HelixGuard discovered a malicious package in PyPI named \"spellcheckers\" that claims to be a tool for checking spelling errors using OpenAI Vision, but contains malicious code that's designed to connect to an external server and download a next-stage payload, which then executes a remote access trojan (RAT).\n\nThe package, firstuploadedto PyPI on November 15, 2025, by a user namedleo636722, has beendownloaded 955 times. It's no longer available for download.\n\n\"This RAT can receive remote commands and execute attacker-controlled Python code via exec(), enabling full remote control over the victim's host,\" HelixGuardsaid. \"When the user installs and runs the malicious package, the backdoor becomes active, allowing the attacker to remotely control the user's computer.\"",
+        "tags": [
+            {
+                "name": "Python",
+                "confidence": 0.9
+            },
+            {
+                "name": "PyPI",
+                "confidence": 0.95
+            },
+            {
+                "name": "Supply Chain Attack",
+                "confidence": 0.9
+            },
+            {
+                "name": "Domain Takeover",
+                "confidence": 0.9
+            },
+            {
+                "name": "zc.buildout",
+                "confidence": 0.8
+            },
+            {
+                "name": "ReversingLabs",
+                "confidence": 0.7
+            },
+            {
+                "name": "Distribute",
+                "confidence": 0.8
+            },
+            {
+                "name": "Setuptools",
+                "confidence": 0.7
+            },
+            {
+                "name": "Tornado",
+                "confidence": 0.6
+            },
+            {
+                "name": "pypiserver",
+                "confidence": 0.6
+            },
+            {
+                "name": "slapos.core",
+                "confidence": 0.6
+            },
+            {
+                "name": "xlutils",
+                "confidence": 0.6
+            },
+            {
+                "name": "testfixtures",
+                "confidence": 0.6
+            },
+            {
+                "name": "fsevents",
+                "confidence": 0.6
+            },
+            {
+                "name": "CVE-2023-45311",
+                "confidence": 0.6
+            },
+            {
+                "name": "HelixGuard",
+                "confidence": 0.7
+            },
+            {
+                "name": "spellcheckers",
+                "confidence": 0.7
+            },
+            {
+                "name": "Remote Access Trojan (RAT)",
+                "confidence": 0.8
+            },
+            {
+                "name": "OpenAI Vision",
+                "confidence": 0.4
+            },
+            {
+                "name": "Malware",
+                "confidence": 0.8
+            }
+        ],
+        "scraped_at": "2025-11-29T15:38:02.317561"
+    }
+]

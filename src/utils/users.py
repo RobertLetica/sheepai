@@ -90,3 +90,122 @@ def verify_otp(email: str, code: str):
                 
     logging.warning(f"User {email} not found.")
     return None
+
+def validate_token(token: str):
+    """
+    Checks if the token is valid and returns the user object if found.
+    """
+    if not token:
+        return None
+
+    users = load_users()
+    for user in users:
+        if user.get('token') == token:
+            return user
+
+    return None
+
+def update_user_profile(token: str, tags: list, interests_prompt: str):
+    """
+    Updates the user's tags and interests prompt.
+    """
+    users = load_users()
+    user_updated = False
+    updated_user = None
+
+    for user in users:
+        if user.get('token') == token:
+            # Normalize existing tags to dicts if they are strings
+            current_tags = []
+            for t in user.get('tags', []):
+                if isinstance(t, str):
+                    current_tags.append({'name': t, 'confidence': 0.5})
+                else:
+                    current_tags.append(t)
+
+            # Sync tags (Add new, Remove deleted, Preserve existing confidence)
+            # 'tags' is list of strings from frontend (current desired state)
+            desired_tag_names = set(tags)
+
+            # 1. Keep existing tags if they are in desired list
+            new_tag_list = []
+            existing_names = set()
+
+            for t in current_tags:
+                if t['name'] in desired_tag_names:
+                    new_tag_list.append(t)
+                    existing_names.add(t['name'])
+
+            # 2. Add new tags (default confidence)
+            for tag_name in tags:
+                if tag_name not in existing_names:
+                    new_tag_list.append({'name': tag_name, 'confidence': 0.5})
+
+            user['tags'] = new_tag_list
+            user['interests_prompt'] = interests_prompt
+            updated_user = user
+            user_updated = True
+            break
+
+    if user_updated:
+        save_users(users)
+        return updated_user
+    return None
+
+def update_user_interaction(token: str, article_tags: list, action: str):
+    """
+    Updates user tag confidence based on interaction (like/dislike).
+    article_tags: list of dicts [{'name': 'AI', 'confidence': 0.9}, ...]
+    action: 'like' or 'dislike'
+    """
+    users = load_users()
+    user_updated = False
+
+    for user in users:
+        if user.get('token') == token:
+            # Normalize existing tags
+            current_tags = []
+            for t in user.get('tags', []):
+                if isinstance(t, str):
+                    current_tags.append({'name': t, 'confidence': 0.5})
+                else:
+                    current_tags.append(t)
+
+            # Create a map for easy lookup
+            tag_map = {t['name']: t for t in current_tags}
+
+            for art_tag in article_tags:
+                # article_tags might be dicts or strings depending on scraper format
+                # scraper.py uses ai.generate_tags which returns dicts {'name':..., 'confidence':...}
+                tag_name = art_tag.get('name') if isinstance(art_tag, dict) else str(art_tag)
+                tag_conf = art_tag.get('confidence', 0.5) if isinstance(art_tag, dict) else 0.5
+
+                if not tag_name: continue
+
+                if action == 'like':
+                    if tag_name in tag_map:
+                        # Boost confidence
+                        tag_map[tag_name]['confidence'] = min(1.0, tag_map[tag_name]['confidence'] + 0.1)
+                    else:
+                        # Add new tag
+                        new_tag = {'name': tag_name, 'confidence': tag_conf}
+                        tag_map[tag_name] = new_tag
+                        current_tags.append(new_tag)
+
+                elif action == 'dislike':
+                    if tag_name in tag_map:
+                        # Decrease confidence
+                        tag_map[tag_name]['confidence'] = tag_map[tag_name]['confidence'] - 0.2
+                        # Remove if too low
+                        if tag_map[tag_name]['confidence'] <= 0.1:
+                            current_tags = [t for t in current_tags if t['name'] != tag_name]
+                            del tag_map[tag_name]
+
+            user['tags'] = current_tags
+            user_updated = True
+            break
+
+    if user_updated:
+        save_users(users)
+        return True
+    return False
