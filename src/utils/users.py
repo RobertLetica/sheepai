@@ -90,3 +90,17 @@ def verify_otp(email: str, code: str):
                 
     logging.warning(f"User {email} not found.")
     return None
+
+def validate_token(token: str):
+    """
+    Checks if the token is valid and returns the user object if found.
+    """
+    if not token:
+        return None
+
+    users = load_users()
+    for user in users:
+        if user.get('token') == token:
+            return user
+
+    return None
