@@ -36,6 +36,37 @@ nav {
     position: relative;
 }
 
+/* Landing page specific nav centering */
+.landing-page nav {
+    justify-content: center;
+    gap: 3rem;
+    position: relative;
+}
+
+.landing-page .nav-left {
+    position: absolute;
+    left: 0;
+}
+
+.landing-page .user-actions {
+    position: absolute;
+    right: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.landing-page .nav-links {
+    margin: 0 auto;
+    display: flex;
+    gap: 2rem;
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
 .nav-left {
     display: flex;
     align-items: center;

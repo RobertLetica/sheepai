@@ -287,17 +287,29 @@
             showMessage('Code verified successfully!', 'success');
             
             setTimeout(() => {
-                window.location.href = 'feed.html';
+                // Check if user has selected interests before
+                const interestsSelected = localStorage.getItem('interestsSelected');
+                if (interestsSelected === 'true') {
+                    window.location.href = 'feed.html';
+                } else {
+                    window.location.href = 'interests.html';
+                }
             }, 1000);
         }
 
         function authorize() {
             // In a real app, this would trigger an authorization flow
-            // For demo purposes, redirect to feed
+            // For demo purposes, redirect to interests page for first-time users
             showMessage('Authorization successful!', 'success');
             
             setTimeout(() => {
-                window.location.href = 'feed.html';
+                // Check if user has selected interests before
+                const interestsSelected = localStorage.getItem('interestsSelected');
+                if (interestsSelected === 'true') {
+                    window.location.href = 'feed.html';
+                } else {
+                    window.location.href = 'interests.html';
+                }
             }, 1000);
         }
 

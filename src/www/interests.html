@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Interests - newsPro</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="icons.js"></script>
+    <style>
+        .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            vertical-align: middle;
+        }
+        .icon svg {
+            width: 1em;
+            height: 1em;
+        }
+        .interests-container {
+            min-height: 100vh;
+            background: #f5f3e7;
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .interests-box {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+        .interests-header {
+            margin-bottom: 2.5rem;
+        }
+        .interests-header h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #000000;
+            margin-bottom: 0.5rem;
+            font-family: 'Arial Black', Arial, sans-serif;
+            letter-spacing: 1px;
+        }
+        .interests-header p {
+            font-size: 1rem;
+            color: #666666;
+            margin: 0;
+            font-weight: 400;
+        }
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .interest-button {
+            background: #ffffff;
+            border: 1px solid #000000;
+            padding: 1.5rem 1rem;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #000000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Arial Black', Arial, sans-serif;
+            position: relative;
+            min-height: 110px;
+            justify-content: center;
+            box-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+        }
+        .interest-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.15);
+            border-color: #000000;
+        }
+        .interest-button.selected {
+            background: #b22222;
+            color: #ffffff;
+            border-color: #b22222;
+            box-shadow: 4px 4px 0px rgba(178, 34, 34, 0.3);
+        }
+        .interest-button.selected::after {
+            content: '✓';
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.2);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .interest-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: currentColor;
+        }
+        .interest-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+        .interest-text {
+            font-size: 0.85rem;
+            text-align: center;
+            line-height: 1.2;
+        }
+        .interests-footer {
+            margin-top: 2rem;
+        }
+        .next-button {
+            background: #b22222;
+            color: #ffffff;
+            border: 3px solid #b22222;
+            padding: 1rem 4rem;
+            font-size: 1rem;
+            font-weight: 900;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Arial Black', Arial, sans-serif;
+            border-radius: 8px;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+            min-width: 200px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .next-button:hover {
+            background: #8b1a1a;
+            transform: translateY(-2px);
+            box-shadow: 6px 6px 0px rgba(0,0,0,0.3);
+        }
+        .next-button:disabled {
+            background: #cccccc;
+            border-color: #cccccc;
+            color: #666666;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        .skip-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            color: #666666;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .skip-link:hover {
+            color: #000000;
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .interests-header h1 {
+                font-size: 2rem;
+            }
+            .interests-grid {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+                gap: 0.6rem;
+            }
+            .interest-button {
+                padding: 1.25rem 0.75rem;
+                min-height: 100px;
+                border-radius: 14px;
+            }
+            .interest-icon {
+                width: 28px;
+                height: 28px;
+            }
+            .interest-text {
+                font-size: 0.85rem;
+            }
+            .next-button {
+                padding: 0.9rem 3rem;
+                font-size: 0.95rem;
+                min-width: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-left">
+                <div class="logo" data-icon="news">newsPro</div>
+            </div>
+            <div class="user-actions">
+                <a href="feed.html" class="btn btn-secondary">Skip</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="interests-container">
+        <div class="interests-box">
+            <div class="interests-header">
+                <h1>Choose Your Interests</h1>
+                <p>Get personalized news recommendations</p>
+            </div>
+
+            <div class="interests-grid" id="interestsGrid">
+                <button class="interest-button" data-interest="ai-machine-learning" data-icon="ai">
+                    <span class="interest-icon"></span>
+                    <span class="interest-text">AI & Machine Learning</span>
+                </button>
+                <button class="interest-button" data-interest="trading-algorithms" data-icon="trading">
+                    <span class="interest-icon"></span>
+                    <span class="interest-text">Trading & Algorithms</span>
+                </button>
+                <button class="interest-button" data-interest="cryptocurrency" data-icon="crypto">
+                    <span class="interest-icon"></span>
+                    <span class="interest-text">Cryptocurrency</span>
+                </button>
+                <button class="interest-button" data-interest="quantitative-finance" data-icon="finance">
+                    <span class="interest-icon"></span>
+                    <span class="interest-text">Quantitative Finance</span>
+                </button>
+                <button class="interest-button" data-interest="market-analysis" data-icon="market">
+                    <span class="interest-icon"></span>
+                    <span class="interest-text">Market Analysis</span>
+                </button>
+                <button class="interest-button" data-interest="high-frequency-trading" data-icon="hft">
+                    <span class="interest-icon"></span>
+                    <span class="interest-text">High-Frequency Trading</span>
+                </button>
+                <button class="interest-button" data-interest="investment-banking" data-icon="banking">
+                    <span class="interest-icon"></span>
+                    <span class="interest-text">Investment Banking</span>
+                </button>
+                <button class="interest-button" data-interest="venture-capital" data-icon="vc">
+                    <span class="interest-icon"></span>
+                    <span class="interest-text">Venture Capital</span>
+                </button>
+                <button class="interest-button" data-interest="startups" data-icon="startup">
+                    <span class="interest-icon"></span>
+                    <span class="interest-text">Startups</span>
+                </button>
+                <button class="interest-button" data-interest="fintech" data-icon="fintech">
+                    <span class="interest-icon"></span>
+                    <span class="interest-text">FinTech</span>
+                </button>
+                <button class="interest-button" data-interest="blockchain" data-icon="blockchain">
+                    <span class="interest-icon"></span>
+                    <span class="interest-text">Blockchain</span>
+                </button>
+                <button class="interest-button" data-interest="risk-management" data-icon="risk">
+                    <span class="interest-icon"></span>
+                    <span class="interest-text">Risk Management</span>
+                </button>
+                <button class="interest-button" data-interest="portfolio-management" data-icon="portfolio">
+                    <span class="interest-icon"></span>
+                    <span class="interest-text">Portfolio Management</span>
+                </button>
+                <button class="interest-button" data-interest="central-banking" data-icon="centralBank">
+                    <span class="interest-icon"></span>
+                    <span class="interest-text">Central Banking</span>
+                </button>
+                <button class="interest-button" data-interest="global-markets" data-icon="global">
+                    <span class="interest-icon"></span>
+                    <span class="interest-text">Global Markets</span>
+                </button>
+                <button class="interest-button" data-interest="regulatory-compliance" data-icon="compliance">
+                    <span class="interest-icon"></span>
+                    <span class="interest-text">Regulatory Compliance</span>
+                </button>
+                <button class="interest-button" data-interest="mergers-acquisitions" data-icon="ma">
+                    <span class="interest-icon"></span>
+                    <span class="interest-text">M&A</span>
+                </button>
+                <button class="interest-button" data-interest="private-equity" data-icon="privateEquity">
+                    <span class="interest-icon"></span>
+                    <span class="interest-text">Private Equity</span>
+                </button>
+                <button class="interest-button" data-interest="real-estate-finance" data-icon="realEstate">
+                    <span class="interest-icon"></span>
+                    <span class="interest-text">Real Estate Finance</span>
+                </button>
+                <button class="interest-button" data-interest="commodities" data-icon="commodities">
+                    <span class="interest-icon"></span>
+                    <span class="interest-text">Commodities</span>
+                </button>
+                <button class="interest-button" data-interest="derivatives" data-icon="derivatives">
+                    <span class="interest-icon"></span>
+                    <span class="interest-text">Derivatives</span>
+                </button>
+                <button class="interest-button" data-interest="insurance" data-icon="insurance">
+                    <span class="interest-icon"></span>
+                    <span class="interest-text">Insurance</span>
+                </button>
+            </div>
+
+            <div class="interests-footer">
+                <button class="next-button" id="nextButton" disabled onclick="handleNext()">
+                    Next
+                </button>
+                <div>
+                    <a href="feed.html" class="skip-link">Skip for now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedInterests = [];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Replace icons in logo
+            if (typeof Icons !== 'undefined') {
+                document.querySelectorAll('.logo[data-icon]').forEach(el => {
+                    const iconName = el.getAttribute('data-icon');
+                    if (Icons[iconName]) {
+                        el.innerHTML = `<span class="icon">${Icons[iconName]}</span>${el.textContent.trim()}`;
+                    }
+                });
+
+                // Replace icons in interest buttons
+                document.querySelectorAll('.interest-button[data-icon]').forEach(button => {
+                    const iconName = button.getAttribute('data-icon');
+                    const iconContainer = button.querySelector('.interest-icon');
+                    if (Icons[iconName] && iconContainer) {
+                        iconContainer.innerHTML = Icons[iconName];
+                    }
+                });
+            }
+
+            // Handle interest button clicks
+            document.querySelectorAll('.interest-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const interest = this.getAttribute('data-interest');
+                    
+                    if (this.classList.contains('selected')) {
+                        // Deselect
+                        this.classList.remove('selected');
+                        selectedInterests = selectedInterests.filter(i => i !== interest);
+                    } else {
+                        // Select
+                        this.classList.add('selected');
+                        selectedInterests.push(interest);
+                    }
+
+                    // Update next button state
+                    updateNextButton();
+                });
+            });
+        });
+
+        function updateNextButton() {
+            const nextButton = document.getElementById('nextButton');
+            if (selectedInterests.length > 0) {
+                nextButton.disabled = false;
+            } else {
+                nextButton.disabled = true;
+            }
+        }
+
+        function handleNext() {
+            if (selectedInterests.length === 0) return;
+
+            // In a real app, this would save interests to the backend
+            localStorage.setItem('userInterests', JSON.stringify(selectedInterests));
+            localStorage.setItem('interestsSelected', 'true');
+
+            // Redirect to feed
+            window.location.href = 'feed.html';
+        }
+    </script>
+</body>
+</html>
+
