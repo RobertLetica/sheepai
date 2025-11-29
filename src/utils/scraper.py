@@ -2,16 +2,14 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import time
+import threading
 import os
-import logging
 from datetime import datetime
-from utils import ai  # Importing the AI module here
+from utils import ai  # Ensure you run this from src/ as: python -m utils.scraper
 
 # Configuration
 BASE_URL = "https://thehackernews.com/"
-# Adjust path to save in src/ parent directory or local utils depending on preference. 
-# Using relative path to match structure: src/hacker_news_articles.json
-OUTPUT_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "hacker_news_articles.json")
+OUTPUT_FILE = "hacker_news_articles.json"
 CHECK_INTERVAL_MINUTES = 5
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
@@ -23,14 +21,14 @@ def get_soup(url):
         response.raise_for_status()
         return BeautifulSoup(response.content, 'html.parser')
     except requests.RequestException as e:
-        logging.error(f"Error fetching {url}: {e}")
+        print(f"[!] Error fetching {url}: {e}")
         return None
 
 def scrape_article_content(article_url):
     """Visits an individual article page to scrape the full content."""
     soup = get_soup(article_url)
     if not soup:
-        return ""
+        return "Failed to retrieve content."
 
     # Try specific THN content selectors
     content_div = soup.find('div', id='articlebody') or soup.find('div', class_='articlebody')
@@ -42,7 +40,7 @@ def scrape_article_content(article_url):
             return '\n\n'.join([p.get_text(strip=True) for p in paragraphs])
         return content_div.get_text(strip=True)
     
-    return ""
+    return "Content not found."
 
 def load_existing_data():
     """Loads existing JSON to prevent duplicates."""
@@ -60,38 +58,69 @@ def save_data(data):
         with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=4, ensure_ascii=False)
     except IOError as e:
-        logging.error(f"Error saving data: {e}")
+        print(f"[!] Error saving data: {e}")
+
+def process_new_article(article, existing_articles):
+    """
+    Callback function to handle a newly detected article.
+    1. Generates AI tags.
+    2. Appends to list.
+    3. Saves to database.
+    """
+    print(f"[*] New Article Detected: {article['title']}")
+    print("    -> Requesting AI tags...")
+    
+    try:
+        # Call the AI module to generate tags based on title and content
+        tags = ai.generate_tags(article['title'], article['content'])
+        article['tags'] = tags
+        print(f"    -> Successfully added {len(tags)} tags.")
+    except Exception as e:
+        print(f"    [!] AI Tagging Failed: {e}")
+        # We proceed even if AI fails, leaving tags empty
+        
+    # Add to memory (top of the list)
+    existing_articles.insert(0, article)
+    
+    # Save immediately
+    save_data(existing_articles)
+    print("    -> Article saved to database.")
 
 def monitor_feed():
     """
-    Worker function. Checks for new articles periodically.
+    Worker function to run in a thread. 
+    Checks for new articles periodically.
     """
-    logging.info(f"Scraper worker started. Checking every {CHECK_INTERVAL_MINUTES} minutes.")
+    print(f"[*] Worker started. Checking every {CHECK_INTERVAL_MINUTES} minutes.")
     
     while True:
         try:
-            logging.info("Checking feed...")
+            print(f"\n[*] Checking feed at {datetime.now().strftime('%H:%M:%S')}...")
             
+            # 1. Load current database (in case other processes modified it)
             existing_articles = load_existing_data()
             seen_urls = {art['url'] for art in existing_articles}
             
+            # 2. Fetch Homepage
             soup = get_soup(BASE_URL)
             if not soup:
-                logging.warning("Could not fetch homepage. Retrying next cycle.")
+                print("[!] Could not fetch homepage. Retrying next cycle.")
                 time.sleep(CHECK_INTERVAL_MINUTES * 60)
                 continue
 
+            # 3. Find Article Links
             story_links = soup.find_all('a', class_='story-link')
             new_articles_found = 0
 
-            # Iterate through found links
+            # Iterate through found links (latest first usually)
             for story in story_links:
                 article_url = story.get('href')
 
                 if article_url in seen_urls:
-                    continue 
+                    continue # Skip if we already have it
 
-                logging.info(f"New article found! Scraping: {article_url}")
+                # 4. Scrape New Article
+                print(f"[+] Scraping content: {article_url}")
                 
                 # Extract Metadata
                 title_tag = story.find(class_='home-title')
@@ -107,38 +136,46 @@ def monitor_feed():
 
                 # Extract Full Content
                 full_content = scrape_article_content(article_url)
-                
-                # --- AI INTEGRATION HERE ---
-                # Call ai.py to generate tags immediately
-                tags = []
-                if full_content:
-                    logging.info("Generating tags with AI...")
-                    tags = ai.generate_tags(title, full_content)
-                # ---------------------------
 
+                # Construct Object (Tags empty initially)
                 new_article = {
                     "title": title,
                     "url": article_url,
                     "thumbnail": thumbnail,
                     "description": description,
                     "content": full_content,
-                    "tags": tags,
+                    "tags": [],
                     "scraped_at": datetime.now().isoformat()
                 }
 
-                existing_articles.insert(0, new_article)
-                save_data(existing_articles)
+                # 5. Hand off to the callback for AI processing and Saving
+                process_new_article(new_article, existing_articles)
+                
                 seen_urls.add(article_url)
                 new_articles_found += 1
                 
+                # Politeness delay between individual article scrapes
                 time.sleep(2)
 
             if new_articles_found == 0:
-                logging.info("No new articles found.")
-            else:
-                logging.info(f"Successfully scraped {new_articles_found} new articles.")
+                print("[-] No new articles found.")
 
         except Exception as e:
-            logging.error(f"Critical error in scraper thread: {e}")
+            print(f"[!] Critical error in worker thread: {e}")
 
+        # Wait for the next cycle
         time.sleep(CHECK_INTERVAL_MINUTES * 60)
+
+if __name__ == "__main__":
+    # Create the worker thread
+    # daemon=True means the thread will die when the main program exits
+    worker_thread = threading.Thread(target=monitor_feed, daemon=True)
+    worker_thread.start()
+
+    try:
+        # Keep the main program alive to let the daemon thread work
+        print("Main program running. Press Ctrl+C to stop.")
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        print("\nStopping worker and exiting...")

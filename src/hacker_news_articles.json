@@ -16,114 +16,62 @@
             },
             {
                 "name": "AI SOC Platforms",
-                "confidence": 0.95
+                "confidence": 0.9
             },
             {
                 "name": "Phishing Attack",
-                "confidence": 0.8
-            },
-            {
-                "name": "Alert Lifecycle",
-                "confidence": 0.8
-            },
-            {
-                "name": "Security Investment Asymmetry",
-                "confidence": 0.9
-            },
-            {
-                "name": "Balanced Security Investment",
-                "confidence": 0.9
-            },
-            {
-                "name": "False Positives",
                 "confidence": 0.85
             },
             {
-                "name": "Alert Triage",
+                "name": "Radiant Security",
                 "confidence": 0.8
             },
             {
-                "name": "Radiant Security",
-                "confidence": 0.9
+                "name": "False Positives",
+                "confidence": 0.75
             },
             {
-                "name": "Email Security Tools",
+                "name": "Alert Lifecycle",
                 "confidence": 0.7
-            },
-            {
-                "name": "Threats",
-                "confidence": 0.6
             },
             {
                 "name": "Security Gaps",
                 "confidence": 0.7
             },
             {
-                "name": "SOC Analysts",
+                "name": "Email Security Tools",
                 "confidence": 0.7
-            },
-            {
-                "name": "Contextual Reasoning",
-                "confidence": 0.7
-            },
-            {
-                "name": "Outsourcing",
-                "confidence": 0.6
-            },
-            {
-                "name": "MSSPs (Managed Security Service Providers)",
-                "confidence": 0.5
-            },
-            {
-                "name": "MDRs (Managed Detection and Response)",
-                "confidence": 0.5
-            },
-            {
-                "name": "CISOs (Chief Information Security Officers)",
-                "confidence": 0.5
-            },
-            {
-                "name": "Investigative Work",
-                "confidence": 0.6
             },
             {
                 "name": "Burnout",
+                "confidence": 0.65
+            },
+            {
+                "name": "MSSPs (Managed Security Service Providers)",
                 "confidence": 0.6
+            },
+            {
+                "name": "MDRs (Managed Detection and Response)",
+                "confidence": 0.6
+            },
+            {
+                "name": "Agentic AI",
+                "confidence": 0.6
+            },
+            {
+                "name": "CISO",
+                "confidence": 0.5
+            },
+            {
+                "name": "ROI (Return on Investment)",
+                "confidence": 0.5
             },
             {
                 "name": "24/7 Coverage",
                 "confidence": 0.5
-            },
-            {
-                "name": "High-fidelity Incidents",
-                "confidence": 0.6
-            },
-            {
-                "name": "Agentic AI SOC Platform",
-                "confidence": 0.7
-            },
-            {
-                "name": "Underfunded SOCs",
-                "confidence": 0.7
-            },
-            {
-                "name": "Noise (Security Alerts)",
-                "confidence": 0.6
-            },
-            {
-                "name": "Enterprise-grade SOC capabilities",
-                "confidence": 0.6
-            },
-            {
-                "name": "Security Leaders",
-                "confidence": 0.5
-            },
-            {
-                "name": "C-suite Executives",
-                "confidence": 0.4
             }
         ],
-        "scraped_at": "2025-11-29T11:34:02.597621"
+        "scraped_at": "2025-11-29T11:45:43.809212"
     },
     {
         "title": "Qilin Ransomware Turns South Korean MSP Breach Into 28-Victim 'Korean Leaks' Data Heist",
@@ -133,31 +81,43 @@
         "content": "South Korea's financial sector has been targeted by what has been described as a sophisticated supply chain attack that led to the deployment of Qilin ransomware.\n\n\"This operation combined the capabilities of a major Ransomware-as-a-Service (RaaS) group, Qilin, with potential involvement from North Korean state-affiliated actors (Moonstone Sleet), leveraging Managed Service Provider (MSP) compromise as the initial access vector,\" Bitdefendersaidin a report shared with The Hacker News.\n\nQilin has emerged as one of the most active ransomware operations this year, with the RaaS crew exhibiting \"explosive growth\" in the month of October 2025 byclaimingover180 victims. The group is responsible for 29% of all ransomware attacks, per data fromNCC Group.\n\nThe Romanian cybersecurity company said it decided to dig deeper after uncovering anunusual spikein ransomware victims from South Korea in September 2025, when it became the second-most affected country by ransomware after the U.S., with 25 cases, a significant jump from an average of about 2 victims per month between September 2024 and August 2025.\n\nFurther analysis found that all 25 cases were attributed exclusively to the Qilin ransomware group, with 24 of the victims in the financial sector. The campaign was given the monikerKorean Leaksby the attackers themselves.\n\nWhile Qilin's origins are likely Russian, the threat actors self-identify as \"political activists\" and \"patriots of the country.\" It follows a traditional affiliate model, which involves recruiting a diverse group of hackers to carry out the attacks in return for taking a small share of up to 20% of the illicit payments.\n\nOne particular affiliate of note is a North Korean state-sponsored actor tracked asMoonstone Sleet, which, according to Microsoft, has deployed a custom ransomware variant called FakePenny in an attack targeting an unnamed defense technology company in April 2024.\n\nThen, earlier this February, a significant pivot occurred when the adversary wasobserveddelivering Qilin ransomware at a limited number of organizations. While it's not exactly clear if the latest set of attacks was indeed carried out by the hacking group, the targeting of South Korean businesses aligns with its strategic objectives.\n\nKorean Leaks took place over three publication waves, resulting in the theft of over 1 million files and 2 TB of data from 28 victims. Victim posts associated with four other entities were removed from the data leak site (DLS), suggesting that they may have been taken down either following ransom negotiations or a unique internal policy, Bitdefender said.\n\nThe three waves are as follows -\n\nAn unusual aspect about these leaks is the departure from established tactics of exerting pressure on compromised organizations, instead leaning heavily on propaganda and political language.\n\n\"The entire campaign was framed as a public-service effort to expose systemic corruption, exemplified by the threats to release files that could be 'evidence of stock market manipulation' and names of 'well-known politicians and businessmen in Korea,'\" Bitdefender said of the first wave of the campaign.\n\nSubsequent waves went on to escalate the threat a notch higher, claiming that the leak of the data could pose a severe risk to the Korean financial market. The actors also called on South Korean authorities to investigate the case, citing stringent data protection laws.\n\nA further shift in messaging was observed in the third wave, where the group initially continued the same theme of a national financial crisis resulting from the release of stolen information, but then switched to a language that \"more closely resembled Qilin's typical, financially motivated extortion messages.\"\n\nGiven that Qilinboastsof an \"in-house team of journalists\" to help affiliates with writing texts for blog posts and help apply pressure during negotiations, it's assessed that the group's core members were behind the publication of the DLS text.\n\n\"The posts contain several of the core operator's signature grammatical inconsistencies,\" Bitdefender said. \"However, this control over the final draft does not mean the affiliate was excluded from having a critical say in the key messaging or overall direction of the content.\"\n\nTo pull off these attacks, the Qilin affiliate is said to have breached a single upstream managed service provider (MSP), leveraging the access to compromise several victims at once. On September 23, 2025, the Korea JoongAng Dailyreportedthat more than 20 asset management companies in the country were infected with ransomware following the compromise of GJTec.\n\nTo mitigate these risks, it's essential that organizations enforce Multi-Factor Authentication (MFA), apply the Principle of Least Privilege (PoLP) to restrict access, segment critical systems and sensitive data, and take proactive steps to reduce attack surfaces.\n\n\"The MSP compromise that triggered the 'Korean Leaks' operation highlights a critical blind spot in cybersecurity discussions,\" Bitdefender said. \"Exploiting a vendor, contractor, or MSP that has access to other businesses is a more prevalent and practical route that RaaS groups seeking clustered victims can take.\"",
         "tags": [
             {
-                "name": "Qilin ransomware",
+                "name": "Qilin Ransomware",
                 "confidence": 1.0
             },
             {
-                "name": "South Korea",
+                "name": "Ransomware",
                 "confidence": 0.95
             },
             {
-                "name": "MSP compromise",
+                "name": "South Korea",
+                "confidence": 1.0
+            },
+            {
+                "name": "Managed Service Provider (MSP) Compromise",
+                "confidence": 0.95
+            },
+            {
+                "name": "Supply Chain Attack",
                 "confidence": 0.9
             },
             {
-                "name": "Korean Leaks",
+                "name": "Financial Sector",
                 "confidence": 0.9
             },
             {
-                "name": "Supply chain attack",
+                "name": "Data Theft",
+                "confidence": 0.9
+            },
+            {
+                "name": "Data Leak",
                 "confidence": 0.85
             },
             {
-                "name": "Financial sector",
-                "confidence": 0.8
+                "name": "Ransomware-as-a-Service (RaaS)",
+                "confidence": 0.85
             },
             {
-                "name": "Ransomware-as-a-Service (RaaS)",
+                "name": "Korean Leaks",
                 "confidence": 0.8
             },
             {
@@ -165,7 +125,11 @@
                 "confidence": 0.75
             },
             {
-                "name": "North Korean state-affiliated actors",
+                "name": "North Korean State-Sponsored Actors",
+                "confidence": 0.7
+            },
+            {
+                "name": "Extortion",
                 "confidence": 0.7
             },
             {
@@ -173,27 +137,19 @@
                 "confidence": 0.7
             },
             {
-                "name": "Data Heist",
-                "confidence": 0.7
+                "name": "Political Activism",
+                "confidence": 0.65
             },
             {
                 "name": "Data Leak Site (DLS)",
-                "confidence": 0.65
-            },
-            {
-                "name": "Political language",
-                "confidence": 0.65
-            },
-            {
-                "name": "GJTec",
                 "confidence": 0.6
             },
             {
-                "name": "Extortion",
+                "name": "Bitdefender",
                 "confidence": 0.6
             },
             {
-                "name": "Affiliate model",
+                "name": "Asset Management Companies",
                 "confidence": 0.6
             },
             {
@@ -205,39 +161,27 @@
                 "confidence": 0.5
             },
             {
-                "name": "System segmentation",
-                "confidence": 0.45
+                "name": "FakePenny",
+                "confidence": 0.5
             },
             {
-                "name": "Attack surface reduction",
-                "confidence": 0.45
+                "name": "GJTec",
+                "confidence": 0.5
             },
             {
-                "name": "FakePenny ransomware",
+                "name": "NCC Group",
                 "confidence": 0.4
             },
             {
-                "name": "Data protection laws",
+                "name": "Microsoft",
                 "confidence": 0.4
             },
             {
-                "name": "Managed Service Provider (MSP)",
+                "name": "Defense Technology Company",
                 "confidence": 0.4
-            },
-            {
-                "name": "Initial access vector",
-                "confidence": 0.4
-            },
-            {
-                "name": "Russia",
-                "confidence": 0.3
-            },
-            {
-                "name": "Bitdefender",
-                "confidence": 0.3
             }
         ],
-        "scraped_at": "2025-11-29T11:33:37.617984"
+        "scraped_at": "2025-11-29T11:45:30.992127"
     },
     {
         "title": "Shai-Hulud v2 Spreads From npm to Maven, as Campaign Exposes Thousands of Secrets",
@@ -247,27 +191,27 @@
         "content": "The second wave of theShai-Hulud supply chain attackhas spilled over to the Maven ecosystem after compromising more than 830 packages in the npm registry.\n\nThe Socket Research Team said it identified a Maven Central package named org.mvnpm:posthog-node:4.18.1 that embeds the same two components associated with Sha1-Hulud: the \"setup_bun.js\" loader and the main payload \"bun_environment.js.\" The company told The Hacker News that org.mvnpm:posthog-node:4.18.1 was the only Java package identified so far.\n\n\"This means the PostHog project has compromised releases in both the JavaScript/npm and Java/Maven ecosystems, driven by the same Shai Hulud v2 payload,\" the cybersecurity companysaidin a Tuesday update.\n\nIt's worth noting that the Maven Central package is not published by PostHog itself. Rather, the \"org.mvnpm\"coordinatesare generated via an automatedmvnpm processthat rebuilds npm packages as Maven artifacts. The Maven Central said they are working to implement extra protections to prevent already known compromised npm components from being rebundled. As of November 25, 2025, 22:44 UTC, all mirrored copies have been purged.\n\nThe development comes as the \"second coming\" of the supply chain incident hastargeteddevelopers globally with an aim to steal sensitive data like API keys, cloud credentials, and npm and GitHub tokens, and facilitate deeper supply chain compromise in a worm-like fashion. The latest iteration has also evolved to be more stealthy, aggressive, scalable, and destructive.\n\nBesides borrowing the overall infection chain of the initial September variant, theattackallows threat actors to gain unauthorized access to npm maintainer accounts and publish trojanized versions of their packages. When unsuspecting developers download and run these libraries, the embedded malicious code backdoors their own machines and scans for secrets and exfiltrates them to GitHub repositories using the stolen tokens.\n\nTheattackaccomplishes this by injectingtwo rogue workflows, one of which registers the victim machine as a self-hosted runner and enables arbitrary command execution whenever a GitHub Discussion is opened. A second workflow is designed to systematically harvest all secrets. Over 28,000 repositories have been affected by the incident.\n\n\"This version significantly enhances stealth by utilizing the Bun runtime to hide its core logic and increases its potential scale by raising the infection cap from 20 to 100 packages,\" Cycode's Ronen Slavin and Roni Kuznickisaid. \"It also uses a new evasion technique, exfiltrating stolen data to randomly named public GitHub repositories instead of a single, hard-coded one.\"\n\nThe attacks illustrate how trivial it is for attackers to take advantage of trusted software distribution pathways to push malicious versions at scale and compromise thousands of downstream developers. What's more, the self-replication nature of the malware means a single infected account is enough to amplify the blast radius of the attack and turn it into awidespread outbreakin a short span of time.\n\nFurther analysis by Aikido hasuncoveredthat the threat actors exploited vulnerabilities, specifically focusing on CI misconfigurations in pull_request_target and workflow_run workflows, in existing GitHub Actions workflows to pull off the attack and compromise projects associated with AsyncAPI, PostHog, and Postman.\n\nThe vulnerability \"used the risky pull_request_target trigger in a way that allowed code supplied by any new pull request to be executed during the CI run,\" security researcher Ilyas Makari said. \"A single misconfiguration can turn a repository into a patient zero for a fast-spreading attack, giving an adversary the ability to push malicious code through automated pipelines you rely on every day.\"\n\nIt's assessed that the activity is the continuation of a broader set of attacks targeting the ecosystem that commenced with the August 2025S1ngularity campaignimpacting several Nx packages on npm.\n\n\"As a new and significantly more aggressive wave of npm supply chain malware, Shai-Hulud 2 combines stealthy execution, credential breadth, and fallback destructive behavior, making it one of the most impactful supply chain attacks of the year,\" Nadav Sharkazy, a product manager atApiiro, said in a statement.\n\n\"This malware shows how a single compromise in a popular library can cascade into thousands of downstream applications by trojanizing legitimate packages during installation.\"\n\nData compiled byGitGuardian,OX Security, and Wiz shows that the campaign has leaked hundreds of GitHub access tokens and credentials associated with Amazon Web Services (AWS), Google Cloud, and Microsoft Azure. More than 5,000 files were uploaded to GitHub with the exfiltrated secrets. GitGuardian's analysis of 4,645 GitHub repositories has identified 11,858 unique secrets, out of which 2,298 remained valid and publicly exposed as of November 24, 2025.\n\nUsers areadvisedto rotate all tokens and keys, audit all dependencies, remove compromised versions, reinstall clean packages, and harden developer and CI/CD environments with least-privilege access, secret scanning, and automated policy enforcement.\n\n\"Sha1-Hulud is another reminder that the modern software supply chain is still way too easy to break,\" Dan Lorenc, co-founder and CEO of Chainguard, said. \"A single compromised maintainer and a malicious install script is all it takes to ripple through thousands of downstream projects in a matter of hours.\"\n\n\"The techniques attackers are using are constantly evolving. Most of these attacks don't rely on zero-days. They exploit the gaps in how open source software is published, packaged, and pulled into production systems. The only real defense is changing the way software gets built and consumed.\"",
         "tags": [
             {
-                "name": "Shai-Hulud v2",
-                "confidence": 1.0
+                "name": "Shai-Hulud",
+                "confidence": 0.95
+            },
+            {
+                "name": "Supply Chain Attack",
+                "confidence": 0.95
+            },
+            {
+                "name": "Software Supply Chain",
+                "confidence": 0.95
             },
             {
                 "name": "npm",
-                "confidence": 1.0
+                "confidence": 0.9
             },
             {
                 "name": "Maven",
                 "confidence": 0.9
             },
             {
-                "name": "Software Supply Chain Attack",
-                "confidence": 1.0
-            },
-            {
                 "name": "Secrets Exfiltration",
-                "confidence": 1.0
-            },
-            {
-                "name": "GitHub",
                 "confidence": 0.9
             },
             {
@@ -275,35 +219,31 @@
                 "confidence": 0.9
             },
             {
-                "name": "CI/CD Security",
+                "name": "CI Misconfigurations",
+                "confidence": 0.9
+            },
+            {
+                "name": "pull_request_target",
                 "confidence": 0.9
             },
             {
                 "name": "API Keys",
-                "confidence": 0.9
+                "confidence": 0.8
             },
             {
                 "name": "Cloud Credentials",
-                "confidence": 0.9
+                "confidence": 0.8
             },
             {
                 "name": "npm Tokens",
-                "confidence": 0.9
+                "confidence": 0.8
             },
             {
                 "name": "GitHub Tokens",
-                "confidence": 0.9
-            },
-            {
-                "name": "Bun Runtime",
                 "confidence": 0.8
             },
             {
-                "name": "CI Misconfigurations",
-                "confidence": 0.8
-            },
-            {
-                "name": "Trojanized Packages",
+                "name": "Bun runtime",
                 "confidence": 0.8
             },
             {
@@ -311,115 +251,219 @@
                 "confidence": 0.8
             },
             {
-                "name": "pull_request_target",
-                "confidence": 0.7
+                "name": "Arbitrary Command Execution",
+                "confidence": 0.8
             },
             {
-                "name": "Amazon Web Services (AWS)",
-                "confidence": 0.7
+                "name": "Trojanized Packages",
+                "confidence": 0.8
             },
             {
-                "name": "Google Cloud",
-                "confidence": 0.7
+                "name": "Compromised Maintainer",
+                "confidence": 0.8
             },
             {
-                "name": "Microsoft Azure",
-                "confidence": 0.7
+                "name": "Malicious Install Script",
+                "confidence": 0.8
             },
             {
-                "name": "Secret Scanning",
-                "confidence": 0.7
+                "name": "Self-replication",
+                "confidence": 0.8
             },
             {
-                "name": "JavaScript Ecosystem",
-                "confidence": 0.6
-            },
-            {
-                "name": "Java Ecosystem",
-                "confidence": 0.6
-            },
-            {
-                "name": "workflow_run",
-                "confidence": 0.6
+                "name": "CI/CD Environments",
+                "confidence": 0.8
             },
             {
                 "name": "Least-Privilege Access",
-                "confidence": 0.6
+                "confidence": 0.8
             },
             {
-                "name": "S1ngularity Campaign",
-                "confidence": 0.5
+                "name": "Secret Scanning",
+                "confidence": 0.8
             },
             {
-                "name": "PostHog",
-                "confidence": 0.5
+                "name": "Amazon Web Services (AWS)",
+                "confidence": 0.8
             },
             {
-                "name": "mvnpm process",
-                "confidence": 0.5
+                "name": "Google Cloud",
+                "confidence": 0.8
             },
             {
-                "name": "Open Source Software",
-                "confidence": 0.5
+                "name": "Microsoft Azure",
+                "confidence": 0.8
             },
             {
-                "name": "Developers",
-                "confidence": 0.5
+                "name": "Rogue Workflows",
+                "confidence": 0.8
             },
             {
-                "name": "Rotate Tokens",
-                "confidence": 0.5
+                "name": "GitHub Repositories",
+                "confidence": 0.8
             },
             {
-                "name": "Audit Dependencies",
-                "confidence": 0.5
+                "name": "Package Compromise",
+                "confidence": 0.8
             },
             {
-                "name": "Automated Policy Enforcement",
-                "confidence": 0.5
+                "name": "workflow_run",
+                "confidence": 0.8
             },
             {
                 "name": "Socket Research Team",
-                "confidence": 0.4
+                "confidence": 0.7
             },
             {
-                "name": "Cycode",
-                "confidence": 0.4
+                "name": "PostHog",
+                "confidence": 0.7
             },
             {
-                "name": "Aikido",
-                "confidence": 0.4
+                "name": "Java",
+                "confidence": 0.7
             },
             {
-                "name": "GitGuardian",
-                "confidence": 0.4
+                "name": "JavaScript",
+                "confidence": 0.7
             },
             {
-                "name": "OX Security",
-                "confidence": 0.4
+                "name": "Maven Central",
+                "confidence": 0.7
             },
             {
-                "name": "Wiz",
-                "confidence": 0.4
+                "name": "S1ngularity",
+                "confidence": 0.7
             },
             {
                 "name": "AsyncAPI",
-                "confidence": 0.4
+                "confidence": 0.7
             },
             {
                 "name": "Postman",
-                "confidence": 0.4
+                "confidence": 0.7
+            },
+            {
+                "name": "Cycode",
+                "confidence": 0.7
+            },
+            {
+                "name": "Aikido",
+                "confidence": 0.7
             },
             {
                 "name": "Apiiro",
-                "confidence": 0.3
+                "confidence": 0.7
+            },
+            {
+                "name": "GitGuardian",
+                "confidence": 0.7
+            },
+            {
+                "name": "OX Security",
+                "confidence": 0.7
+            },
+            {
+                "name": "Wiz",
+                "confidence": 0.7
             },
             {
                 "name": "Chainguard",
+                "confidence": 0.7
+            },
+            {
+                "name": "Open Source Software",
+                "confidence": 0.7
+            },
+            {
+                "name": "Automated Policy Enforcement",
+                "confidence": 0.7
+            },
+            {
+                "name": "Token Rotation",
+                "confidence": 0.7
+            },
+            {
+                "name": "Dependency Auditing",
+                "confidence": 0.7
+            },
+            {
+                "name": "Unauthorized Access",
+                "confidence": 0.7
+            },
+            {
+                "name": "npm Maintainer Accounts",
+                "confidence": 0.7
+            },
+            {
+                "name": "Backdoor",
+                "confidence": 0.7
+            },
+            {
+                "name": "Evasion Technique",
+                "confidence": 0.7
+            },
+            {
+                "name": "Software Distribution Pathways",
+                "confidence": 0.7
+            },
+            {
+                "name": "Library Compromise",
+                "confidence": 0.7
+            },
+            {
+                "name": "Automated Pipelines",
+                "confidence": 0.7
+            },
+            {
+                "name": "mvnpm",
+                "confidence": 0.6
+            },
+            {
+                "name": "org.mvnpm:posthog-node:4.18.1",
+                "confidence": 0.6
+            },
+            {
+                "name": "GitHub Discussion",
+                "confidence": 0.6
+            },
+            {
+                "name": "Destructive Behavior",
+                "confidence": 0.6
+            },
+            {
+                "name": "Worm-like fashion",
+                "confidence": 0.6
+            },
+            {
+                "name": "CI Run",
+                "confidence": 0.6
+            },
+            {
+                "name": "setup_bun.js",
+                "confidence": 0.5
+            },
+            {
+                "name": "bun_environment.js",
+                "confidence": 0.5
+            },
+            {
+                "name": "Nx packages",
+                "confidence": 0.5
+            },
+            {
+                "name": "Package Purging",
+                "confidence": 0.4
+            },
+            {
+                "name": "Zero-days",
                 "confidence": 0.3
+            },
+            {
+                "name": "The Hacker News",
+                "confidence": 0.2
             }
         ],
-        "scraped_at": "2025-11-29T11:33:23.506982"
+        "scraped_at": "2025-11-29T11:44:58.868489"
     },
     {
         "title": "Gainsight Expands Impacted Customer List Following Salesforce Security Alert",
@@ -430,115 +474,43 @@
         "tags": [
             {
                 "name": "Gainsight",
-                "confidence": 0.9
+                "confidence": 1.0
             },
             {
                 "name": "Salesforce",
+                "confidence": 1.0
+            },
+            {
+                "name": "Data breach",
+                "confidence": 0.95
+            },
+            {
+                "name": "Security alert",
+                "confidence": 0.85
+            },
+            {
+                "name": "Customer data",
                 "confidence": 0.9
             },
             {
-                "name": "Security Alert",
-                "confidence": 0.9
-            },
-            {
-                "name": "Data Breach",
-                "confidence": 0.9
-            },
-            {
-                "name": "Customer Data",
+                "name": "Suspicious activity",
                 "confidence": 0.8
+            },
+            {
+                "name": "Access tokens",
+                "confidence": 0.85
+            },
+            {
+                "name": "Refresh tokens",
+                "confidence": 0.85
             },
             {
                 "name": "ShinyHunters",
-                "confidence": 0.9
+                "confidence": 0.95
             },
             {
                 "name": "Bling Libra",
-                "confidence": 0.8
-            },
-            {
-                "name": "Access Tokens",
-                "confidence": 0.9
-            },
-            {
-                "name": "Refresh Tokens",
-                "confidence": 0.9
-            },
-            {
-                "name": "OAuth clients",
-                "confidence": 0.8
-            },
-            {
-                "name": "Indicators of Compromise (IoCs)",
-                "confidence": 0.9
-            },
-            {
-                "name": "Unauthorized Access",
-                "confidence": 0.9
-            },
-            {
-                "name": "Reconnaissance",
-                "confidence": 0.8
-            },
-            {
-                "name": "Ransomware-as-a-Service (RaaS)",
-                "confidence": 0.95
-            },
-            {
-                "name": "ShinySp1d3r",
-                "confidence": 0.95
-            },
-            {
-                "name": "Sh1nySp1d3r",
-                "confidence": 0.9
-            },
-            {
-                "name": "Scattered Spider",
-                "confidence": 0.9
-            },
-            {
-                "name": "LAPSUS$",
-                "confidence": 0.9
-            },
-            {
-                "name": "SLSH",
-                "confidence": 0.9
-            },
-            {
-                "name": "Cyberattacks",
-                "confidence": 0.9
-            },
-            {
-                "name": "Encryptor",
-                "confidence": 0.8
-            },
-            {
-                "name": "File Encryption",
-                "confidence": 0.8
-            },
-            {
-                "name": "HellCat ransomware",
-                "confidence": 0.8
-            },
-            {
-                "name": "Extortion-as-a-Service (EaaS)",
-                "confidence": 0.8
-            },
-            {
-                "name": "Insider Recruitment",
-                "confidence": 0.8
-            },
-            {
-                "name": "Security",
-                "confidence": 0.9
-            },
-            {
-                "name": "Intrusion Operations",
-                "confidence": 0.8
-            },
-            {
-                "name": "Suspicious Activity",
-                "confidence": 0.7
+                "confidence": 0.6
             },
             {
                 "name": "Zendesk",
@@ -550,38 +522,126 @@
             },
             {
                 "name": "HubSpot",
-                "confidence": 0.5
+                "confidence": 0.6
             },
             {
                 "name": "Google",
-                "confidence": 0.5
+                "confidence": 0.6
             },
             {
-                "name": "Integrations",
+                "name": "OAuth clients",
                 "confidence": 0.7
             },
             {
-                "name": "Investigation",
+                "name": "Integrations",
                 "confidence": 0.6
             },
             {
-                "name": "User Agent String",
-                "confidence": 0.6
+                "name": "Indicators of compromise (IoCs)",
+                "confidence": 0.9
             },
             {
-                "name": "Salesloft Drift activity",
-                "confidence": 0.5
+                "name": "User agent string",
+                "confidence": 0.8
+            },
+            {
+                "name": "Salesforce-Multi-Org-Fetcher/1.0",
+                "confidence": 0.8
             },
             {
                 "name": "IP address",
+                "confidence": 0.8
+            },
+            {
+                "name": "3.239.45[.]43",
+                "confidence": 0.8
+            },
+            {
+                "name": "Reconnaissance",
+                "confidence": 0.85
+            },
+            {
+                "name": "Unauthorized access",
+                "confidence": 0.9
+            },
+            {
+                "name": "Security steps",
+                "confidence": 0.75
+            },
+            {
+                "name": "Ransomware-as-a-service (RaaS)",
+                "confidence": 0.95
+            },
+            {
+                "name": "ShinySp1d3r",
+                "confidence": 0.95
+            },
+            {
+                "name": "Sh1nySp1d3r",
+                "confidence": 0.7
+            },
+            {
+                "name": "Scattered Spider",
+                "confidence": 0.9
+            },
+            {
+                "name": "LAPSUS$",
+                "confidence": 0.9
+            },
+            {
+                "name": "SLSH",
+                "confidence": 0.95
+            },
+            {
+                "name": "Cyberattacks",
+                "confidence": 0.8
+            },
+            {
+                "name": "Encryptor",
+                "confidence": 0.8
+            },
+            {
+                "name": "File encryption",
+                "confidence": 0.85
+            },
+            {
+                "name": "Network shares",
+                "confidence": 0.8
+            },
+            {
+                "name": "Ransomware propagation",
+                "confidence": 0.75
+            },
+            {
+                "name": "Rey",
+                "confidence": 0.9
+            },
+            {
+                "name": "HellCat ransomware",
+                "confidence": 0.85
+            },
+            {
+                "name": "Saif Al-Din Khader",
+                "confidence": 0.85
+            },
+            {
+                "name": "Artificial intelligence (AI) tools",
+                "confidence": 0.8
+            },
+            {
+                "name": "Law enforcement",
                 "confidence": 0.6
             },
             {
-                "name": "Preventative Steps",
-                "confidence": 0.6
+                "name": "Extortion-as-a-service (EaaS)",
+                "confidence": 0.85
             },
             {
-                "name": "EtwEventWrite function",
+                "name": "Insider recruitment",
+                "confidence": 0.9
+            },
+            {
+                "name": "Salesloft Drift activity",
                 "confidence": 0.5
             },
             {
@@ -589,39 +649,15 @@
                 "confidence": 0.5
             },
             {
-                "name": "Network Shares",
-                "confidence": 0.6
+                "name": "EtwEventWrite function",
+                "confidence": 0.4
             },
             {
-                "name": "Propagation",
-                "confidence": 0.6
-            },
-            {
-                "name": "Rey",
-                "confidence": 0.6
-            },
-            {
-                "name": "Artificial Intelligence (AI) tools",
-                "confidence": 0.6
-            },
-            {
-                "name": "Ransomware",
-                "confidence": 0.95
-            },
-            {
-                "name": "Palo Alto Networks",
-                "confidence": 0.2
-            },
-            {
-                "name": "Brian Krebs",
-                "confidence": 0.2
-            },
-            {
-                "name": "BreachForums",
-                "confidence": 0.3
+                "name": "Telegram channel",
+                "confidence": 0.5
             }
         ],
-        "scraped_at": "2025-11-29T11:33:04.249655"
+        "scraped_at": "2025-11-29T11:44:34.169631"
     },
     {
         "title": "ThreatsDay Bulletin: AI Malware, Voice Bot Flaws, Crypto Laundering, IoT Attacks — and 20 More Stories",
@@ -632,495 +668,383 @@
         "tags": [
             {
                 "name": "AI Malware",
-                "confidence": 0.9
+                "confidence": 0.95
             },
             {
                 "name": "Voice Bot Flaws",
-                "confidence": 0.9
+                "confidence": 0.95
             },
             {
                 "name": "Crypto Laundering",
-                "confidence": 1.0
+                "confidence": 0.95
             },
             {
                 "name": "IoT Attacks",
-                "confidence": 1.0
+                "confidence": 0.95
             },
             {
                 "name": "Cybercrime",
-                "confidence": 1.0
-            },
-            {
-                "name": "Scams",
-                "confidence": 0.8
-            },
-            {
-                "name": "Data Theft",
-                "confidence": 0.7
-            },
-            {
-                "name": "Digital Defenses",
-                "confidence": 0.6
-            },
-            {
-                "name": "Mirai Botnet",
-                "confidence": 0.8
-            },
-            {
-                "name": "ShadowV2 Botnet",
                 "confidence": 0.9
-            },
-            {
-                "name": "Botnet",
-                "confidence": 0.9
-            },
-            {
-                "name": "DDoS Attacks",
-                "confidence": 0.9
-            },
-            {
-                "name": "RondoDox Botnet",
-                "confidence": 0.7
-            },
-            {
-                "name": "Anti-spoofing",
-                "confidence": 0.8
-            },
-            {
-                "name": "Online Scams",
-                "confidence": 0.8
-            },
-            {
-                "name": "Tor Network",
-                "confidence": 0.9
-            },
-            {
-                "name": "Anonymity Network",
-                "confidence": 0.8
-            },
-            {
-                "name": "Encryption",
-                "confidence": 0.8
-            },
-            {
-                "name": "Forward Secrecy",
-                "confidence": 0.7
             },
             {
                 "name": "Phishing",
-                "confidence": 1.0
-            },
-            {
-                "name": "Spam",
-                "confidence": 0.5
-            },
-            {
-                "name": "QuietEnvelope Toolset",
                 "confidence": 0.9
+            },
+            {
+                "name": "Smishing",
+                "confidence": 0.85
+            },
+            {
+                "name": "Botnets",
+                "confidence": 0.85
+            },
+            {
+                "name": "Malware",
+                "confidence": 0.85
+            },
+            {
+                "name": "Stealers",
+                "confidence": 0.85
             },
             {
                 "name": "Backdoors",
+                "confidence": 0.8
+            },
+            {
+                "name": "Remote Access Trojans (RATs)",
+                "confidence": 0.8
+            },
+            {
+                "name": "Espionage",
+                "confidence": 0.85
+            },
+            {
+                "name": "State-sponsored threat actors",
+                "confidence": 0.85
+            },
+            {
+                "name": "Data theft",
+                "confidence": 0.8
+            },
+            {
+                "name": "Credentials",
+                "confidence": 0.85
+            },
+            {
+                "name": "Cryptocurrency",
+                "confidence": 0.85
+            },
+            {
+                "name": "AI (Artificial Intelligence)",
                 "confidence": 0.9
             },
             {
-                "name": "Remote Access",
-                "confidence": 0.8
-            },
-            {
-                "name": "State-sponsored Threat Actor",
-                "confidence": 0.8
-            },
-            {
-                "name": "Malicious JavaScript",
-                "confidence": 0.8
-            },
-            {
-                "name": "Silent Redirect",
-                "confidence": 0.7
-            },
-            {
-                "name": "Code Injection",
-                "confidence": 0.7
-            },
-            {
-                "name": "Loader Malware",
-                "confidence": 0.7
-            },
-            {
-                "name": "Stealer Malware",
-                "confidence": 0.9
+                "name": "Blockchain",
+                "confidence": 0.75
             },
             {
                 "name": "Command and Control (C2)",
                 "confidence": 0.8
             },
             {
-                "name": "APT Group",
+                "name": "Vulnerabilities",
+                "confidence": 0.85
+            },
+            {
+                "name": "Exploits",
                 "confidence": 0.8
             },
             {
-                "name": "Water Gamayun (EncryptHub)",
-                "confidence": 0.8
-            },
-            {
-                "name": "Money Laundering",
-                "confidence": 1.0
-            },
-            {
-                "name": "Cryptocurrency",
-                "confidence": 1.0
-            },
-            {
-                "name": "International Sanctions Evasion",
-                "confidence": 0.8
-            },
-            {
-                "name": "Email Threats",
-                "confidence": 0.7
-            },
-            {
-                "name": "Iris Biometrics",
-                "confidence": 0.9
-            },
-            {
-                "name": "Worldcoin",
-                "confidence": 0.9
-            },
-            {
-                "name": "Data Collection",
-                "confidence": 0.8
-            },
-            {
-                "name": "Data Deletion",
-                "confidence": 0.8
-            },
-            {
-                "name": "Smishing",
-                "confidence": 1.0
-            },
-            {
-                "name": "Impersonation",
-                "confidence": 0.8
-            },
-            {
-                "name": "Phishing Kit",
-                "confidence": 0.8
-            },
-            {
-                "name": "PII Theft",
-                "confidence": 0.7
-            },
-            {
-                "name": "Phishing-as-a-Service (PhaaS)",
-                "confidence": 0.9
-            },
-            {
-                "name": "Lighthouse PhaaS",
-                "confidence": 0.8
-            },
-            {
-                "name": "Data Broker Portals",
-                "confidence": 0.8
-            },
-            {
-                "name": "Data Removal",
-                "confidence": 0.8
-            },
-            {
-                "name": "NetMedved",
-                "confidence": 0.8
-            },
-            {
-                "name": "VasyGrek (Fluffy Wolf)",
-                "confidence": 0.8
-            },
-            {
-                "name": "Remote Access Trojans (RATs)",
-                "confidence": 0.9
-            },
-            {
-                "name": "Ransomware",
-                "confidence": 0.8
-            },
-            {
-                "name": "Pay2Key Ransomware",
-                "confidence": 0.8
-            },
-            {
-                "name": "EtherHiding Technique",
-                "confidence": 0.9
-            },
-            {
-                "name": "Blockchain",
-                "confidence": 0.8
-            },
-            {
-                "name": "Smart Contracts",
-                "confidence": 0.8
-            },
-            {
-                "name": "Drive-by Compromise",
-                "confidence": 0.8
-            },
-            {
-                "name": "Tycoon 2FA (Storm-1747)",
-                "confidence": 0.9
+                "name": "Social Engineering",
+                "confidence": 0.85
             },
             {
                 "name": "Adversary-in-the-Middle (AitM)",
-                "confidence": 0.9
-            },
-            {
-                "name": "Credential Theft",
-                "confidence": 0.9
-            },
-            {
-                "name": "Session Tokens",
                 "confidence": 0.8
             },
             {
-                "name": "One-time Codes",
-                "confidence": 0.8
-            },
-            {
-                "name": "Xillen Stealer",
-                "confidence": 0.9
-            },
-            {
-                "name": "AI-based Detection Evasion",
-                "confidence": 0.9
-            },
-            {
-                "name": "AI in Malware",
-                "confidence": 1.0
-            },
-            {
-                "name": "Cryptocurrency Theft",
-                "confidence": 0.9
-            },
-            {
-                "name": "Sensitive Data Theft",
-                "confidence": 0.8
-            },
-            {
-                "name": "Telecom Cybersecurity",
-                "confidence": 0.8
-            },
-            {
-                "name": "State-sponsored Hackers",
-                "confidence": 0.8
+                "name": "Phishing-as-a-Service (PhaaS)",
+                "confidence": 0.85
             },
             {
                 "name": "Critical Infrastructure",
                 "confidence": 0.8
             },
             {
-                "name": "Cyber Sabotage",
-                "confidence": 0.9
+                "name": "Data Privacy",
+                "confidence": 0.75
             },
             {
-                "name": "Espionage",
-                "confidence": 1.0
-            },
-            {
-                "name": "Computer Misuse Act",
-                "confidence": 0.6
-            },
-            {
-                "name": "Cyber Attack",
+                "name": "NTLM hashes",
                 "confidence": 0.8
-            },
-            {
-                "name": "AI Voice Agents",
-                "confidence": 0.9
-            },
-            {
-                "name": "LLM Vulnerabilities",
-                "confidence": 0.9
-            },
-            {
-                "name": "Social Engineering",
-                "confidence": 0.9
-            },
-            {
-                "name": "Misinformation Campaigns",
-                "confidence": 0.9
-            },
-            {
-                "name": "Dark Web",
-                "confidence": 1.0
-            },
-            {
-                "name": "Fraudulent Schemes",
-                "confidence": 0.7
-            },
-            {
-                "name": "Android Malware",
-                "confidence": 0.9
-            },
-            {
-                "name": "Obfuscation",
-                "confidence": 0.8
-            },
-            {
-                "name": "Packing Techniques",
-                "confidence": 0.8
-            },
-            {
-                "name": "Data Exfiltration",
-                "confidence": 0.8
-            },
-            {
-                "name": "Proxyware",
-                "confidence": 0.8
-            },
-            {
-                "name": "Human Trafficking",
-                "confidence": 0.9
-            },
-            {
-                "name": "Cyber Scam Compound",
-                "confidence": 0.9
-            },
-            {
-                "name": "Microsoft Windows Vulnerabilities",
-                "confidence": 0.9
-            },
-            {
-                "name": "NTLM Hashes",
-                "confidence": 0.9
-            },
-            {
-                "name": "Post-exploitation",
-                "confidence": 0.8
-            },
-            {
-                "name": "Lateral Movement",
-                "confidence": 0.8
-            },
-            {
-                "name": "Credential Relay Attacks",
-                "confidence": 0.9
             },
             {
                 "name": "Privilege Escalation",
-                "confidence": 0.9
+                "confidence": 0.75
             },
             {
-                "name": "Software Updates",
+                "name": "Lateral Movement",
+                "confidence": 0.75
+            },
+            {
+                "name": "DDoS attacks",
                 "confidence": 0.7
             },
             {
-                "name": "User Awareness",
+                "name": "Online Scams",
+                "confidence": 0.7
+            },
+            {
+                "name": "Anti-spoofing protections",
+                "confidence": 0.6
+            },
+            {
+                "name": "Anonymity network",
+                "confidence": 0.6
+            },
+            {
+                "name": "Forward secrecy",
+                "confidence": 0.5
+            },
+            {
+                "name": "Spam",
+                "confidence": 0.5
+            },
+            {
+                "name": "Malicious JavaScript",
+                "confidence": 0.7
+            },
+            {
+                "name": "Fake CAPTCHA checks",
+                "confidence": 0.75
+            },
+            {
+                "name": "QR code phishing",
+                "confidence": 0.7
+            },
+            {
+                "name": "Session tokens",
+                "confidence": 0.65
+            },
+            {
+                "name": "One-time codes",
+                "confidence": 0.65
+            },
+            {
+                "name": "Telecom cybersecurity rules",
+                "confidence": 0.7
+            },
+            {
+                "name": "LLM (Large Language Model)",
+                "confidence": 0.75
+            },
+            {
+                "name": "Misinformation campaigns",
+                "confidence": 0.7
+            },
+            {
+                "name": "Dark web",
+                "confidence": 0.75
+            },
+            {
+                "name": "Obfuscation",
+                "confidence": 0.5
+            },
+            {
+                "name": "Packing techniques",
+                "confidence": 0.5
+            },
+            {
+                "name": "Proxyware",
+                "confidence": 0.45
+            },
+            {
+                "name": "Human trafficking",
+                "confidence": 0.7
+            },
+            {
+                "name": "Microsoft Windows",
+                "confidence": 0.7
+            },
+            {
+                "name": "IoT devices",
+                "confidence": 0.75
+            },
+            {
+                "name": "Mirai",
+                "confidence": 0.7
+            },
+            {
+                "name": "ShadowV2",
+                "confidence": 0.7
+            },
+            {
+                "name": "RondoDox",
+                "confidence": 0.5
+            },
+            {
+                "name": "QuietEnvelope",
+                "confidence": 0.65
+            },
+            {
+                "name": "MSC EvilTwin",
+                "confidence": 0.6
+            },
+            {
+                "name": "Water Gamayun",
+                "confidence": 0.65
+            },
+            {
+                "name": "EncryptHub",
+                "confidence": 0.55
+            },
+            {
+                "name": "Smishing Triad",
+                "confidence": 0.7
+            },
+            {
+                "name": "Lighthouse",
+                "confidence": 0.65
+            },
+            {
+                "name": "Tycoon 2FA",
                 "confidence": 0.8
             },
             {
-                "name": "Vulnerabilities",
-                "confidence": 0.9
-            },
-            {
-                "name": "CVE-2009-2765",
+                "name": "Storm-1747",
                 "confidence": 0.7
             },
             {
-                "name": "CVE-2020-25506",
+                "name": "Xillen Stealer",
+                "confidence": 0.8
+            },
+            {
+                "name": "Salt Typhoon",
+                "confidence": 0.75
+            },
+            {
+                "name": "Retell AI API",
+                "confidence": 0.75
+            },
+            {
+                "name": "Worldcoin",
+                "confidence": 0.65
+            },
+            {
+                "name": "Microsoft Defender for Office 365",
                 "confidence": 0.7
             },
             {
-                "name": "CVE-2022-37055",
+                "name": "Tor Project",
+                "confidence": 0.6
+            },
+            {
+                "name": "Kaspersky",
+                "confidence": 0.75
+            },
+            {
+                "name": "ESET",
+                "confidence": 0.65
+            },
+            {
+                "name": "Zscaler",
+                "confidence": 0.65
+            },
+            {
+                "name": "Fortinet",
+                "confidence": 0.5
+            },
+            {
+                "name": "F5",
+                "confidence": 0.5
+            },
+            {
+                "name": "Positive Technologies",
+                "confidence": 0.6
+            },
+            {
+                "name": "Dark Atlas",
+                "confidence": 0.55
+            },
+            {
+                "name": "Censys",
+                "confidence": 0.55
+            },
+            {
+                "name": "NCC Group",
+                "confidence": 0.55
+            },
+            {
+                "name": "CYFIRMA",
+                "confidence": 0.55
+            },
+            {
+                "name": "Darktrace",
+                "confidence": 0.6
+            },
+            {
+                "name": "AhnLab",
+                "confidence": 0.6
+            },
+            {
+                "name": "CERT Coordination Center (CERT/CC)",
+                "confidence": 0.6
+            },
+            {
+                "name": "National Crime Agency (NCA)",
                 "confidence": 0.7
             },
             {
-                "name": "CVE-2024-10914",
+                "name": "Federal Communications Commission (FCC)",
                 "confidence": 0.7
             },
             {
-                "name": "CVE-2024-10915",
+                "name": "ASIO",
+                "confidence": 0.65
+            },
+            {
+                "name": "Singapore",
+                "confidence": 0.5
+            },
+            {
+                "name": "U.K.",
+                "confidence": 0.6
+            },
+            {
+                "name": "Thailand",
+                "confidence": 0.5
+            },
+            {
+                "name": "Russia",
+                "confidence": 0.65
+            },
+            {
+                "name": "China",
                 "confidence": 0.7
             },
             {
-                "name": "CVE-2023-52163",
-                "confidence": 0.7
+                "name": "Egypt",
+                "confidence": 0.45
             },
             {
-                "name": "CVE-2024-3721",
-                "confidence": 0.7
-            },
-            {
-                "name": "CVE-2024-53375",
-                "confidence": 0.7
-            },
-            {
-                "name": "CVE-2025-26633 (MSC EvilTwin)",
-                "confidence": 0.7
-            },
-            {
-                "name": "CVE-2024-43451",
-                "confidence": 0.7
-            },
-            {
-                "name": "CVE-2025-24054",
-                "confidence": 0.7
-            },
-            {
-                "name": "CVE-2025-33073",
-                "confidence": 0.7
-            },
-            {
-                "name": "IoT Devices",
-                "confidence": 1.0
+                "name": "Uzbekistan",
+                "confidence": 0.45
             },
             {
                 "name": "Apple",
-                "confidence": 0.6
+                "confidence": 0.5
             },
             {
                 "name": "Google",
                 "confidence": 0.6
             },
             {
-                "name": "iMessage",
-                "confidence": 0.6
-            },
-            {
-                "name": "RCS",
-                "confidence": 0.6
-            },
-            {
-                "name": "Android",
-                "confidence": 0.6
-            },
-            {
-                "name": "MailGates",
-                "confidence": 0.6
-            },
-            {
-                "name": "OpenFind",
-                "confidence": 0.6
-            },
-            {
-                "name": "Perl Scripts",
-                "confidence": 0.6
-            },
-            {
-                "name": "Loadable Kernel Module (LKM)",
+                "name": "Microsoft",
                 "confidence": 0.7
             },
             {
-                "name": "Apache Module",
-                "confidence": 0.7
-            },
-            {
-                "name": "PowerShell",
+                "name": "Mozilla",
                 "confidence": 0.6
-            },
-            {
-                "name": "Microsoft Defender for Office 365",
-                "confidence": 0.8
-            },
-            {
-                "name": "Outlook",
-                "confidence": 0.7
             },
             {
                 "name": "Telegram",
@@ -1128,26 +1052,70 @@
             },
             {
                 "name": "GitHub",
+                "confidence": 0.45
+            },
+            {
+                "name": "AWS",
+                "confidence": 0.4
+            },
+            {
+                "name": "OpenFind",
+                "confidence": 0.45
+            },
+            {
+                "name": "MailGates",
+                "confidence": 0.45
+            },
+            {
+                "name": "Microsoft 365",
                 "confidence": 0.5
             },
             {
-                "name": "Node.js",
-                "confidence": 0.6
+                "name": "Gmail",
+                "confidence": 0.45
             },
             {
-                "name": "Microsoft Windows",
-                "confidence": 0.9
+                "name": "Outlook",
+                "confidence": 0.45
             },
             {
-                "name": "Large Language Model (LLM)",
-                "confidence": 0.9
-            },
-            {
-                "name": "Binance Smart Chain (BSC)",
+                "name": "Android APK malware",
                 "confidence": 0.7
+            },
+            {
+                "name": "Node.js script",
+                "confidence": 0.45
+            },
+            {
+                "name": "Online casinos",
+                "confidence": 0.5
+            },
+            {
+                "name": "PII (Personally Identifiable Information)",
+                "confidence": 0.65
+            },
+            {
+                "name": "Financial sector",
+                "confidence": 0.5
+            },
+            {
+                "name": "Ransomware",
+                "confidence": 0.7
+            },
+            {
+                "name": "Computer Misuse Act",
+                "confidence": 0.4
+            },
+            {
+                "name": "ClickFix",
+                "confidence": 0.65
+            },
+            {
+                "name": "EtherHiding",
+                "confidence": 0.65
             }
         ],
-        "scraped_at": "2025-11-29T11:32:43.160571"
+        "scraped_at": "2025-11-29T11:43:53.556994"
     },
     {
         "title": "Webinar: Learn to Spot Risks and Patch Safely with Community-Maintained Tools",
@@ -1157,35 +1125,67 @@
         "content": "If you're using community tools likeChocolateyorWingetto keep systems updated, you're not alone. These platforms are fast, flexible, and easy to work with—making them favorites for IT teams. But there's a catch...\n\nThe very tools that make your job easier might also be the reason your systems are at risk.\n\nThese tools are run by the community. That means anyone can add or update packages. Some packages may be old, missing safety checks, or changed by mistake or on purpose. Hackers look for these weak spots. This has already happened in places like NPM and PyPI. The same risks can happen with Windows tools too.\n\nTo help you patch safely without slowing down,there's a free webinar coming up. It's led by Gene Moody, Field CTO atAction1. He'll walk through how these tools work, where the risks are, and how to protect your systems while keeping updates on track.\n\nIn this session, he'll test how safe these tools really are. You'll get practical steps you can use right away—nothing theoretical, just what works.\n\nThe goal is not to scare you away from community tools. They're useful. But they need guardrails—rules that help you use them safely without slowing you down.\n\nYou will learn:\n\n🔒 How to spot hidden risks\n\n⚙️ How to set safety checks like source pinning, allow-lists, and hash/signature verification\n\n📊 How to prioritize updates using known vulnerability data (KEV)\n\n📦 How to choose between community tools, direct vendor sources, or a mix of both\n\nIf you're not sure when to use community repos and when to go straight to the vendor, this session will help you decide. You'll also see how to mix both in a safe way.\n\nThis webinar is for anyone who manages software updates—whether you're on a small team or a large one. If you've ever wondered what's really inside that next patch, this session is for you.\n\nIt's free to attend, and you'll leave with clear actions you can apply the same day.Save your spot here.",
         "tags": [
             {
-                "name": "Community tools",
+                "name": "Community Tools",
                 "confidence": 1.0
             },
             {
-                "name": "Chocolatey",
-                "confidence": 0.95
-            },
-            {
-                "name": "Winget",
-                "confidence": 0.95
+                "name": "Software Updates",
+                "confidence": 1.0
             },
             {
                 "name": "Patching",
-                "confidence": 0.95
+                "confidence": 1.0
             },
             {
-                "name": "Risks",
-                "confidence": 0.95
+                "name": "Risk Management",
+                "confidence": 1.0
             },
             {
-                "name": "Supply chain security",
-                "confidence": 0.95
+                "name": "Security Risks",
+                "confidence": 1.0
             },
             {
-                "name": "Software updates",
+                "name": "Vulnerabilities",
                 "confidence": 0.9
             },
             {
-                "name": "Vulnerability management",
+                "name": "Supply Chain Security",
+                "confidence": 0.9
+            },
+            {
+                "name": "Safety Checks",
+                "confidence": 0.9
+            },
+            {
+                "name": "Source Pinning",
+                "confidence": 0.9
+            },
+            {
+                "name": "Allow-lists",
+                "confidence": 0.9
+            },
+            {
+                "name": "Hash Verification",
+                "confidence": 0.9
+            },
+            {
+                "name": "Signature Verification",
+                "confidence": 0.9
+            },
+            {
+                "name": "Known Vulnerability Data (KEV)",
+                "confidence": 0.9
+            },
+            {
+                "name": "Hackers",
+                "confidence": 0.9
+            },
+            {
+                "name": "Chocolatey",
+                "confidence": 0.9
+            },
+            {
+                "name": "Winget",
                 "confidence": 0.9
             },
             {
@@ -1193,47 +1193,15 @@
                 "confidence": 0.9
             },
             {
-                "name": "Safety checks",
-                "confidence": 0.9
-            },
-            {
-                "name": "Prioritize updates",
+                "name": "System Protection",
                 "confidence": 0.9
             },
             {
                 "name": "NPM",
-                "confidence": 0.85
+                "confidence": 0.8
             },
             {
                 "name": "PyPI",
-                "confidence": 0.85
-            },
-            {
-                "name": "Source pinning",
-                "confidence": 0.85
-            },
-            {
-                "name": "Allow-lists",
-                "confidence": 0.85
-            },
-            {
-                "name": "Hash verification",
-                "confidence": 0.85
-            },
-            {
-                "name": "Signature verification",
-                "confidence": 0.85
-            },
-            {
-                "name": "Known Vulnerability Data (KEV)",
-                "confidence": 0.85
-            },
-            {
-                "name": "Packages",
-                "confidence": 0.85
-            },
-            {
-                "name": "Hackers",
                 "confidence": 0.8
             },
             {
@@ -1241,15 +1209,35 @@
                 "confidence": 0.8
             },
             {
-                "name": "Vendor sources",
+                "name": "Prioritizing Updates",
                 "confidence": 0.8
             },
             {
-                "name": "Windows tools",
+                "name": "Vendor Sources",
+                "confidence": 0.8
+            },
+            {
+                "name": "Guardrails",
+                "confidence": 0.8
+            },
+            {
+                "name": "Packages",
                 "confidence": 0.7
+            },
+            {
+                "name": "Windows Tools",
+                "confidence": 0.7
+            },
+            {
+                "name": "Practical Steps",
+                "confidence": 0.7
+            },
+            {
+                "name": "IT Teams",
+                "confidence": 0.6
             }
         ],
-        "scraped_at": "2025-11-29T11:31:49.316595"
+        "scraped_at": "2025-11-29T11:43:37.167923"
     },
     {
         "title": "Microsoft to Block Unauthorized Scripts in Entra ID Logins with 2026 CSP Update",
@@ -1268,14 +1256,6 @@
             },
             {
                 "name": "Content Security Policy (CSP)",
-                "confidence": 1.0
-            },
-            {
-                "name": "Script Injection Attacks",
-                "confidence": 0.95
-            },
-            {
-                "name": "Cross-site scripting (XSS)",
                 "confidence": 0.95
             },
             {
@@ -1287,15 +1267,35 @@
                 "confidence": 0.9
             },
             {
-                "name": "Secure Future Initiative (SFI)",
+                "name": "Script Injection Attacks",
+                "confidence": 0.9
+            },
+            {
+                "name": "Unauthorized Scripts",
                 "confidence": 0.85
+            },
+            {
+                "name": "Cross-site scripting (XSS) attacks",
+                "confidence": 0.95
             },
             {
                 "name": "Malicious code",
                 "confidence": 0.8
             },
             {
-                "name": "Zero Trust principles",
+                "name": "Secure Future Initiative (SFI)",
+                "confidence": 0.9
+            },
+            {
+                "name": "CSP violations",
+                "confidence": 0.8
+            },
+            {
+                "name": "script-src",
+                "confidence": 0.8
+            },
+            {
+                "name": "nonce",
                 "confidence": 0.8
             },
             {
@@ -1303,80 +1303,117 @@
                 "confidence": 0.8
             },
             {
-                "name": "CSP violations",
-                "confidence": 0.7
-            },
-            {
-                "name": "script-src directive",
-                "confidence": 0.7
-            },
-            {
-                "name": "nonce directive",
-                "confidence": 0.7
-            },
-            {
-                "name": "login.microsoftonline.com",
-                "confidence": 0.6
-            },
-            {
-                "name": "Trusted Microsoft domains",
-                "confidence": 0.6
-            },
-            {
-                "name": "Multi-factor authentication (MFA)",
-                "confidence": 0.6
+                "name": "Phishing-resistant multi-factor authentication (MFA)",
+                "confidence": 0.85
             },
             {
                 "name": "Phishing",
-                "confidence": 0.55
+                "confidence": 0.7
+            },
+            {
+                "name": "Zero Trust",
+                "confidence": 0.85
+            },
+            {
+                "name": "Logins",
+                "confidence": 0.6
+            },
+            {
+                "name": "login.microsoftonline.com",
+                "confidence": 0.5
+            },
+            {
+                "name": "Trusted Microsoft domains",
+                "confidence": 0.5
+            },
+            {
+                "name": "CDN",
+                "confidence": 0.4
+            },
+            {
+                "name": "Browser-based sign-in",
+                "confidence": 0.6
             },
             {
                 "name": "Browser extensions",
                 "confidence": 0.5
             },
             {
-                "name": "CDN (Content Delivery Network)",
-                "confidence": 0.5
-            },
-            {
-                "name": "Microsoft Entra External ID",
-                "confidence": 0.5
-            },
-            {
                 "name": "Developer tools",
-                "confidence": 0.45
+                "confidence": 0.4
             },
             {
                 "name": "U.S. Cyber Safety Review Board (CSRB)",
-                "confidence": 0.4
+                "confidence": 0.6
             },
             {
                 "name": "Security culture",
-                "confidence": 0.4
+                "confidence": 0.5
             },
             {
                 "name": "Tactics, techniques, and procedures (TTPs)",
-                "confidence": 0.4
+                "confidence": 0.5
             },
             {
                 "name": "Vulnerability detection",
-                "confidence": 0.4
+                "confidence": 0.5
             },
             {
                 "name": "Threat intelligence",
+                "confidence": 0.5
+            },
+            {
+                "name": "Security incidents",
                 "confidence": 0.4
+            },
+            {
+                "name": "Windows",
+                "confidence": 0.1
+            },
+            {
+                "name": "Microsoft Entra External ID",
+                "confidence": 0.2
+            },
+            {
+                "name": "Hybrid environments",
+                "confidence": 0.1
+            },
+            {
+                "name": "Cloud environments",
+                "confidence": 0.1
             }
         ],
-        "scraped_at": "2025-11-29T11:31:36.827815"
+        "scraped_at": "2025-11-29T11:43:17.289577"
     },
     {
         "title": "The Practical Playbook for Secure AI Adoption",
         "url": "https://thehackernews.uk/practical-ai-security",
         "thumbnail": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhIqT2haMtEYZ1q_0Ga3bxf3brI9YcZvuu8K9xaabU18OuC68AWp5CoukISz_n1tv9XObC4wnWxKIuffN6vQu8DqR1X_1iowMDgv0ToAVUm_-NMR01h5umjlKsT1h0FvacqlBm3uSL_hISt2K0rQLhLifoB-C3gwLw2KSwEPdHcnd9PKn9Rv2AXfEVm_UTw/s450-rw-e100/wing.png",
         "description": "Your guide to discover, monitor, and govern AI across your organization.",
-        "content": "",
-        "tags": [],
-        "scraped_at": "2025-11-29T11:31:15.752835"
+        "content": "Content not found.",
+        "tags": [
+            {
+                "name": "AI Security",
+                "confidence": 1.0
+            },
+            {
+                "name": "Artificial Intelligence (AI)",
+                "confidence": 0.9
+            },
+            {
+                "name": "Security",
+                "confidence": 0.9
+            },
+            {
+                "name": "AI Adoption",
+                "confidence": 0.8
+            },
+            {
+                "name": "Best Practices",
+                "confidence": 0.7
+            }
+        ],
+        "scraped_at": "2025-11-29T11:43:12.059019"
     },
     {
         "title": "Bloody Wolf Expands Java-based NetSupport RAT Attacks in Kyrgyzstan and Uzbekistan",
@@ -1387,114 +1424,98 @@
         "tags": [
             {
                 "name": "Bloody Wolf",
-                "confidence": 0.95
+                "confidence": 1.0
             },
             {
                 "name": "NetSupport RAT",
-                "confidence": 0.95
+                "confidence": 1.0
             },
             {
-                "name": "Kyrgyzstan",
-                "confidence": 0.9
-            },
-            {
-                "name": "Uzbekistan",
-                "confidence": 0.9
-            },
-            {
-                "name": "Java",
-                "confidence": 0.9
-            },
-            {
-                "name": "JAR files",
-                "confidence": 0.9
+                "name": "Java-based attacks",
+                "confidence": 1.0
             },
             {
                 "name": "Spear-phishing",
-                "confidence": 0.9
+                "confidence": 1.0
             },
             {
                 "name": "Social engineering",
-                "confidence": 0.8
+                "confidence": 1.0
             },
             {
-                "name": "RAT (Remote Access Trojan)",
-                "confidence": 0.8
+                "name": "Kyrgyzstan",
+                "confidence": 1.0
+            },
+            {
+                "name": "Uzbekistan",
+                "confidence": 1.0
+            },
+            {
+                "name": "Remote Access Trojan (RAT)",
+                "confidence": 1.0
+            },
+            {
+                "name": "Government sector",
+                "confidence": 0.9
+            },
+            {
+                "name": "Finance sector",
+                "confidence": 0.9
+            },
+            {
+                "name": "Information Technology (IT) sector",
+                "confidence": 0.9
+            },
+            {
+                "name": "Geofencing",
+                "confidence": 0.9
             },
             {
                 "name": "Group-IB",
                 "confidence": 0.8
             },
             {
-                "name": "Central Asia",
+                "name": "Persistence",
                 "confidence": 0.8
             },
             {
-                "name": "Threat actor",
+                "name": "NetSupport Manager",
                 "confidence": 0.8
             },
             {
-                "name": "Cyber attack campaign",
+                "name": "Initial Access",
                 "confidence": 0.8
             },
             {
-                "name": "Phishing emails",
+                "name": "Ministry of Justice impersonation",
                 "confidence": 0.8
             },
             {
-                "name": "Government sector",
-                "confidence": 0.7
-            },
-            {
-                "name": "Finance sector",
-                "confidence": 0.7
-            },
-            {
-                "name": "Information technology (IT) sector",
-                "confidence": 0.7
-            },
-            {
-                "name": "Ministry of Justice",
-                "confidence": 0.7
-            },
-            {
-                "name": "Geofencing",
-                "confidence": 0.7
+                "name": "JAR files",
+                "confidence": 0.8
             },
             {
                 "name": "PDF documents",
                 "confidence": 0.7
             },
             {
-                "name": "Persistence",
-                "confidence": 0.7
-            },
-            {
-                "name": "Java Runtime",
-                "confidence": 0.7
-            },
-            {
-                "name": "Ukuk",
-                "confidence": 0.7
+                "name": "STRRAT",
+                "confidence": 0.5
             },
             {
                 "name": "Kazakhstan",
-                "confidence": 0.6
+                "confidence": 0.5
             },
             {
                 "name": "Russia",
-                "confidence": 0.6
+                "confidence": 0.5
             },
             {
-                "name": "NetSupport Manager",
+                "name": "Ukuk",
                 "confidence": 0.6
-            },
-            {
-                "name": "STRRAT",
-                "confidence": 0.4
             }
         ],
-        "scraped_at": "2025-11-29T11:31:12.250414"
+        "scraped_at": "2025-11-29T11:42:58.617862"
     },
     {
         "title": "MS Teams Guest Access Can Remove Defender Protection When Users Join External Tenants",
@@ -1504,7 +1525,7 @@
         "content": "Cybersecurity researchers have shed light on a cross-tenant blind spot that allows attackers to bypass Microsoft Defender for Office 365 protections via theguest accessfeature in Teams.\n\n\"When users operate as guests in another tenant, their protections are determined entirely by that hosting environment, not by their home organization,\" Ontinue security researcher Rhys Downingsaidin a report.\n\n\"These advancements increase collaboration opportunities, but they also widen the responsibility for ensuring those external environments are trustworthy and properly secured.\"\n\nThe development comes as Microsoft has begun rolling out a new feature in Teams that allows users to chat with anyone via email, including those who don't use the enterprise communications platform, starting this month. The change is expected to be globally available by January 2026.\n\n\"The recipient will receive an email invitation to join the chat session as a guest, enabling seamless communication and collaboration,\" Microsoftsaidin its announcement. \"This update simplifies external engagement and supports flexible work scenarios.\"\n\nIn the event the recipient already uses Teams, they are notified via the app directly in the form of an external message request. The feature is enabled by default, but organizations can turn it off using the TeamsMessagingPolicy bysettingthe \"UseB2BInvitesToAddExternalUsers\" parameter to \"false.\"\n\nThat said, this setting only prevents users from sending invitations to other users. It does not stop them from receiving invitations from external tenants.\n\nAt this stage, it's worth mentioning thatguest accessis different fromexternal access, which allows users to find, call, and chat with people who have Teams but are outside of their organizations.\n\nThe \"fundamental architectural gap\" highlighted by Ontinue stems from the fact thatMicrosoft Defender for Office 365 protectionsfor Teams may not apply when a user accepts a guest invitation to an external tenant. In other words, by entering the other tenant's security boundary, the user is subjected to security policies where the conversation is hosted and not where the user's account lives.\n\nWhat's more, it opens the door to a scenario where the user can become an unprotected guest in a malicious environment that's dictated by the attacker's security policies.\n\nIn a hypothetical attack scenario, a threat actor can create \"protection-free zones\" by disabling all safeguards in their tenants or avail licenses that lack certain options by default. For instance, the attacker can spin up a malicious Microsoft 365 tenant using a low-cost license such as Teams Essentials or Business Basic that doesn't come with Microsoft Defender for Office 365 out of the box.\n\nOnce the unprotected tenant is set up, the attacker can then conduct reconnaissance of the target organization to gather more information and initiate contact via Teams by entering a victim's email address, causing Teams to send an automated invitation to join the chat as a guest.\n\nPerhaps the most concerning aspect of the attack chain is that the email lands on the victim's mailbox. Given that the message originates from Microsoft's own infrastructure, it effectively bypassesSPF, DKIM, and DMARC checks. As a result, email security solutions are unlikely to flag the email as malicious.\n\nShould the victim end up accepting the invitation, they are granted guest access in the attacker's tenant, where all subsequent communication takes place. The threat actor can send phishing links or distribute malware-laced attachments by taking advantage of the lack of Safe Links and Safe Attachments scans.\n\n\"The victim's organization remains completely unaware,\" Downing said. \"Their security controls never triggered because the attack occurred outside their security boundary.\"\n\nTo safeguard against this line of attack, organizations are recommended to restrict B2B collaboration settings to only allow guest invitations from trusted domains, implement cross-tenant access controls, restrict external Teams communication if not required, and train users to watch out for unsolicited Teams invites from external sources.\n\nThe Hacker News has reached out to Microsoft for comment, and we will update the story if we hear back.",
         "tags": [
             {
-                "name": "Microsoft Teams",
+                "name": "MS Teams",
                 "confidence": 1.0
             },
             {
@@ -1516,23 +1537,23 @@
                 "confidence": 1.0
             },
             {
-                "name": "External Tenants",
-                "confidence": 0.9
-            },
-            {
                 "name": "Cross-tenant blind spot",
+                "confidence": 0.95
+            },
+            {
+                "name": "Vulnerability",
+                "confidence": 0.95
+            },
+            {
+                "name": "Bypass",
                 "confidence": 0.9
             },
             {
-                "name": "Microsoft",
+                "name": "Attackers",
                 "confidence": 0.9
             },
             {
-                "name": "Malicious environment",
-                "confidence": 0.9
-            },
-            {
-                "name": "Threat actor",
+                "name": "Threat Actor",
                 "confidence": 0.9
             },
             {
@@ -1544,19 +1565,39 @@
                 "confidence": 0.9
             },
             {
-                "name": "Ontinue",
-                "confidence": 0.8
+                "name": "Microsoft",
+                "confidence": 0.9
             },
             {
-                "name": "Architectural gap",
-                "confidence": 0.8
+                "name": "Office 365",
+                "confidence": 0.9
             },
             {
                 "name": "Microsoft 365",
+                "confidence": 0.9
+            },
+            {
+                "name": "External Tenants",
+                "confidence": 0.9
+            },
+            {
+                "name": "Security Policies",
+                "confidence": 0.85
+            },
+            {
+                "name": "SPF",
                 "confidence": 0.8
             },
             {
-                "name": "Protection-free zones",
+                "name": "DKIM",
+                "confidence": 0.8
+            },
+            {
+                "name": "DMARC",
+                "confidence": 0.8
+            },
+            {
+                "name": "Email Security Solutions",
                 "confidence": 0.8
             },
             {
@@ -1568,31 +1609,23 @@
                 "confidence": 0.8
             },
             {
-                "name": "Security boundary",
+                "name": "B2B Collaboration",
                 "confidence": 0.8
             },
             {
-                "name": "Cross-tenant access controls",
+                "name": "Security Controls",
                 "confidence": 0.8
             },
             {
-                "name": "Email",
+                "name": "Cybersecurity",
                 "confidence": 0.7
             },
             {
-                "name": "SPF",
+                "name": "Ontinue",
                 "confidence": 0.6
             },
             {
-                "name": "DKIM",
-                "confidence": 0.6
-            },
-            {
-                "name": "DMARC",
-                "confidence": 0.6
-            },
-            {
-                "name": "Email security solutions",
+                "name": "TeamsMessagingPolicy",
                 "confidence": 0.6
             },
             {
@@ -1600,44 +1633,69 @@
                 "confidence": 0.5
             },
             {
-                "name": "TeamsMessagingPolicy",
+                "name": "Teams Essentials",
                 "confidence": 0.5
             },
             {
-                "name": "B2B Invites",
+                "name": "Business Basic",
                 "confidence": 0.5
             },
             {
                 "name": "External Access",
                 "confidence": 0.4
-            },
-            {
-                "name": "Teams Essentials",
-                "confidence": 0.4
-            },
-            {
-                "name": "Business Basic",
-                "confidence": 0.4
-            },
-            {
-                "name": "User training",
-                "confidence": 0.4
-            },
-            {
-                "name": "Collaboration",
-                "confidence": 0.4
             }
         ],
-        "scraped_at": "2025-11-29T11:30:53.437506"
+        "scraped_at": "2025-11-29T11:42:46.345110"
     },
     {
         "title": "The Ultimate WSUS Replacement Guide for Modern IT Teams",
         "url": "https://thehackernews.uk/wsus-replace-guide",
         "thumbnail": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj7dlPmvsfZfqqoUU5Uud4UGwzXcnV_Xq4YHPpeM48DOhzbjdczsCRIPRYwO2RmFU8iNKFHbPjCT6CJG6orxUo_iLO3aUkTeYgEEE8nArO420iUzJ7Jgm0WGqszDoLnrnOeQeNgt41E7NR9rhic62yrDL9A_w4FeREGm9zSMMfmpykin1U4L0QnVNzjeWRS/s450-rw-e100/action1.jpg",
         "description": "WSUS is officially deprecated. Learn how it holds you back and get a plan to move on for remote endpoints.",
-        "content": "",
-        "tags": [],
-        "scraped_at": "2025-11-29T11:30:37.253469"
+        "content": "Content not found.",
+        "tags": [
+            {
+                "name": "WSUS",
+                "confidence": 1.0
+            },
+            {
+                "name": "Patch Management",
+                "confidence": 0.95
+            },
+            {
+                "name": "Update Management",
+                "confidence": 0.9
+            },
+            {
+                "name": "Windows Server Update Services",
+                "confidence": 0.9
+            },
+            {
+                "name": "IT Teams",
+                "confidence": 0.85
+            },
+            {
+                "name": "Security Updates",
+                "confidence": 0.85
+            },
+            {
+                "name": "Modern IT",
+                "confidence": 0.8
+            },
+            {
+                "name": "Software Updates",
+                "confidence": 0.8
+            },
+            {
+                "name": "System Administration",
+                "confidence": 0.75
+            },
+            {
+                "name": "Endpoint Management",
+                "confidence": 0.7
+            }
+        ],
+        "scraped_at": "2025-11-29T11:42:36.903449"
     },
     {
         "title": "Why Organizations Are Turning to RPAM",
@@ -1652,62 +1710,54 @@
             },
             {
                 "name": "Privileged Access Management (PAM)",
+                "confidence": 0.95
+            },
+            {
+                "name": "Zero-trust architecture",
                 "confidence": 0.9
             },
             {
-                "name": "Remote Work",
+                "name": "Hybrid work",
                 "confidence": 0.9
             },
             {
-                "name": "Hybrid Work",
+                "name": "Remote work",
                 "confidence": 0.9
             },
             {
-                "name": "Distributed Environments",
+                "name": "Cloud-native architecture",
                 "confidence": 0.9
             },
             {
-                "name": "Secure Access",
+                "name": "Secure access",
                 "confidence": 0.9
             },
             {
-                "name": "Cloud-based Security",
+                "name": "Least-privilege access",
                 "confidence": 0.85
             },
             {
-                "name": "Zero Trust",
-                "confidence": 0.85
-            },
-            {
-                "name": "Least Privilege Access",
+                "name": "Just-in-Time (JIT) access",
                 "confidence": 0.85
             },
             {
                 "name": "Multi-Factor Authentication (MFA)",
-                "confidence": 0.8
+                "confidence": 0.85
             },
             {
-                "name": "Virtual Private Networks (VPNs)",
-                "confidence": 0.8
+                "name": "Compliance",
+                "confidence": 0.85
             },
             {
-                "name": "Attack Surface Reduction",
-                "confidence": 0.8
+                "name": "Audit trails",
+                "confidence": 0.85
             },
             {
-                "name": "Regulatory Compliance",
-                "confidence": 0.8
+                "name": "Session recording",
+                "confidence": 0.85
             },
             {
-                "name": "Session Monitoring",
-                "confidence": 0.8
-            },
-            {
-                "name": "Session Recording",
-                "confidence": 0.8
-            },
-            {
-                "name": "Audit Trails",
+                "name": "Attack surfaces",
                 "confidence": 0.8
             },
             {
@@ -1715,71 +1765,71 @@
                 "confidence": 0.8
             },
             {
-                "name": "Data Theft",
+                "name": "Data breaches",
                 "confidence": 0.8
             },
             {
-                "name": "Data Breaches",
+                "name": "Lateral movement",
                 "confidence": 0.8
             },
             {
-                "name": "Just-in-Time (JIT) Access",
+                "name": "Stolen credentials",
                 "confidence": 0.8
             },
             {
-                "name": "Cloud-native Architectures",
+                "name": "Distributed IT environments",
                 "confidence": 0.8
             },
             {
-                "name": "Perimeter-based Security",
+                "name": "Privileged accounts",
+                "confidence": 0.8
+            },
+            {
+                "name": "Virtual Private Networks (VPNs)",
                 "confidence": 0.7
             },
             {
-                "name": "On-premises PAM",
+                "name": "Legacy PAM",
                 "confidence": 0.7
             },
             {
-                "name": "Third-party Access",
+                "name": "Third-party users",
                 "confidence": 0.7
             },
             {
-                "name": "Granular Access Control",
+                "name": "Identity verification",
                 "confidence": 0.7
             },
             {
-                "name": "User Identity Verification",
+                "name": "Standing privileges",
                 "confidence": 0.7
             },
             {
-                "name": "Credential Protection",
+                "name": "Policy-based access",
                 "confidence": 0.7
             },
             {
-                "name": "Standing Privileges",
+                "name": "Cybercriminals",
                 "confidence": 0.7
-            },
-            {
-                "name": "Policy-based Access",
-                "confidence": 0.7
-            },
-            {
-                "name": "Scalability",
-                "confidence": 0.6
             },
             {
                 "name": "Remote Desktop Protocol (RDP)",
                 "confidence": 0.6
             },
             {
-                "name": "Lateral Movement",
+                "name": "Perimeter-based security",
                 "confidence": 0.6
             },
             {
-                "name": "Shared Credentials",
+                "name": "On-premises",
                 "confidence": 0.6
             },
             {
-                "name": "Cybercriminals",
+                "name": "Agent-based deployments",
+                "confidence": 0.6
+            },
+            {
+                "name": "Credentials",
                 "confidence": 0.6
             },
             {
@@ -1791,23 +1841,15 @@
                 "confidence": 0.5
             },
             {
-                "name": "AI Threat Detection",
-                "confidence": 0.5
-            },
-            {
-                "name": "Agent-based Deployments",
-                "confidence": 0.3
-            },
-            {
-                "name": "Internal Network Security",
-                "confidence": 0.3
+                "name": "AI threat detection",
+                "confidence": 0.4
             },
             {
                 "name": "KeeperPAM",
-                "confidence": 0.1
+                "confidence": 0.4
             }
         ],
-        "scraped_at": "2025-11-29T11:30:33.979036"
+        "scraped_at": "2025-11-29T11:42:18.382699"
     },
     {
         "title": "North Korean Hackers Deploy 197 npm Packages to Spread Updated OtterCookie Malware",
@@ -1818,55 +1860,87 @@
         "tags": [
             {
                 "name": "North Korean Hackers",
-                "confidence": 0.95
-            },
-            {
-                "name": "npm packages",
-                "confidence": 0.9
-            },
-            {
-                "name": "OtterCookie",
-                "confidence": 0.95
+                "confidence": 1.0
             },
             {
                 "name": "Contagious Interview",
+                "confidence": 1.0
+            },
+            {
+                "name": "npm",
+                "confidence": 1.0
+            },
+            {
+                "name": "OtterCookie",
+                "confidence": 1.0
+            },
+            {
+                "name": "malicious packages",
                 "confidence": 0.95
             },
             {
-                "name": "npm registry",
-                "confidence": 0.85
-            },
-            {
                 "name": "BeaverTail",
-                "confidence": 0.8
-            },
-            {
-                "name": "Malware evasion",
-                "confidence": 0.7
-            },
-            {
-                "name": "Command and Control (C2)",
                 "confidence": 0.9
             },
             {
-                "name": "Browser credential theft",
+                "name": "malware",
+                "confidence": 0.9
+            },
+            {
+                "name": "sandbox evasion",
+                "confidence": 0.9
+            },
+            {
+                "name": "virtual machine detection",
                 "confidence": 0.8
             },
             {
-                "name": "Cryptocurrency wallet data theft",
+                "name": "command and control (C2)",
+                "confidence": 0.9
+            },
+            {
+                "name": "remote shell",
                 "confidence": 0.85
             },
             {
-                "name": "Seed phrase theft",
+                "name": "data exfiltration",
+                "confidence": 0.95
+            },
+            {
+                "name": "clipboard theft",
                 "confidence": 0.85
+            },
+            {
+                "name": "keylogging",
+                "confidence": 0.9
+            },
+            {
+                "name": "screenshot capture",
+                "confidence": 0.85
+            },
+            {
+                "name": "browser credential theft",
+                "confidence": 0.95
+            },
+            {
+                "name": "cryptocurrency wallet theft",
+                "confidence": 0.95
+            },
+            {
+                "name": "seed phrase theft",
+                "confidence": 0.95
             },
             {
                 "name": "Node.js",
-                "confidence": 0.8
+                "confidence": 0.85
             },
             {
-                "name": "Fake job interview",
-                "confidence": 0.9
+                "name": "social engineering",
+                "confidence": 1.0
+            },
+            {
+                "name": "fake job interview",
+                "confidence": 1.0
             },
             {
                 "name": "Vercel",
@@ -1878,78 +1952,58 @@
             },
             {
                 "name": "JavaScript",
-                "confidence": 0.7
+                "confidence": 0.8
             },
             {
                 "name": "GolangGhost",
-                "confidence": 0.85
+                "confidence": 0.9
             },
             {
                 "name": "FlexibleFerret",
-                "confidence": 0.75
+                "confidence": 0.8
             },
             {
                 "name": "WeaselStore",
-                "confidence": 0.75
+                "confidence": 0.8
             },
             {
                 "name": "ClickFake Interview",
-                "confidence": 0.85
+                "confidence": 0.9
             },
             {
-                "name": "Go language",
+                "name": "Go (programming language)",
                 "confidence": 0.8
             },
             {
-                "name": "Google Chrome",
-                "confidence": 0.75
+                "name": "persistence",
+                "confidence": 0.9
             },
             {
                 "name": "macOS LaunchAgent",
-                "confidence": 0.7
-            },
-            {
-                "name": "Social engineering",
-                "confidence": 0.9
-            },
-            {
-                "name": "Malicious coding exercises",
                 "confidence": 0.8
             },
             {
-                "name": "Fraudulent hiring platforms",
+                "name": "decoy application",
                 "confidence": 0.8
             },
             {
-                "name": "Weaponizing job application process",
+                "name": "Dropbox",
+                "confidence": 0.8
+            },
+            {
+                "name": "supply chain attack",
                 "confidence": 0.9
             },
             {
-                "name": "Persistence",
+                "name": "threat actors",
+                "confidence": 0.9
+            },
+            {
+                "name": "DPRK IT Worker schemes",
                 "confidence": 0.7
             },
             {
-                "name": "Data exfiltration",
-                "confidence": 0.7
-            },
-            {
-                "name": "Keylogging",
-                "confidence": 0.6
-            },
-            {
-                "name": "Screenshot capture",
-                "confidence": 0.6
-            },
-            {
-                "name": "Clipboard contents theft",
-                "confidence": 0.6
-            },
-            {
-                "name": "Virtual machines",
-                "confidence": 0.5
-            },
-            {
-                "name": "Sandboxes",
+                "name": "Socket",
                 "confidence": 0.5
             },
             {
@@ -1957,27 +2011,39 @@
                 "confidence": 0.5
             },
             {
-                "name": "Sri Lanka",
-                "confidence": 0.4
-            },
-            {
-                "name": "Dropbox",
+                "name": "Validin",
                 "confidence": 0.5
             },
             {
-                "name": "DPRK IT Worker schemes",
-                "confidence": 0.5
+                "name": "Google Chrome",
+                "confidence": 0.7
             },
             {
-                "name": "System profiling",
-                "confidence": 0.6
+                "name": "system information gathering",
+                "confidence": 0.8
             },
             {
-                "name": "Loader packages",
-                "confidence": 0.6
+                "name": "file transfer",
+                "confidence": 0.8
+            },
+            {
+                "name": "operating system command execution",
+                "confidence": 0.8
+            },
+            {
+                "name": "recruiting pipelines",
+                "confidence": 0.9
+            },
+            {
+                "name": "fraudulent hiring platforms",
+                "confidence": 0.9
+            },
+            {
+                "name": "malicious coding exercises",
+                "confidence": 0.9
             }
         ],
-        "scraped_at": "2025-11-29T11:30:15.325521"
+        "scraped_at": "2025-11-29T11:41:57.601248"
     },
     {
         "title": "Legacy Python Bootstrap Scripts Create Domain-Takeover Risk in Multiple PyPI Packages",
@@ -1987,28 +2053,24 @@
         "content": "Cybersecurity researchers have discovered vulnerable code in legacy Python packages that could potentially pave the way for a supply chain compromise on the Python Package Index (PyPI) via a domain takeover attack.\n\nSoftware supply chain security company ReversingLabs said it found the \"vulnerability\" in bootstrap files provided by a build and deployment automation tool named \"zc.buildout.\"\n\n\"The scripts automate the process of downloading, building, and installing the required libraries and tools,\" security researcher Vladimir Pezosaid. \"Specifically, when the bootstrap script is executed, it fetches and executes an installation script for the package Distribute from python-distribute[.]org – a legacy domain that is now available for sale in the premium price range while being managed to drive ad revenue.\"\n\nThe PyPI packages that include a bootstrap script that accesses the domain in question include tornado, pypiserver, slapos.core, roman, xlutils, and testfixtures.\n\nThe crux of the problem concerns anold bootstrap script(\"bootstrap.py\") that was used along with the zc.buildout tool to initialize the Buildout environment. The Python script also supported the ability to install a packaging utility called \"Distribute,\" a short-lived fork of the Setuptools project, into the local environment.\n\nTo achieve this, the Distribute installation script (\"distribute_setup.py\") is fetched from the python-distribute[.]org, a domain that has been up for sale since 2014. In adding the option, the idea was to instruct the bootstrap script to download and install the Distribute package instead of the older Setuptools package to manage eggs and dependencies for the buildout.\n\nIt's important to note that the Distribute fork came into being due to the lack of active development of Setuptools, the main package management tool used at that time. However, the features from Distribute were integrated back into Setuptools in 2013, rendering Distribute obsolete.\n\nThe issue identified by ReversingLabs concerns the fact that many packages have continued to ship the bootstrap script that either attempts to install Distribute by default or when the command-line option (\"-d\" or \"--distribute\") is specified. This, coupled with the fact that the domain in question is up for grabs, puts users at latent risk as an attacker could weaponize this setup to serve malicious code when the bootstrap script is inadvertently run and potentially steal sensitive data.\n\nWhile some of the affected packages have taken steps to remove the bootstrap script, the slapos.core package still continues to ship the vulnerable code. It's also included in the development and maintenance version of Tornado.\n\nAnother important aspect to consider here is that the bootstrap script is not executed automatically during the package installation and is written in Python 2. This means the script cannot be executed with Python 3 without modifications. But the mere presence of the file leaves an \"unnecessary attack surface\" that attackers can exploit if developers are tricked into running code that triggers the execution of the bootstrap script.\n\nThe threat of a domain takeover is not theoretical. In 2023, it came to light that the npm package fsevents was compromised by a bad actor who seized control of an unclaimed cloud resource hosted at fsevents-binaries.s3-us-west-2.amazonaws[.]com to push malicious executables to users installing certain versions of the package (CVE-2023-45311, CVSS score: 9.8).\n\n\"The issue lies in the programming pattern that includes fetching and executing a payload from a hard-coded domain, which is a pattern commonly observed in malware exhibiting downloader behavior,\" Pezo said. \"The failure to formally decommission the Distribute module allowed vulnerable bootstrap scripts to linger and left unknown numbers of projects exposed to a potential attack.\"\n\nThe disclosure comes as HelixGuard discovered a malicious package in PyPI named \"spellcheckers\" that claims to be a tool for checking spelling errors using OpenAI Vision, but contains malicious code that's designed to connect to an external server and download a next-stage payload, which then executes a remote access trojan (RAT).\n\nThe package, firstuploadedto PyPI on November 15, 2025, by a user namedleo636722, has beendownloaded 955 times. It's no longer available for download.\n\n\"This RAT can receive remote commands and execute attacker-controlled Python code via exec(), enabling full remote control over the victim's host,\" HelixGuardsaid. \"When the user installs and runs the malicious package, the backdoor becomes active, allowing the attacker to remotely control the user's computer.\"",
         "tags": [
             {
-                "name": "Python",
-                "confidence": 0.9
+                "name": "Domain Takeover",
+                "confidence": 0.95
             },
             {
                 "name": "PyPI",
                 "confidence": 0.95
             },
             {
-                "name": "Domain Takeover",
-                "confidence": 1.0
+                "name": "Python",
+                "confidence": 0.9
             },
             {
                 "name": "Supply Chain Compromise",
                 "confidence": 0.9
             },
             {
-                "name": "Software Supply Chain Security",
-                "confidence": 0.9
-            },
-            {
                 "name": "Bootstrap Scripts",
-                "confidence": 0.95
+                "confidence": 0.9
             },
             {
                 "name": "zc.buildout",
@@ -2016,39 +2078,59 @@
             },
             {
                 "name": "Distribute",
-                "confidence": 0.9
+                "confidence": 0.85
             },
             {
-                "name": "Setuptools",
-                "confidence": 0.7
-            },
-            {
-                "name": "python-distribute[.]org",
-                "confidence": 0.9
-            },
-            {
-                "name": "ReversingLabs",
+                "name": "Legacy Code",
                 "confidence": 0.85
             },
             {
                 "name": "Vulnerability",
-                "confidence": 0.9
+                "confidence": 0.8
             },
             {
-                "name": "Malicious Code",
+                "name": "ReversingLabs",
                 "confidence": 0.8
+            },
+            {
+                "name": "Hard-coded domain",
+                "confidence": 0.8
+            },
+            {
+                "name": "Setuptools",
+                "confidence": 0.75
             },
             {
                 "name": "Unnecessary Attack Surface",
-                "confidence": 0.8
+                "confidence": 0.75
+            },
+            {
+                "name": "Malicious Code",
+                "confidence": 0.75
             },
             {
                 "name": "Python 2",
-                "confidence": 0.6
+                "confidence": 0.7
             },
             {
-                "name": "Python 3",
-                "confidence": 0.4
+                "name": "slapos.core",
+                "confidence": 0.75
+            },
+            {
+                "name": "tornado",
+                "confidence": 0.7
+            },
+            {
+                "name": "Remote Access Trojan (RAT)",
+                "confidence": 0.7
+            },
+            {
+                "name": "spellcheckers (malicious package)",
+                "confidence": 0.7
+            },
+            {
+                "name": "HelixGuard",
+                "confidence": 0.7
             },
             {
                 "name": "npm",
@@ -2056,39 +2138,11 @@
             },
             {
                 "name": "fsevents",
-                "confidence": 0.5
+                "confidence": 0.6
             },
             {
                 "name": "CVE-2023-45311",
-                "confidence": 0.5
-            },
-            {
-                "name": "Hard-coded domain",
-                "confidence": 0.75
-            },
-            {
-                "name": "Package Management",
                 "confidence": 0.6
-            },
-            {
-                "name": "Remote Access Trojan (RAT)",
-                "confidence": 0.65
-            },
-            {
-                "name": "spellcheckers",
-                "confidence": 0.6
-            },
-            {
-                "name": "HelixGuard",
-                "confidence": 0.5
-            },
-            {
-                "name": "tornado",
-                "confidence": 0.7
-            },
-            {
-                "name": "slapos.core",
-                "confidence": 0.75
             },
             {
                 "name": "pypiserver",
@@ -2107,14 +2161,14 @@
                 "confidence": 0.6
             },
             {
-                "name": "OpenAI Vision",
-                "confidence": 0.3
+                "name": "Python 3",
+                "confidence": 0.4
             },
             {
-                "name": "exec()",
-                "confidence": 0.4
+                "name": "OpenAI Vision",
+                "confidence": 0.3
             }
         ],
-        "scraped_at": "2025-11-29T11:29:07.984290"
+        "scraped_at": "2025-11-29T11:41:36.289363"
     }
 ]

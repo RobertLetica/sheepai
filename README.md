@@ -1,1 +1,1 @@
-# sheepai
+# sheepai - NEWS Pro
