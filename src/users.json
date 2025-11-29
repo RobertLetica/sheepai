@@ -2,24 +2,17 @@
     {
         "email": "getgood.ff@gmail.com",
         "otp": null,
-        "token": "0bfc00ae-d057-4b11-8af8-ac440278f1ed",
+        "token": "eeec7263-6fa1-461f-a701-32768086cb65",
         "tags": [
-            "Quality Assurance",
-            "Playwright Testing",
-            "Network Security",
-            "Machine Learning",
-            "AI Agents",
-            "Software Testing",
-            "Intelligent Agents",
-            "Automated Testing",
+            "Infosec",
             "Artificial Intelligence",
-            "ai volns",
-            "AI",
+            "Data Security",
             "Cybersecurity",
-            "Test Automation",
-            "Information Security"
+            "AI",
+            "Network Security",
+            "ai"
         ],
-        "interests_prompt": "i love ai and i work in cyber sec",
-        "last_online": "2025-11-29T16:22:52.922686"
+        "interests_prompt": "i love ai and i work in cybersec",
+        "last_online": "2025-11-29T18:07:14.645739"
     }
 ]
