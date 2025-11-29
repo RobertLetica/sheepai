@@ -1,20 +1,25 @@
 [
     {
-        "email": "test_user@example.com",
+        "email": "getgood.ff@gmail.com",
         "otp": null,
-        "token": "f17a15cd-2b06-48a2-92f1-5b3b7f73e7d1",
+        "token": "0bfc00ae-d057-4b11-8af8-ac440278f1ed",
         "tags": [
             "Quality Assurance",
-            "Automated Testing",
-            "Test Automation",
-            "Software Testing",
-            "AI",
-            "Intelligent Agents",
+            "Playwright Testing",
+            "Network Security",
+            "Machine Learning",
             "AI Agents",
+            "Software Testing",
+            "Intelligent Agents",
+            "Automated Testing",
             "Artificial Intelligence",
-            "Playwright Testing"
+            "ai volns",
+            "AI",
+            "Cybersecurity",
+            "Test Automation",
+            "Information Security"
         ],
-        "interests_prompt": "I am interested in automated testing and AI agents.",
-        "last_online": "2025-11-29T15:15:30.704499"
+        "interests_prompt": "i love ai and i work in cyber sec",
+        "last_online": "2025-11-29T16:22:52.922686"
     }
 ]
