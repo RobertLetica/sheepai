@@ -117,6 +117,7 @@ def monitor_feed():
                     "thumbnail": thumbnail,
                     "description": description,
                     "content": full_content,
+                    "tags": [],
                     "scraped_at": datetime.now().isoformat()
                 }
 
