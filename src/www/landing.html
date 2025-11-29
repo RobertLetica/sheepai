@@ -229,7 +229,30 @@
         <section class="landing-hero">
             <h1>newsPro</h1>
             <p>Your personalized news feed powered by AI. Stay ahead with curated content tailored to your interests.</p>
-            <div>
+
+            <div id="hero-cta">
+                <div class="hero-input-container" style="max-width: 600px; margin: 2rem auto; position: relative;">
+                    <textarea id="interestInput" placeholder="Tell us what you're interested in (e.g., AI, Finance, Space Exploration)..."
+                        style="width: 100%; padding: 1rem; border-radius: 8px; border: 2px solid #333; font-family: inherit; font-size: 1rem; min-height: 100px; resize: vertical; color: #000;"></textarea>
+                    <button id="analyzeBtn" class="btn btn-primary" style="margin-top: 1rem; font-size: 1.1rem; padding: 1rem 2rem; width: 100%;">
+                        Build My Feed
+                    </button>
+                    <div id="loadingIndicator" style="display: none; margin-top: 1rem; color: #f5f3e7;">
+                        Analyzing your interests...
+                    </div>
+                </div>
+            </div>
+
+            <div id="results-container" style="display: none; max-width: 800px; margin: 2rem auto; background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 8px;">
+                <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">We found these topics for you:</h3>
+                <div id="extractedTags" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-bottom: 2rem;"></div>
+                <div style="text-align: center;">
+                    <p style="margin-bottom: 1rem;">Sign in to save these preferences and start reading.</p>
+                    <a href="signin.html" class="btn btn-primary" id="saveAndStartBtn">Save & Get Started</a>
+                </div>
+            </div>
+
+            <div id="default-cta" style="display: none;">
                 <a href="signin.html" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;">Get Started Free</a>
             </div>
         </section>
@@ -266,19 +289,84 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Logic for Interest Extraction
+            const analyzeBtn = document.getElementById('analyzeBtn');
+            const interestInput = document.getElementById('interestInput');
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            const resultsContainer = document.getElementById('results-container');
+            const extractedTagsContainer = document.getElementById('extractedTags');
+            const heroCta = document.getElementById('hero-cta');
+            const saveAndStartBtn = document.getElementById('saveAndStartBtn');
+
+            if (analyzeBtn) {
+                analyzeBtn.addEventListener('click', async () => {
+                    const text = interestInput.value.trim();
+                    if (!text) return;
+
+                    // UI Updates
+                    analyzeBtn.disabled = true;
+                    analyzeBtn.textContent = 'Processing...';
+                    loadingIndicator.style.display = 'block';
+
+                    try {
+                        const response = await fetch('/api/extract_tags', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ text: text })
+                        });
+
+                        const data = await response.json();
+
+                        if (data.success && data.tags && data.tags.length > 0) {
+                            // Show results
+                            heroCta.style.display = 'none';
+                            resultsContainer.style.display = 'block';
+
+                            // Render tags
+                            extractedTagsContainer.innerHTML = '';
+                            data.tags.forEach(tag => {
+                                const tagEl = document.createElement('span');
+                                tagEl.style.cssText = 'background: #f5f3e7; color: #000; padding: 0.5rem 1rem; border: 2px solid #000; font-weight: bold;';
+                                tagEl.textContent = tag;
+                                extractedTagsContainer.appendChild(tagEl);
+                            });
+
+                            // Store in localStorage
+                            localStorage.setItem('onboardingTags', JSON.stringify(data.tags));
+                            localStorage.setItem('onboardingPrompt', text);
+
+                        } else {
+                            alert('We couldn\'t find any specific topics. Try being more descriptive.');
+                            analyzeBtn.disabled = false;
+                            analyzeBtn.textContent = 'Build My Feed';
+                            loadingIndicator.style.display = 'none';
+                        }
+                    } catch (e) {
+                        console.error(e);
+                        alert('Something went wrong. Please try again.');
+                        analyzeBtn.disabled = false;
+                        analyzeBtn.textContent = 'Build My Feed';
+                        loadingIndicator.style.display = 'none';
+                    }
+                });
+            }
+
             // Check auth state
             const token = localStorage.getItem('authToken');
             if (token) {
                 // User is logged in
                 const userActions = document.querySelector('.user-actions');
-                const heroActions = document.querySelector('.landing-hero div');
+                const heroCtaContainer = document.getElementById('hero-cta');
+                const defaultCta = document.getElementById('default-cta');
                 const ctaActions = document.querySelector('.landing-cta');
 
                 if (userActions) {
                     userActions.innerHTML = '<a href="feed.html" class="btn btn-primary">Go to Feed</a>';
                 }
-                if (heroActions) {
-                    heroActions.innerHTML = '<a href="feed.html" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;">Go to Feed</a>';
+
+                // If logged in, hide the extraction tool and show "Go to Feed"
+                if (heroCtaContainer) {
+                   heroCtaContainer.innerHTML = '<div style="margin-top: 2rem;"><a href="feed.html" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;">Go to Your Feed</a></div>';
                 }
 
                 // Update bottom CTA

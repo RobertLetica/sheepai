@@ -886,8 +886,67 @@
 
     <script src="script.js"></script>
     <script>
+        const token = localStorage.getItem('authToken');
+        if (!token) {
+            window.location.href = 'signin.html';
+        }
+
+        // Check for Onboarding Tags
+        async function checkOnboardingTags() {
+            const onboardingTags = localStorage.getItem('onboardingTags');
+            const onboardingPrompt = localStorage.getItem('onboardingPrompt');
+
+            if (onboardingTags) {
+                try {
+                    const tags = JSON.parse(onboardingTags);
+
+                    // First get current profile to merge
+                    const profileResp = await fetch('/api/user/profile', {
+                        headers: { 'Authorization': `Bearer ${token}` }
+                    });
+
+                    let currentTags = [];
+                    if (profileResp.ok) {
+                        const profileData = await profileResp.json();
+                        currentTags = profileData.tags || [];
+                    }
+
+                    // Merge tags
+                    const newTags = [...new Set([...currentTags, ...tags])];
+
+                    // Update Profile
+                    const saveResp = await fetch('/api/user/profile', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        },
+                        body: JSON.stringify({
+                            tags: newTags,
+                            interests_prompt: onboardingPrompt || ""
+                        })
+                    });
+
+                    if (saveResp.ok) {
+                        // Clear storage only on success
+                        localStorage.removeItem('onboardingTags');
+                        localStorage.removeItem('onboardingPrompt');
+                        console.log("Onboarding tags saved.");
+                    } else {
+                        console.error("Failed to save tags: Server returned", saveResp.status);
+                    }
+
+                } catch (e) {
+                    console.error("Failed to sync onboarding tags", e);
+                }
+            }
+        }
+
         // Replace emojis with SVG icons
         document.addEventListener('DOMContentLoaded', function() {
+            // Check tags in background, don't block UI rendering
+            checkOnboardingTags();
+
             // Replace icons with data-icon attribute (but preserve text for logo)
             document.querySelectorAll('[data-icon]').forEach(el => {
                 const iconName = el.getAttribute('data-icon');

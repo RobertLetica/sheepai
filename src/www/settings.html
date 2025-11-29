@@ -283,11 +283,7 @@
             <div class="settings-container">
                 <div class="settings-section">
                     <h2>Your Interests</h2>
-                    <p style="margin-bottom: 1rem; color: #666666;">Describe what interests you (AI will extract tags) or add them manually.</p>
-
-                    <div style="margin-bottom: 1.5rem;">
-                        <textarea id="interestsPrompt" style="width: 100%; padding: 1rem; border: 2px solid #000000; font-family: inherit; font-size: 1rem; resize: vertical; min-height: 100px;" placeholder="e.g. I am interested in how AI is changing the financial landscape..."></textarea>
-                    </div>
+                    <p style="margin-bottom: 1rem; color: #666666;">Manage your interest tags to personalize your feed.</p>
 
                     <div class="interest-tags" id="interestTags">
                         <!-- Tags will be loaded here -->
@@ -407,7 +403,6 @@
                 });
                 if (response.ok) {
                     const data = await response.json();
-                    document.getElementById('interestsPrompt').value = data.interests_prompt || '';
 
                     // Populate tags
                     currentTags = data.tags || [];
@@ -429,8 +424,6 @@
                 btn.textContent = 'Saving...';
                 btn.disabled = true;
 
-                const prompt = document.getElementById('interestsPrompt').value;
-
                 try {
                     const response = await fetch('/api/user/profile', {
                         method: 'POST',
@@ -439,8 +432,7 @@
                             'Authorization': `Bearer ${token}`
                         },
                         body: JSON.stringify({
-                            tags: currentTags,
-                            interests_prompt: prompt
+                            tags: currentTags
                         })
                     });
 
