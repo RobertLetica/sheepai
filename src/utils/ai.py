@@ -114,6 +114,120 @@ def generate_tags(title: str, content_text: str) -> list:
     logging.error("All available models failed to generate tags.")
     return []
 
+def chat_with_article(query: str, article_title: str, article_content: str) -> str:
+    """
+    Answers a user query based on the article content.
+    """
+    prompt = f"""
+    You are an AI assistant answering questions about a specific news article.
+
+    Article Title: {article_title}
+    Article Content: {article_content[:30000]}
+
+    User Query: {query}
+
+    Instructions:
+    1. Answer the query based ONLY on the provided article content.
+    2. If the answer is not in the article, say "I cannot answer this based on the article provided."
+    3. Be concise and helpful.
+    """
+
+    for model_name in MODELS_TO_TRY:
+        try:
+            model = genai.GenerativeModel(
+                model_name=model_name,
+                generation_config={
+                    "temperature": 0.5,
+                }
+            )
+
+            response = model.generate_content(prompt)
+            return response.text.strip()
+
+        except Exception as e:
+            logging.warning(f"Model {model_name} failed during chat: {e}")
+            continue
+
+    return "I'm having trouble connecting to the AI right now. Please try again later."
+
+def analyze_user_interest(article: dict, user: dict) -> str:
+    """
+    Determines if an article is interesting to a user and generates a summary.
+    Returns the summary string if interesting, or None if not.
+    """
+    article_title = article.get('title', '')
+
+    # Safely extract article tags (handling both dicts and strings)
+    raw_article_tags = article.get('tags', [])
+    article_tags = []
+    for t in raw_article_tags:
+        if isinstance(t, dict):
+            name = t.get('name')
+            if name: article_tags.append(str(name))
+        elif isinstance(t, str):
+            article_tags.append(t)
+
+    # Safely extract user tags
+    raw_user_tags = user.get('tags', [])
+    user_tags = []
+    for t in raw_user_tags:
+        if isinstance(t, dict):
+            name = t.get('name')
+            if name: user_tags.append(str(name))
+        elif isinstance(t, str):
+            user_tags.append(t)
+
+    # Check if we have enough info
+    if not user_tags and not user.get('interests_prompt'):
+        # If user has no preferences, maybe skip? Or assume interested in everything?
+        # Let's skip to avoid spam.
+        return None
+
+    prompt = f"""
+    You are a personalized news curator.
+
+    Article Title: {article_title}
+    Article Tags: {', '.join(article_tags)}
+    Article Content Snippet: {article.get('content', '')[:1000]}...
+
+    User Interests: {', '.join(user_tags)}
+    User Description: {user.get('interests_prompt', '')}
+
+    Task:
+    1. Determine if this article is highly relevant to the user's interests.
+       - IMPORTANT: Use semantic matching. If a user likes "AI", they are interested in "Machine Learning", "LLMs", "Neural Networks", etc.
+       - If a user likes "Cybersecurity", they are interested in "Ransomware", "Malware", "Zero-day", etc.
+       - Do not rely on exact string matches.
+    2. If YES, provide a short, engaging summary (max 3 sentences) explaining why it matters to them.
+    3. If NO, return exactly "NOT_INTERESTING".
+
+    Output Format:
+    Just the summary text or "NOT_INTERESTING".
+    """
+
+    for model_name in MODELS_TO_TRY:
+        try:
+            model = genai.GenerativeModel(
+                model_name=model_name,
+                generation_config={
+                    "temperature": 0.2,
+                }
+            )
+
+            response = model.generate_content(prompt)
+            result = response.text.strip()
+
+            if "NOT_INTERESTING" in result:
+                return None
+
+            return result
+
+        except Exception as e:
+            logging.warning(f"Model {model_name} failed during interest analysis: {e}")
+            continue
+
+    return None
+
 def analyze_article_by_title(target_title: str):
     if not os.path.exists(OUTPUT_FILE):
         logging.error(f"File {OUTPUT_FILE} not found.")

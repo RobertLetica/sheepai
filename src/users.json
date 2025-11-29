@@ -1,1 +1,10 @@
-[]
+[
+    {
+        "email": "test_user@example.com",
+        "otp": null,
+        "token": "748d1081-fb12-4538-92fa-4aaa4a878e6d",
+        "tags": [],
+        "interests_prompt": "",
+        "last_online": "2025-11-29T14:06:52.935395"
+    }
+]
