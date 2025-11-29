@@ -2,17 +2,18 @@
     {
         "email": "getgood.ff@gmail.com",
         "otp": null,
-        "token": "eeec7263-6fa1-461f-a701-32768086cb65",
+        "token": "74fd59ae-2988-4a0a-b192-fd08dab85b48",
         "tags": [
-            "Infosec",
-            "Artificial Intelligence",
-            "Data Security",
-            "Cybersecurity",
+            "Finance",
+            "Technology",
             "AI",
-            "Network Security",
-            "ai"
+            "Artificial Intelligence",
+            "npm",
+            "Cybersecurity",
+            "Trading",
+            "Cryptocurrency"
         ],
-        "interests_prompt": "i love ai and i work in cybersec",
-        "last_online": "2025-11-29T18:07:14.645739"
+        "interests_prompt": "i love ai and work in cyber security and sometimes i trade crypto",
+        "last_online": "2025-11-29T18:27:11.385890"
     }
 ]
