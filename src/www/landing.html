@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>newsPro - Professional Content Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="icons.js"></script>
+    <style>
+        .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            vertical-align: middle;
+        }
+        .icon svg {
+            width: 1em;
+            height: 1em;
+        }
+        .landing-hero {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: #ffffff;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 4px solid #b22222;
+        }
+        .landing-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            font-family: 'Arial Black', Arial, sans-serif;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        .landing-hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #f5f3e7;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .landing-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .feature-card {
+            background: #ffffff;
+            border: 3px solid #000000;
+            padding: 2rem;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            color: #000000;
+            font-family: 'Arial Black', Arial, sans-serif;
+        }
+        .feature-card p {
+            color: #4b5563;
+            line-height: 1.7;
+        }
+        .landing-cta {
+            background: #f5f3e7;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 3px solid #000000;
+            border-bottom: 3px solid #000000;
+        }
+        .landing-cta h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            color: #000000;
+            font-family: 'Arial Black', Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-left">
+                <div class="logo" data-icon="news">newsPro</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="landing.html">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+            <div class="user-actions">
+                <a href="signin.html" class="btn btn-secondary" style="margin-right: 0.75rem;">Sign In</a>
+                <a href="signin.html" class="btn btn-primary">Get Started</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="landing-hero">
+            <h1>newsPro</h1>
+            <p>Your personalized news feed powered by AI. Stay ahead with curated content tailored to your interests.</p>
+            <div>
+                <a href="signin.html" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;">Get Started Free</a>
+            </div>
+        </section>
+
+        <section id="features" class="landing-features">
+            <div class="feature-card">
+                <h3>🎯 Personalized Feed</h3>
+                <p>AI-powered content curation that learns your interests and delivers the most relevant articles first.</p>
+            </div>
+            <div class="feature-card">
+                <h3>📊 Market Intelligence</h3>
+                <p>Real-time financial news and market analysis from trusted sources, sorted by relevance.</p>
+            </div>
+            <div class="feature-card">
+                <h3>⚡ Fast & Reliable</h3>
+                <p>Lightning-fast loading times and a clean, professional interface designed for efficiency.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔒 Privacy First</h3>
+                <p>Your data is secure. We respect your privacy and give you full control over your information.</p>
+            </div>
+        </section>
+
+        <section class="landing-cta">
+            <h2>Ready to Transform Your News Experience?</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem; color: #4b5563;">Join thousands of professionals who trust newsPro for their daily news.</p>
+            <a href="signin.html" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2.5rem;">Sign Up Now</a>
+        </section>
+    </main>
+
+    <footer style="background: #000000; color: #ffffff; padding: 2rem; text-align: center; border-top: 4px solid #b22222;">
+        <p>&copy; 2025 newsPro. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Replace icons
+            if (typeof Icons !== 'undefined') {
+                document.querySelectorAll('[data-icon]').forEach(el => {
+                    const iconName = el.getAttribute('data-icon');
+                    if (Icons[iconName]) {
+                        el.innerHTML = `<span class="icon">${Icons[iconName]}</span>${el.textContent.trim()}`;
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+

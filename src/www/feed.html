@@ -3,13 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0; url=landing.html">
-    <title>newsPro - Redirecting...</title>
+    <title>Your Feed - newsPro</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="icons.js"></script>
+    <style>
+        .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            vertical-align: middle;
+        }
+        .icon svg {
+            width: 1em;
+            height: 1em;
+        }
+    </style>
 </head>
 <body>
-    <p>Redirecting to <a href="landing.html">landing page</a>...</p>
-</body>
-</html>
+    <header>
+        <nav>
+            <div class="nav-left">
+                <button class="sidebar-toggle" aria-label="Toggle menu" data-icon="menu">☰</button>
+                <div class="logo" data-icon="news">newsPro</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="feed.html">Home</a></li>
+                <li><a href="feed.html#trending">Trending</a></li>
+            </ul>
+            <div class="user-actions">
+                <a href="settings.html" class="btn btn-secondary" style="margin-right: 0.75rem;">Settings</a>
+                <a href="landing.html" class="btn btn-primary">Sign Out</a>
+            </div>
+        </nav>
+    </header>
 
     <div class="container">
         <div class="sidebar-overlay"></div>
@@ -35,7 +61,7 @@
             </div>
             <div class="sidebar-section">
                 <div class="sidebar-section-title">Account</div>
-                <div class="sidebar-item">
+                <div class="sidebar-item" onclick="window.location.href='settings.html'">
                     <span class="sidebar-icon" data-icon="settings">⚙️</span>
                     <span>Settings</span>
                 </div>

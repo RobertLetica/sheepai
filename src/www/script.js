@@ -154,5 +154,63 @@ document.addEventListener('DOMContentLoaded', function() {
             ticking = true;
         }
     });
+
+    // Main tabs functionality (TikTok-style)
+    const mainTabs = document.querySelectorAll('.main-tab');
+    const contentPages = document.querySelectorAll('.content-page');
+
+    mainTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const targetTab = this.getAttribute('data-tab');
+            
+            // Remove active class from all tabs
+            mainTabs.forEach(t => t.classList.remove('active'));
+            // Add active class to clicked tab
+            this.classList.add('active');
+
+            // Hide all content pages
+            contentPages.forEach(page => {
+                page.style.display = 'none';
+                page.classList.add('hidden');
+            });
+
+            // Show target content page
+            const targetPage = document.getElementById(`${targetTab}-page`);
+            if (targetPage) {
+                targetPage.style.display = 'block';
+                targetPage.classList.remove('hidden');
+            }
+        });
+    });
+
+    // Set initial state - show "For You" by default
+    const forYouPage = document.getElementById('for-you-page');
+    const trendingPage = document.getElementById('trending-page');
+    if (forYouPage && trendingPage) {
+        forYouPage.style.display = 'block';
+        trendingPage.style.display = 'none';
+    }
+
+    // Sort articles by match score (highest to lowest)
+    function sortArticlesByMatch() {
+        const articleList = document.getElementById('forYouList');
+        if (!articleList) return;
+
+        const articles = Array.from(articleList.querySelectorAll('.card.personalized-card'));
+        
+        articles.sort((a, b) => {
+            const matchA = parseInt(a.getAttribute('data-match')) || 0;
+            const matchB = parseInt(b.getAttribute('data-match')) || 0;
+            return matchB - matchA; // Sort descending (highest first)
+        });
+
+        // Clear and re-append sorted articles
+        articles.forEach(article => {
+            articleList.appendChild(article);
+        });
+    }
+
+    // Sort articles on page load
+    sortArticlesByMatch();
 });
 

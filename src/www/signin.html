@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - newsPro</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="icons.js"></script>
+    <style>
+        .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            vertical-align: middle;
+        }
+        .icon svg {
+            width: 1em;
+            height: 1em;
+        }
+        .signin-container {
+            min-height: calc(100vh - var(--header-height, 90px));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: #f5f3e7;
+        }
+        .signin-box {
+            background: #ffffff;
+            border: 3px solid #000000;
+            padding: 3rem;
+            max-width: 450px;
+            width: 100%;
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.2);
+        }
+        .signin-box h1 {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            color: #000000;
+            font-family: 'Arial Black', Arial, sans-serif;
+            text-align: center;
+        }
+        .signin-box p {
+            text-align: center;
+            color: #666666;
+            margin-bottom: 2rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #000000;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #000000;
+            font-size: 1rem;
+            font-family: inherit;
+            background: #ffffff;
+            transition: all 0.3s;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: #b22222;
+            box-shadow: 0 0 0 3px rgba(178, 34, 34, 0.1);
+        }
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+        .form-options label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+        .form-options input[type="checkbox"] {
+            width: auto;
+            cursor: pointer;
+        }
+        .form-options a {
+            color: #b22222;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .form-options a:hover {
+            text-decoration: underline;
+        }
+        .signin-divider {
+            text-align: center;
+            margin: 2rem 0;
+            position: relative;
+        }
+        .signin-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #000000;
+        }
+        .signin-divider span {
+            background: #ffffff;
+            padding: 0 1rem;
+            position: relative;
+            color: #666666;
+            font-weight: 700;
+        }
+        .social-signin {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .btn-social {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #000000;
+            background: #ffffff;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        .btn-social:hover {
+            background: #000000;
+            color: #ffffff;
+        }
+        .signin-footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid #f5f3e7;
+            color: #666666;
+        }
+        .signin-footer a {
+            color: #b22222;
+            text-decoration: none;
+            font-weight: 700;
+        }
+        .signin-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-left">
+                <a href="landing.html" style="text-decoration: none; color: inherit;">
+                    <div class="logo" data-icon="news">newsPro</div>
+                </a>
+            </div>
+            <div class="user-actions">
+                <a href="landing.html" class="btn btn-secondary">Back to Home</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="signin-container">
+        <div class="signin-box">
+            <h1>Welcome Back</h1>
+            <p>Enter your email to receive a magic link</p>
+
+            <form id="signinForm" onsubmit="handleSignIn(event)">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">Send Magic Link</button>
+            </form>
+
+            <p style="text-align: center; font-size: 0.85rem; color: #666666; margin-top: 1rem;">
+                We'll send you a secure link to sign in instantly. No password needed.
+            </p>
+
+            <div class="signin-divider">
+                <span>OR</span>
+            </div>
+
+            <div class="social-signin">
+                <button class="btn-social" onclick="handleSocialSignIn('google')">
+                    <span>🔍</span> Continue with Google
+                </button>
+                <button class="btn-social" onclick="handleSocialSignIn('github')">
+                    <span>💻</span> Continue with GitHub
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function handleSignIn(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            
+            // Store email for verification page
+            localStorage.setItem('signinEmail', email);
+            
+            // In a real app, this would send a magic link email with verification code
+            // Redirect to verification page
+            window.location.href = `verify.html?email=${encodeURIComponent(email)}`;
+        }
+
+        function handleSocialSignIn(provider) {
+            // In a real app, this would initiate OAuth flow
+            // For demo purposes, redirect to verification page
+            const email = `user@${provider}.com`; // Simulated email
+            localStorage.setItem('signinEmail', email);
+            window.location.href = `verify.html?email=${encodeURIComponent(email)}`;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Replace icons
+            if (typeof Icons !== 'undefined') {
+                document.querySelectorAll('[data-icon]').forEach(el => {
+                    const iconName = el.getAttribute('data-icon');
+                    if (Icons[iconName]) {
+                        el.innerHTML = `<span class="icon">${Icons[iconName]}</span>${el.textContent.trim()}`;
+                    }
+                });
+            }
+
+        });
+    </script>
+</body>
+</html>
+

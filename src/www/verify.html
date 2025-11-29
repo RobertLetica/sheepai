@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify - newsPro</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="icons.js"></script>
+    <style>
+        .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            vertical-align: middle;
+        }
+        .icon svg {
+            width: 1em;
+            height: 1em;
+        }
+        .verify-container {
+            min-height: calc(100vh - var(--header-height, 90px));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: #f5f3e7;
+        }
+        .verify-box {
+            background: #ffffff;
+            border: 3px solid #000000;
+            padding: 3rem;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        .verify-box h1 {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            color: #000000;
+            font-family: 'Arial Black', Arial, sans-serif;
+        }
+        .verify-box p {
+            color: #666666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        .email-display {
+            background: #f5f3e7;
+            border: 2px solid #000000;
+            padding: 0.75rem 1rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            color: #000000;
+        }
+        .code-input-container {
+            margin-bottom: 2rem;
+        }
+        .code-input-label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #000000;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .code-inputs {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        .code-input {
+            width: 50px;
+            height: 60px;
+            border: 3px solid #000000;
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-align: center;
+            font-family: 'Arial Black', Arial, sans-serif;
+            background: #ffffff;
+            transition: all 0.3s;
+        }
+        .code-input:focus {
+            outline: none;
+            border-color: #b22222;
+            box-shadow: 0 0 0 3px rgba(178, 34, 34, 0.1);
+        }
+        .verify-divider {
+            text-align: center;
+            margin: 2rem 0;
+            position: relative;
+        }
+        .verify-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #000000;
+        }
+        .verify-divider span {
+            background: #ffffff;
+            padding: 0 1rem;
+            position: relative;
+            color: #666666;
+            font-weight: 700;
+        }
+        .authorize-btn {
+            width: 100%;
+            padding: 1rem;
+            background: #000000;
+            color: #ffffff;
+            border: 3px solid #000000;
+            font-size: 1.1rem;
+            font-weight: 900;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Arial Black', Arial, sans-serif;
+        }
+        .authorize-btn:hover {
+            background: #b22222;
+            border-color: #b22222;
+            transform: translateY(-2px);
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+        }
+        .resend-link {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+        }
+        .resend-link a {
+            color: #b22222;
+            text-decoration: none;
+            font-weight: 700;
+        }
+        .resend-link a:hover {
+            text-decoration: underline;
+        }
+        .status-message {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 2px solid #000000;
+            font-weight: 700;
+            display: none;
+        }
+        .status-message.success {
+            background: #f5f3e7;
+            color: #000000;
+        }
+        .status-message.error {
+            background: #b22222;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-left">
+                <a href="landing.html" style="text-decoration: none; color: inherit;">
+                    <div class="logo" data-icon="news">newsPro</div>
+                </a>
+            </div>
+            <div class="user-actions">
+                <a href="signin.html" class="btn btn-secondary">Back</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="verify-container">
+        <div class="verify-box">
+            <h1>Check Your Email</h1>
+            <p>We've sent a verification code to:</p>
+            <div class="email-display" id="emailDisplay">user@example.com</div>
+
+            <div id="statusMessage" class="status-message"></div>
+
+            <div class="code-input-container">
+                <label class="code-input-label">Enter Verification Code</label>
+                <div class="code-inputs">
+                    <input type="text" class="code-input" maxlength="1" pattern="[0-9]" inputmode="numeric" data-index="0">
+                    <input type="text" class="code-input" maxlength="1" pattern="[0-9]" inputmode="numeric" data-index="1">
+                    <input type="text" class="code-input" maxlength="1" pattern="[0-9]" inputmode="numeric" data-index="2">
+                    <input type="text" class="code-input" maxlength="1" pattern="[0-9]" inputmode="numeric" data-index="3">
+                    <input type="text" class="code-input" maxlength="1" pattern="[0-9]" inputmode="numeric" data-index="4">
+                    <input type="text" class="code-input" maxlength="1" pattern="[0-9]" inputmode="numeric" data-index="5">
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;" onclick="verifyCode()">Verify Code</button>
+
+            <div class="verify-divider">
+                <span>OR</span>
+            </div>
+
+            <button type="button" class="authorize-btn" onclick="authorize()">
+                ✓ Authorize & Continue
+            </button>
+
+            <div class="resend-link">
+                Didn't receive the code? <a href="#" onclick="resendCode(event)">Resend</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get email from URL parameter or localStorage
+        function getEmail() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const email = urlParams.get('email') || localStorage.getItem('signinEmail') || 'user@example.com';
+            return email;
+        }
+
+        // Display email
+        document.addEventListener('DOMContentLoaded', function() {
+            const email = getEmail();
+            document.getElementById('emailDisplay').textContent = email;
+            localStorage.setItem('signinEmail', email);
+
+            // Replace icons
+            if (typeof Icons !== 'undefined') {
+                document.querySelectorAll('[data-icon]').forEach(el => {
+                    const iconName = el.getAttribute('data-icon');
+                    if (Icons[iconName]) {
+                        el.innerHTML = `<span class="icon">${Icons[iconName]}</span>${el.textContent.trim()}`;
+                    }
+                });
+            }
+
+            // Auto-focus first input
+            document.querySelector('.code-input').focus();
+
+            // Handle code input navigation
+            const inputs = document.querySelectorAll('.code-input');
+            inputs.forEach((input, index) => {
+                input.addEventListener('input', function(e) {
+                    // Only allow numbers
+                    this.value = this.value.replace(/[^0-9]/g, '');
+                    
+                    // Move to next input if value entered
+                    if (this.value && index < inputs.length - 1) {
+                        inputs[index + 1].focus();
+                    }
+                });
+
+                input.addEventListener('keydown', function(e) {
+                    // Handle backspace
+                    if (e.key === 'Backspace' && !this.value && index > 0) {
+                        inputs[index - 1].focus();
+                    }
+                });
+
+                input.addEventListener('paste', function(e) {
+                    e.preventDefault();
+                    const paste = (e.clipboardData || window.clipboardData).getData('text');
+                    const numbers = paste.replace(/[^0-9]/g, '').slice(0, 6);
+                    
+                    numbers.split('').forEach((num, i) => {
+                        if (inputs[i]) {
+                            inputs[i].value = num;
+                        }
+                    });
+                    
+                    // Focus last filled input or next empty
+                    const lastFilled = Math.min(numbers.length - 1, inputs.length - 1);
+                    inputs[lastFilled].focus();
+                });
+            });
+        });
+
+        function verifyCode() {
+            const inputs = document.querySelectorAll('.code-input');
+            const code = Array.from(inputs).map(input => input.value).join('');
+            
+            if (code.length !== 6) {
+                showMessage('Please enter the complete 6-digit code', 'error');
+                return;
+            }
+
+            // In a real app, this would verify the code with the backend
+            // For demo purposes, accept any 6-digit code
+            showMessage('Code verified successfully!', 'success');
+            
+            setTimeout(() => {
+                window.location.href = 'feed.html';
+            }, 1000);
+        }
+
+        function authorize() {
+            // In a real app, this would trigger an authorization flow
+            // For demo purposes, redirect to feed
+            showMessage('Authorization successful!', 'success');
+            
+            setTimeout(() => {
+                window.location.href = 'feed.html';
+            }, 1000);
+        }
+
+        function resendCode(event) {
+            event.preventDefault();
+            const email = getEmail();
+            
+            // In a real app, this would resend the code
+            showMessage(`New code sent to ${email}`, 'success');
+        }
+
+        function showMessage(text, type) {
+            const messageEl = document.getElementById('statusMessage');
+            messageEl.textContent = text;
+            messageEl.className = `status-message ${type}`;
+            messageEl.style.display = 'block';
+            
+            setTimeout(() => {
+                messageEl.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
+

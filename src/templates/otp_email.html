@@ -1,25 +1,195 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<style>
-    body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; }
-    .container { background-color: #ffffff; max-width: 600px; margin: 0 auto; padding: 30px; border: 2px solid #000; }
-    .header { text-align: center; border-bottom: 2px solid #b22222; padding-bottom: 20px; }
-    .code { font-size: 32px; font-weight: bold; text-align: center; letter-spacing: 5px; margin: 30px 0; color: #b22222; }
-    .footer { font-size: 12px; color: #666; text-align: center; margin-top: 30px; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Verification Code - newsPro</title>
+    <style>
+        /* Email-safe CSS - inline styles for maximum compatibility */
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background-color: #f5f3e7;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .email-wrapper {
+            background-color: #f5f3e7;
+            padding: 40px 20px;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border: 3px solid #000000;
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.2);
+        }
+        .email-header {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: #ffffff;
+            padding: 30px 40px;
+            text-align: center;
+            border-bottom: 4px solid #b22222;
+        }
+        .email-header h1 {
+            font-size: 28px;
+            font-weight: 900;
+            margin: 0;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-family: 'Arial Black', Arial, sans-serif;
+        }
+        .email-body {
+            padding: 40px;
+            color: #1a1a1a;
+            line-height: 1.7;
+        }
+        .email-body p {
+            margin: 0 0 20px 0;
+            font-size: 16px;
+            color: #4b5563;
+        }
+        .code-container {
+            background: #f5f3e7;
+            border: 3px solid #000000;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        .code-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #666666;
+            margin-bottom: 15px;
+            font-family: 'Arial Black', Arial, sans-serif;
+        }
+        .code {
+            font-size: 42px;
+            font-weight: 900;
+            letter-spacing: 8px;
+            color: #b22222;
+            font-family: 'Arial Black', Arial, sans-serif;
+            margin: 0;
+            line-height: 1.2;
+        }
+        .button-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .button {
+            display: inline-block;
+            padding: 14px 32px;
+            background-color: #000000;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 3px solid #000000;
+            font-family: 'Arial Black', Arial, sans-serif;
+            transition: all 0.3s;
+        }
+        .button:hover {
+            background-color: #b22222;
+            border-color: #b22222;
+        }
+        .security-note {
+            background: #f5f3e7;
+            border-left: 4px solid #b22222;
+            padding: 15px 20px;
+            margin: 30px 0;
+            font-size: 14px;
+            color: #4b5563;
+        }
+        .security-note strong {
+            color: #000000;
+            font-weight: 700;
+        }
+        .email-footer {
+            background: #000000;
+            color: #ffffff;
+            padding: 25px 40px;
+            text-align: center;
+            border-top: 4px solid #b22222;
+        }
+        .email-footer p {
+            margin: 5px 0;
+            font-size: 12px;
+            color: #b0b0b0;
+        }
+        .email-footer a {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+        .divider {
+            height: 2px;
+            background: #000000;
+            margin: 30px 0;
+        }
+        @media only screen and (max-width: 600px) {
+            .email-body {
+                padding: 30px 20px;
+            }
+            .email-header {
+                padding: 25px 20px;
+            }
+            .code {
+                font-size: 32px;
+                letter-spacing: 6px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🐑 SheepAI Login</h1>
-        </div>
-        <p>Hello,</p>
-        <p>Use the verification code below to access your account:</p>
-        <div class="code">{{ code }}</div>
-        <p>If you didn't request this code, you can safely ignore this email.</p>
-        <div class="footer">
-            &copy; 2025 SheepAI. All rights reserved.
+    <div class="email-wrapper">
+        <div class="email-container">
+            <!-- Header -->
+            <div class="email-header">
+                <h1>newsPro</h1>
+            </div>
+
+            <!-- Body -->
+            <div class="email-body">
+                <p style="font-size: 18px; font-weight: 700; color: #000000; margin-bottom: 25px;">Hello,</p>
+                
+                <p>You've requested to sign in to your newsPro account. Use the verification code below to complete your sign-in:</p>
+
+                <div class="code-container">
+                    <div class="code-label">Verification Code</div>
+                    <div class="code">{{ code }}</div>
+                </div>
+
+                <div class="button-container">
+                    <a href="{{ verify_url }}" class="button" style="color: #ffffff;">Verify & Sign In</a>
+                </div>
+
+                <div class="security-note">
+                    <strong>Security Notice:</strong> This code will expire in 10 minutes. If you didn't request this code, you can safely ignore this email. Your account remains secure.
+                </div>
+
+                <div class="divider"></div>
+
+                <p style="font-size: 14px; color: #666666; margin-bottom: 10px;">
+                    <strong>Having trouble?</strong> You can also copy and paste the code above into the verification page, or click the "Authorize & Continue" button if you're signing in from a trusted device.
+                </p>
+            </div>
+
+            <!-- Footer -->
+            <div class="email-footer">
+                <p style="font-weight: 700; font-size: 14px; margin-bottom: 10px;">newsPro</p>
+                <p>Professional Content Platform</p>
+                <p style="margin-top: 15px;">
+                    &copy; 2025 newsPro. All rights reserved.
+                </p>
+                <p style="margin-top: 10px;">
+                    <a href="{{ unsubscribe_url }}" style="color: #b0b0b0;">Unsubscribe</a> | 
+                    <a href="{{ support_url }}" style="color: #b0b0b0;">Support</a>
+                </p>
+            </div>
         </div>
     </div>
 </body>
